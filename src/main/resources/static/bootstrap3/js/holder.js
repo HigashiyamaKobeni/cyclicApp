@@ -34,7 +34,7 @@ if (!canvas.getContext) {
 	}
 }
 
-if(!!document.createElementNS && !!document.createElementNS('http://www.w3.org/2000/svg', 'svg').createSVGRect){
+if(!!document.createElementNS && !!document.createElementNS('https://www.w3.org/2000/svg', 'svg').createSVGRect){
 	system_config.use_svg = true;
 	system_config.use_canvas = false;
 }
@@ -154,11 +154,11 @@ var svg_el = (function(){
 	//Prevent IE <9 from initializing SVG renderer
 	if(!window.XMLSerializer) return;
 	var serializer = new XMLSerializer();
-	var svg_ns = "http://www.w3.org/2000/svg"
+	var svg_ns = "https://www.w3.org/2000/svg"
 	var svg = document.createElementNS(svg_ns, "svg");
 	//IE throws an exception if this is set and Chrome requires it to be set
 	if(svg.webkitMatchesSelector){
-		svg.setAttribute("xmlns", "http://www.w3.org/2000/svg")
+		svg.setAttribute("xmlns", "https://www.w3.org/2000/svg")
 	}
 	var bg_el = document.createElementNS(svg_ns, "rect")
 	var text_el = document.createElementNS(svg_ns, "text")
