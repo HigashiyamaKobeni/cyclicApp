@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace attribute: use to specify the interface current file map to, need to specify the path of interface, need to note the complete path interface of package-->
+<mapper namespace="com.ft1.cycleApp.mapper.NoteMapper">
+    <!--customize mapping rules: resultMAP label to complete mapping rule defination-->
+    <!--
+        id attribute: allocate unique id to such mapping rules, id related to attrubite
+        type attribute: is a class, shows the select result in database map to which entity class in Java
+    -->
+    <resultMap id="NoteEntityMap" type="com.ft1.cycleApp.entity.Note">
+        <!--match schema resouce differ from class atribute-->
+        <id column="note_id" property="noteId"></id>
+        <result column="note_details" property="noteDetails" />
+    </resultMap>
+
+    <insert id="insertNote" useGeneratedKeys="true" keyProperty="noteId">
+        INSERT INTO note (
+            note_details
+        ) VALUES (
+            #{noteDetails}
+        )
+    </insert>
+
+    <update id="updateNoteDetails">
+        UPDATE note SET
+            note_details = #{noteDetails}
+        WHERE note_id = #{noteId}
+    </update>
+
+    <select id="getNote" resultMap="NoteEntityMap">
+        SELECT * FROM note
+        WHERE note_id = #{noteId}
+    </select>
+
+    <delete id="deleteNote">
+        DELETE FROM note
+        WHERE note_id=#{noteId}
+    </delete>
+
+    <select id="getNoteIdByDetails" resultType="java.lang.Integer">
+        SELECT note_id FROM note
+        WHERE note_details=#{noteDetails}
+    </select>
+
+</mapper>

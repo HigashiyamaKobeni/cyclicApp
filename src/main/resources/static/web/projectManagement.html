@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>My Projects</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+        <!-- CSS LINK HERE -->
+        <link href="css/header.css" rel="stylesheet" type="text/css"> <!-- Header -->
+        <link href="css/projectManagement.css" rel="stylesheet" type="text/css"> <!-- Main -->
+
+    </head>
+    <body>
+        <div class="header">
+            <a href="userdata.html">User Info</a>
+            <a href="projectmanagement.html">Project Management</a>
+            <a href="createcycle.html">Cycle Management</a>
+        </div></br>
+
+        <div class="createProject"><a href="project.html">Create Project</a></div>
+
+        <div id="results"></div>
+        <script>
+            $(document).ready(function() {
+                let pKeys = [];
+                let pNames = [];
+                //--- GET PROJECT ---
+                $.ajax({
+                    url: "/projects/get_projects_by_uid",
+                    type: "GET",
+                    dataType: "json",
+                    success: function(response) {
+                        let projectList = response.data;
+                        let projectString = JSON.stringify(projectList);
+                        let projectParse = JSON.parse(projectString);
+                        let projectLength = Object.keys(projectList).length;
+                        //Append project
+                        for (var i = 0; i < projectLength; i++) {
+                            pKeys[i] = Object.values(projectParse[i])[0];
+                            pNames[i] = Object.values(projectParse[i])[1];
+                            $("#results").append("<div class='myProjects' id='project" + pKeys[i] + "'>Project: " + pNames[i] + "</div></br>");
+                            $("#project" + pKeys[i]).append("&nbsp<button class='deleteProject_Button' id='deleteProject_" + pKeys[i] + "' onclick='deleteProject(" + pKeys[i] + ")'>Delete Project</button></br>");
+                            $("#project" + pKeys[i]).append("<div class='projectCycles' id='cycles_" + pKeys[i] + "'></div>");
+                            getProjectCycles(pKeys[i]);
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        console.log(error);
+                    }
+                });
+                ///GET PROJECT
+                function getProjectCycles(id) {
+                    let cKeys = [];
+                    $.ajax({
+                        url: "http://localhost:8080/projects/get_cycles?projectId=" + id,
+                        type: "GET",
+                        dataType: "json",
+                        success: function(response) {
+                            let cycleList = response.data;
+                            let cycleString = JSON.stringify(cycleList);
+                            let cycleParse = JSON.parse(cycleString);
+                            cKeys = cycleParse;
+                            let cyclesLength = Object.keys(cycleList).length;
+                            console.log(cycleString);
+                            if (cyclesLength > 0) {
+                                for (var i = 0; i < cyclesLength; i++) {
+                                    $("#cycles_" + id).append("<div class='project_cycles_inner' id='project_" + id + "_cycle_" + cKeys[i] + "'></div>");
+                                    getCycleName(id, cKeys[i]);
+                                    $("#project_" + id + "_cycle_" + cKeys[i]).append(" <button class='removeCycle_Button' onclick='removeCycle(" + id + "," + cKeys[i] + ")'>Remove Cycle</button>");
+                                }
+                            } else {
+                                $("#cycles_" + id).append("NO CYCLES IN THIS PROJECT");
+                            }
+                        },
+                        error: function(xhr, status, error) {
+                            console.log(error);
+                        }
+                    });
+                }
+            });
+            function removeCycle(pid, cid) {
+                $.ajax({
+                    url: "http://localhost:8080/projects/remove_cycle?projectId=" + pid + "&cycleId=" + cid,
+                    type: "GET",
+                    dataType: "json",
+                    success: function (response) {
+                        alert("success");
+                        location.reload();
+                    },
+                    error: function (xhr, status, error) {
+                        // Handle the error
+                        console.error(error);
+                    }
+                });
+            }
+            function getCycleName(pid, cid) {
+                let id = parseInt(cid);
+                $.ajax({
+                    url: "http://localhost:8080/cycles/get_cycle?cycleId=" + id,
+                    type: "GET",
+                    dataType: "json",
+                    success: function (response) {
+                    // Handle the success response
+                        let cList = response.data;
+                        let cString = JSON.stringify(cList);
+                        let cParse = JSON.parse(cString);
+                        let cName = Object.values(cParse)[1];
+                        $("#project_" + pid + "_cycle_" + id).append(cName);
+                    },
+                    error: function (xhr, status, error) {
+                    // Handle the error
+                        console.error(error);
+                    }
+                });
+            }
+            function deleteProject(pid) {
+            let id = parseInt(pid);
+            //TO-DO
+            $.ajax({
+            url: "http://localhost:8080/projects/delete_project?projectId=" + id,
+            type: "POST",
+            data: { integerData: id },
+            success: function(response) {
+            console.log(response);
+            location.reload();
+            },
+            error: function(xhr, status, error) {
+            console.error(error);
+            }
+            });
+            }
+        </script>
+    </body>
+</html>

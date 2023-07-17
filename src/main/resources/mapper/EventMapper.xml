@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace attribute: use to specify the interface current file map to, need to specify the path of interface, need to note the complete path interface of package-->
+<mapper namespace="com.ft1.cycleApp.mapper.EventMapper">
+
+    <resultMap id="EventEntityMap" type="com.ft1.cycleApp.entity.Event">
+        <!--match schema resouce differ from class atribute-->
+        <id column="event_id" property="eventId"></id>
+        <result column="actionable" property="actionable" />
+        <result column="event_name" property="eventName" />
+        <result column="start_date" property="startDate" />
+        <result column="end_date" property="endDate" />
+        <result column="event_status" property="eventStatus" />
+        <result column="note_id" property="noteId"/>
+        <result column="reminder_id" property="reminderId"/>
+    </resultMap>
+
+    <insert id="insertEvent" useGeneratedKeys="true" keyProperty="eventId">
+        INSERT INTO event (
+            event_name,
+            actionable
+        ) VALUES (
+            #{eventName},
+            #{actionable}
+        )
+    </insert>
+
+    <delete id="deleteEvent">
+        DELETE FROM event
+        WHERE event_id=#{eventId}
+    </delete>
+
+    <select id="getEvent" resultMap="EventEntityMap">
+        SELECT * FROM event WHERE event_id = #{eventId}
+    </select>
+
+    <update id="updateEventName">
+        UPDATE event
+        SET event_name = #{newEventName}
+        WHERE event_id = #{eventId};
+    </update>
+
+    <insert id="addTag">
+        INSERT INTO event_tag (
+            event_id,
+            tag_id
+        ) VALUES (
+            #{eventId},
+            #{tagId}
+        )
+    </insert>
+
+    <select id="getTag" resultType="java.lang.Integer" >
+        SELECT tag_id FROM event_tag WHERE event_id = #{eventId}
+    </select>
+
+    <update id="addNote">
+        UPDATE event
+        SET note_id = #{newNoteId}
+        WHERE event_id = #{eventId}
+
+    </update>
+
+    <delete id="removeTag">
+        DELETE FROM event_tag
+        WHERE event_id = #{eventId}
+        AND tag_id = #{tagId}
+    </delete>
+
+    <update id="removeNote">
+        UPDATE event
+        SET note_id = NULL
+        WHERE event_id = #{eventId}
+    </update>
+
+    <insert id="addToCycle">
+        INSERT INTO cycle_event (
+            cycle_id,
+            event_id
+        ) VALUES (
+            #{cycleId},
+            #{eventId}
+        )
+    </insert>
+
+    <update id="removeFromCycle">
+        DELETE FROM cycle_event
+        WHERE cycle_id = #{cycleId}
+        AND event_id = #{eventId}
+    </update>
+
+    <update id="addReminder">
+        UPDATE event
+        SET reminder_id = #{reminderId}
+        WHERE event_id = #{eventId}
+    </update>
+
+    <update id="removeReminder">
+        UPDATE event
+        SET reminder_id = NULL
+        WHERE event_id = #{eventId}
+    </update>
+
+    <update id="setEventStatus">
+        UPDATE event
+        SET event_status = #{eventStatus}
+        WHERE event_id = #{eventId}
+    </update>
+
+    <update id="setStartDate">
+        UPDATE event
+        SET start_date = #{newStartDate}
+        WHERE event_id = #{eventId}
+    </update>
+
+    <update id="setEndDate">
+        UPDATE event
+        SET end_date = #{newEndDate}
+        WHERE event_id = #{eventId}
+    </update>
+
+    <select id="getEventByUid">
+        SELECT * FROM event WHERE user_id
+    </select>
+</mapper>

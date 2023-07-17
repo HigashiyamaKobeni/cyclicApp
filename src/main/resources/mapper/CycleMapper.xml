@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace attribute: use to specify the interface current file map to, need to specify the path of interface, need to note the complete path interface of package-->
+<mapper namespace="com.ft1.cycleApp.mapper.CycleMapper">
+    <!--customize mapping rules: resultMAP label to complete mapping rule defination-->
+    <!--
+        id attribute: allocate unique id to such mapping rules, id related to attrubite
+        type attribute: is a class, shows the select result in database map to which entity class in Java
+    -->
+    <resultMap id="CycleEntityMap" type="com.ft1.cycleApp.entity.Cycle">
+        <!--match schema resouce differ from class atribute-->
+        <id column="circle_id" property="cycleId"></id>
+        <result column="cycle_id" property="cycleId"/>
+        <result column="cycle_name" property="cycleName" />
+        <result column="start_date" property="startDate" />
+        <result column="end_date" property="endDate" />
+        <result column="user_id" property="userId" />
+        <result column="note_id" property="noteId"/>
+        <result column="reminder_id" property="reminderId"/>
+    </resultMap>
+
+    <resultMap id="CycleUserMap" type="com.ft1.cycleApp.entity.Cycle">
+        <!--match schema resouce differ from class atribute-->
+        <id column="user_id" property="userId"></id>
+        <result column="cycle_id" property="cycleId"/>
+        <result column="cycle_name" property="cycleName" />
+        <result column="start_date" property="startDate" />
+        <result column="end_date" property="endDate" />
+        <result column="note_id" property="noteId"/>
+        <result column="reminder_id" property="reminderId"/>
+    </resultMap>
+
+
+    <insert id="insertCycle" useGeneratedKeys="true" keyProperty="cycleId">
+        INSERT INTO cycle (
+            cycle_name,
+            user_id
+        ) VALUES (
+            #{cycleName},
+            #{userId}
+        )
+    </insert>
+
+    <delete id="deleteCycle">
+        DELETE FROM cycle
+        WHERE cycle_id = #{cycleId}
+    </delete>
+
+    <select id="getCycle" resultMap="CycleEntityMap">
+        SELECT * FROM cycle
+        WHERE cycle_id = #{cycleId}
+    </select>
+
+    <update id="setCycleName">
+        UPDATE cycle
+        SET cycle_name = #{cycleName}
+        WHERE cycle_id = #{cycleId}
+    </update>
+
+    <update id="setStartDate">
+        UPDATE cycle
+        SET start_date = #{newStartDate}
+        WHERE cycle_id = #{cycleId}
+    </update>
+
+    <update id="setEndDate">
+        UPDATE cycle
+        SET end_date = #{newEndDate}
+        WHERE cycle_id = #{cycleId}
+    </update>
+
+    <insert id="addTag">
+        INSERT INTO cycle_tag (
+            cycle_id,
+            tag_id
+        ) VALUES (
+            #{cycleId},
+            #{tagId}
+        )
+
+    </insert>
+
+    <delete id="removeTag">
+        DELETE FROM cycle_tag
+        WHERE tag_id = #{tagId}
+        AND cycle_id = #{cycleId}
+    </delete>
+
+
+    <update id="addNote">
+        UPDATE cycle
+        SET note_id = #{newNoteId}
+        WHERE cycle_id = #{cycleId}
+    </update>
+
+    <update id="removeNote">
+        UPDATE cycle
+        SET note_id = NULL
+        WHERE cycle_id = #{cycleId}
+    </update>
+
+    <update id="addReminder">
+        UPDATE cycle
+        SET reminder_id = #{newReminderId}
+        WHERE cycle_id = #{cycleId}
+    </update>
+
+    <update id="removeReminder">
+        UPDATE cycle
+        SET reminder_id = NULL
+        WHERE cycle_id = #{cycleId}
+    </update>
+
+
+    <insert id="addEvent">
+        INSERT INTO cycle_event (
+            cycle_id,
+            event_id
+        ) VALUES (
+            #{cycleId},
+            #{eventId}
+        )
+    </insert>
+
+    <delete id="removeEvent">
+        DELETE FROM cycle_event
+        WHERE event_id = #{eventId}
+        AND cycle_id = #{cycleId}
+    </delete>
+
+    <select id="checkEvent" resultType="Integer">
+        SELECT event_id FROM cycle_event
+        WHERE cycle_id = #{cycleId}
+    </select>
+
+    <select id="checkTag" resultType="Integer">
+        SELECT tag_id FROM cycle_tag
+        WHERE cycle_id = #{cycleId}
+    </select>
+
+    <select id="checkProject" resultType="Integer">
+        SELECT project_id FROM project_cycle
+        WHERE cycle_id = #{cycleId}
+    </select>
+
+    <delete id="deleteProject">
+        DELETE FROM project_cycle
+        WHERE cycle_id = #{cycleId}
+        AND project_id = #{projectId}
+    </delete>
+
+    <select id="getCyclesByUserId" resultMap="CycleUserMap">
+        SELECT * FROM cycle
+        WHERE user_id = #{userId}
+
+    </select>
+</mapper>

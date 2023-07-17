@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="renderer" content="webkit" />
+		<title>Register</title>
+
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<script src="../bootstrap3/js/holder.js"></script>
+		<script src="../bootstrap3/jquery-1.9.1.min.js"></script>
+		<script src="../bootstrap3/js/bootstrap.js"></script>
+
+		<!-- CSS LINK HERE -->
+		<link href="css/register.css" rel="stylesheet" type="text/css"> <!-- Main -->
+
+	</head>
+	<body>
+		<div class="registerDiv">
+			<p>sign up page</p>
+			<form id="form-reg" role="form" class="register_Form">
+				<div class="usernameDiv">
+					<label class="username_Label">username：</label>
+						<input id="username" name="username" type="text" placeholder="" class="username_Input">
+				</div>
+				<div class="passwordDiv">
+					<label class="password_Label"> password：</label>
+					<input name="password" type="text" placeholder="" class="password_Input">
+				</div>
+				<div class="confirmPasswordDiv">
+					<label class="confirmPassword_Label"> confirm password：</label>
+					<input type="text" placeholder="" class="confirmPassword_Input">
+				</div>
+				<div class="registerButtonDiv">
+					<input id="btn-reg" type="button" value="sign up now" class="registerButton_Input"/>
+					<span class="hasAccount"><small>has account？</small><a href="login.html">login</a></span>
+				</div>
+			</form>
+		</div>
+		<script type="text/javascript">
+			$("#btn-reg").click(function() {
+				$.ajax({
+					url: "/users/reg",
+					type: "POST",
+					data: $("#form-reg").serialize(),
+					dataType: "JSON",
+					success: function(json) {
+					if (json.state == 200) {
+						alert("register success");
+						location.href = "login.html";
+						} else {
+							alert("username exist");
+						}
+					},
+					error: function(xhr) {
+						alert("error" + xhr.message);
+					}
+				})
+			})
+		</script>
+	</body>
+</html>

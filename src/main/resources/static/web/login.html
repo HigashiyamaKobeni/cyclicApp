@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="renderer" content="webkit" />
+		<title>Login</title>
+
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<script src="../bootstrap3/js/holder.js"></script>
+		<script src="../bootstrap3/jquery-1.9.1.min.js"></script>
+		<script src="../bootstrap3/js/bootstrap.js"></script>
+
+		<!-- CSS LINK HERE -->
+		<link href="css/login.css" rel="stylesheet" type="text/css"> <!-- Main -->
+
+	</head>
+	<body>
+		<div class="loginDiv">
+			<p>Login page</p>
+			<form id="form-login" action="projectManagement.html"  class="form-horizontal" role="form">
+				<div class="usernameDiv">
+					<label for="username" class="username_Label">username：</label>
+					<input name="username" type="text" id="username" placeholder="" class="username_Input">
+				</div>
+				<div class="passwordDiv">
+					<label for="password" class="password_Label"> password：</label>
+					<input name="password" type="text" id="password" placeholder="" class="password_Input">
+				</div>
+				<div class="loginButtonDiv">
+					<input id="btn-login" type="button" value="login" class="login_button"/>
+					<span class="noAccount"><small>no account？</small><a href="register.html">sign up</a></span>
+				</div>
+			</form>
+		</div>
+		<script type="text/javascript">
+			$("#btn-login").click(function() {
+				$.ajax({
+					url: "/users/login",
+					type: "POST",
+					data: $("#form-login").serialize(),
+					dataType: "JSON",
+					success: function(json) {
+						if (json.state == 200) {
+							alert("login success");
+						location.href = "projectManagement.html";
+						} else {
+							alert("login fail");
+						}
+					},
+					error: function(xhr) {
+						alert("error" + xhr.message);
+					}
+				});
+			});
+		</script>
+	</body>
+</html>

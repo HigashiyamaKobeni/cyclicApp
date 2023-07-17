@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace attribute: use to specify the interface current file map to, need to specify the path of interface, need to note the complete path interface of package-->
+<mapper namespace="com.ft1.cycleApp.mapper.ProjectMapper">
+    <!--customize mapping rules: resultMAP label to complete mapping rule defination-->
+    <!--
+        id attribute: allocate unique id to such mapping rules, id related to attrubite
+        type attribute: is a class, shows the select result in database map to which entity class in Java
+    -->
+
+    <resultMap id="ProjectEntityMap" type="com.ft1.cycleApp.entity.Project">
+        <!--match schema resouce differ from class atribute-->
+        <id column="project_id" property="projectId"></id>
+        <result column="project_name" property="projectName" />
+        <result column="user_id" property="uid" />
+    </resultMap>
+
+    <resultMap id="ProjectUserMap" type="com.ft1.cycleApp.entity.Project">
+        <!--match schema resouce differ from class atribute-->
+        <id column="user_id" property="uid"></id>
+        <result column="project_id" property="projectId"></result>
+        <result column="project_name" property="projectName" ></result>
+    </resultMap>
+
+
+    <insert id="insertProject" useGeneratedKeys="true" keyProperty="projectId">
+        INSERT INTO project (
+            user_id,
+            project_name
+        ) VALUES (
+            #{uid},
+            #{projectName}
+        )
+    </insert>
+
+    <select id="getProjectId" resultType="java.lang.Integer">
+        SELECT project_id FROM project WHERE user_id = #{uid}
+    </select>
+
+    <update id="updateProjectName">
+        UPDATE project SET
+            project_name = #{projectName}
+        WHERE project_id = #{projectId}
+        AND user_id = #{uid}
+    </update>
+
+    <delete id="deleteProject">
+        DELETE FROM project
+        WHERE project_id=#{projectId}
+    </delete>
+
+    <insert id="addCycle">
+        INSERT INTO project_cycle (
+            project_id,
+            cycle_id
+        ) VALUES (
+            #{projectId},
+            #{cycleId}
+        )
+    </insert>
+
+    <delete id="removeCycle">
+        DELETE FROM project_cycle
+        WHERE project_id=#{projectId}
+        AND cycle_id=#{cycleId}
+    </delete>
+
+    <select id="getCycles" resultType="java.lang.Integer">
+        SELECT cycle_id FROM project_cycle WHERE project_id=#{projectId}
+    </select>
+
+    <select id="getProjectsByUserId" resultMap="ProjectUserMap">
+        SELECT * FROM project WHERE user_id = #{userId}
+
+    </select>
+
+</mapper>

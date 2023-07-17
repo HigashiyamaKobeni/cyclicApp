@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="UTF-8">
+        <title>Create Project</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="renderer" content="webkit" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <script src="../bootstrap3/js/holder.js"></script>
+        <script src="../bootstrap3/jquery-1.9.1.min.js"></script>
+        <script src="../bootstrap3/js/bootstrap.js"></script>
+
+        <!-- CSS LINK HERE -->
+        <link href="css/header.css" rel="stylesheet" type="text/css"> <!-- Header -->
+        <link href="css/project.css" rel="stylesheet" type="text/css"> <!-- Main -->
+
+    </head>
+    <body>
+        <div class="header">
+            <a href="userdata.html">User Info</a>
+            <a href="projectmanagement.html">Project Management</a>
+            <a href="createcycle.html">Cycle Management</a>
+        </div></br>
+
+        <form id="form-create-project" action="projectManagement.html" role="form" class="project_Form">
+            <div class="projectNameDiv">
+                <label for="projectName" class="projectName_Label">project name </label>
+                <input name="projectName" type="text" id="projectName" class="projectName_Input">
+            </div>
+            <div class="createProjectDiv">
+                <input id="btn-create-project"type="button" value="create" class="createProject_Button"/>
+            </div>
+        </form>
+        <script type="text/javascript">
+            $("#btn-create-project").click(function() {
+                $.ajax({
+                    url: "/projects/create_project",
+                    type: "POST",
+                    data: $("#form-create-project").serialize(),
+                    dataType: "JSON",
+                    success: function(json) {
+                    if (json.state == 200) {
+                        alert("create project success");
+                        location.href = "projectManagement.html";
+                        } else {
+                            alert("create project fail");
+                        }
+                    },
+                    error: function(xhr) {
+                        alert("error" + xhr.message);
+                    }
+                })
+            })
+        </script>
+    </body>
+</html>

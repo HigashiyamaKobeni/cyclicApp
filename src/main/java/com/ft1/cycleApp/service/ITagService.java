@@ -1,0 +1,26 @@
+package com.ft1.cycleApp.service;
+
+import com.ft1.cycleApp.entity.Tag;
+
+import java.util.ArrayList;
+
+public interface ITagService {
+
+    void insertTag(Tag tag);
+
+    void deleteTag(Integer tagId);
+
+    ArrayList<Tag> findTagByUid(Integer uid);
+
+    void updateTagName(String tagName, Integer tagId, Integer uid);
+
+    void bindNoteToTag(Integer tagId, Integer noteId);
+
+    void deleteNoteFromTag(Integer tagId, Integer noteId);
+
+    Integer getNoteIdFromTag(Integer tagId);
+
+    Tag findTagByTagId(Integer tagId);
+
+    Tag duplicateTag(Tag tag, Tag result);
+}

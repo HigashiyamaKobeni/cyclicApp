@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace attribute: use to specify the interface current file map to, need to specify the path of interface, need to note the complete path interface of package-->
+<mapper namespace="com.ft1.cycleApp.mapper.UserMapper">
+    <!--customize mapping rules: resultMAP label to complete mapping rule defination-->
+    <!--
+        id attribute: allocate unique id to such mapping rules, id related to attrubite
+        type attribute: is a class, shows the select result in database map to which entity class in Java
+    -->
+    <resultMap id="UserEntityMap" type="com.ft1.cycleApp.entity.User">
+        <!--match schema resouce differ from class atribute-->
+        <id column="user_id" property="uid"></id>
+    </resultMap>
+
+    <update id="updateInfoByUid">
+        UPDATE user SET
+            <if test="email != null">email = #{email}</if>
+        WHERE user_id = ${uid}
+    </update>
+
+    <!--id attribute: method name in mapping interface, write sql syntax in label-->
+    <!--
+        useGeneratedKeys attribute: open such key increment (primary key)
+        keyProperty attribute: show such key as increment key in schema
+    -->
+    <insert id="insertUser" useGeneratedKeys="true" keyProperty="uid">
+        INSERT INTO user (
+            username,
+            password,
+            email,
+            salt
+        ) VALUES (
+            #{username},
+            #{password},
+            #{email},
+            #{salt}
+        )
+    </insert>
+
+    <!--select syntax during execution, select result is a object, many objects-->
+    <!--
+        resultType: select result set type, specify mapping class type, include complete package structure: resultType="com.ft1.cycleApp.entity.User"
+        resultMap: schema column name is differ from class attribute name, customize mapping rules
+    -->
+    <select id="findByUsername" resultMap="UserEntityMap">
+        SELECT * From user WHERE username = #{username}
+    </select>
+
+    <update id = "updatePasswordByUid">
+        UPDATE user SET
+            password = #{password}
+        where user_id = ${uid}
+    </update>
+
+    <select id = "findByUid" resultMap="UserEntityMap">
+        SELECT * FROM user WHERE user_id = #{uid}
+    </select>
+
+</mapper>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace attribute: use to specify the interface current file map to, need to specify the path of interface, need to note the complete path interface of package-->
+<mapper namespace="com.ft1.cycleApp.mapper.ReminderMapper">
+
+    <resultMap id="GetReminderMapper" type="com.ft1.cycleApp.entity.Reminder">
+        <id column="reminder_id" property="reminderId"></id>
+        <result column="reminder_id" property="reminderId"></result>
+        <result column="remind_details" property="remindDetails"></result>
+        <result column="remind_time" property="remindTime"></result>
+    </resultMap>
+
+    <insert id="addReminder">
+        INSERT INTO reminder (
+            remind_details,
+            remind_time
+        ) VALUES (
+            #{remindDetails},
+            #{remindTime}
+        )
+    </insert>
+
+    <select id="getReminder" resultMap="GetReminderMapper">
+        SELECT * FROM reminder
+        WHERE reminder_id = #{reminderId}
+    </select>
+
+    <delete id="removeReminder">
+        DELETE FROM reminder
+        WHERE reminder_id = #{reminderId}
+    </delete>
+
+    <update id="modifyReminderDetails">
+        UPDATE reminder
+        SET remind_details = #{remindDetails}
+        WHERE reminder_id = #{reminderId}
+    </update>
+
+    <update id="setRemindTime">
+        UPDATE reminder
+        SET remind_time = #{remindTime}
+        WHERE reminder_id = #{reminderId}
+    </update>
+</mapper>
