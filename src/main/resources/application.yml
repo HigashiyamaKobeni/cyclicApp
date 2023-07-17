@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: mysql://root:KNLsTRIZzbtuVDFw1crV@containers-us-west-40.railway.app:7919/railway
+    url: jdbc:mysql://root:KNLsTRIZzbtuVDFw1crV@containers-us-west-40.railway.app:7919/railway
     username: root
     password: KNLsTRIZzbtuVDFw1crV
 
