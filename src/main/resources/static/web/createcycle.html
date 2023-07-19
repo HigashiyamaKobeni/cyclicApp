@@ -128,22 +128,22 @@
             event.preventDefault();
             const integerValue = actionable.checked ? 1 : 0;
             console.log(cycleName + " " + eventName + "Checkbox Value (integer):", integerValue);
-        });
-        /*$.ajax({
-          url:"/events/insert_event?event_name=" + eventName + "&actionable=X",
-          type: "POST",
-          dataType: "JSON",
-          success: function(json) {
-            if (json.state == 200) {
-              alert("success");
-            } else {
-              alert("fail");
+          $.ajax({
+            url:"/events/insert_event?event_name=" + eventName + "&actionable=" + integerValue,
+            type: "POST",
+            dataType: "JSON",
+            success: function(json) {
+              if (json.state == 200) {
+                alert("success");
+              } else {
+                alert("fail");
+              }
+            },
+            error: function(xhr) {
+              alert("error" + xhr.message);
             }
-          },
-          error: function(xhr) {
-            alert("error" + xhr.message);
-          }
-        });*/
+          });
+        });
       }
 
       function getEventID(cid) {
