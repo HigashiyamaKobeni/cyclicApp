@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public interface IEventService {
-    void insertEvent(Event newEvent, Integer cycleId);
+    void insertEvent(Event newEvent, Integer userId);
 
     void deleteEvent(Integer eventId);
 
