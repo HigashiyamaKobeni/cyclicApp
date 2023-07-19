@@ -101,7 +101,7 @@
             for (var i = 0; i < cLength; i++) {
               let cycleData = "Name: " + Object.values(cData[i])[1] + " | Start Date: " + Object.values(cData[i])[2] + " | End Date: " + Object.values(cData[i])[3];
               $("#myCycles").append("<div class='myCycles' id='myCycle" + Object.values(cData[i])[0] + "'>" + cycleData + " </div></br>");
-              $("#myCycle" + Object.values(cData[i])[0]).append("<button class='addEvent_Button' onclick='addEvent(" + Object.values(cData[i])[0] + "," + Object.values(cData[i])[1] + ")'>Add Event</button></br>");
+              $("#myCycle" + Object.values(cData[i])[0]).append("<button class='addEvent_Button' onclick='addEvent()'>Add Event</button></br>");
               $("#myCycle" + Object.values(cData[i])[0]).append("<div id='addEventDiv_" + Object.values(cData[i])[0] + "'></div>");
               $("#myCycle" + Object.values(cData[i])[0]).append("<div id='cycle_events_" + Object.values(cData[i])[0] + "' class='cycle_events'></div>");
               getEventID(Object.values(cData[i])[0]);
@@ -161,7 +161,7 @@
         });
       }
 
-      function addEvent(cid,cname) {
+      function addEvent() {
         ///$("#addEventDiv_" + cid).append("THIS SHOWS SOMETHING, CYCLE ID: " + cid);
         let displayDiv = document.getElementById("createEventDiv");
         displayDiv.style.display = "block";
