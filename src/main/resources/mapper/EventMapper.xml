@@ -21,11 +21,11 @@
         INSERT INTO event (
             event_name,
             actionable,
-            cycleId,
+            user_id,
         ) VALUES (
             #{eventName},
             #{actionable},
-            #{cycleId}
+            #{userId}
         )
     </insert>
 
