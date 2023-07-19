@@ -44,7 +44,7 @@
               <input name="createEventName" type="text" id="createEventName" class="createEventName_Input">
               <label for="createEventActionable" class="createEventActionable_Label">Actionable </label>
               <input type="checkbox" id="createEventActionable" name="createEventActionable" value="actionable"></br>
-              <input id="btn-create-event" type="button" value="create" class="eventCreateButton"/>
+              <input id="btn-create-event" type="button" value="create" class="eventCreateButton" onclick="createEventOnCycle()"/>
             </div>
           </form>
     </div>
@@ -118,6 +118,12 @@
           }
         });
       });
+
+      function createEventOnCycle() {
+        let cycleName = document.getElementById("createEventCycleName").value;
+        let eventName = document.getElementById("createEventName").value;
+        alert(cycleName + " " + eventName);
+      }
 
       function getEventID(cid) {
         let eid;
