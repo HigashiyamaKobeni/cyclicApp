@@ -89,7 +89,7 @@
             for (var i = 0; i < cLength; i++) {
               let cycleData = "Name: " + Object.values(cData[i])[1] + " | Start Date: " + Object.values(cData[i])[2] + " | End Date: " + Object.values(cData[i])[3];
               $("#myCycles").append("<div class='myCycles' id='myCycle" + Object.values(cData[i])[0] + "'>" + cycleData + " </div></br>");
-              $("#myCycle" + Object.values(cData[i])[0]).append("<button class='addEvent_Button' onclick='"window.location.href=createevent.html";'>Add Event</button></br>");
+              $("#myCycle" + Object.values(cData[i])[0]).append("<button class='addEvent_Button' onclick='addEvent()'>Add Event</button></br>");
               $("#myCycle" + Object.values(cData[i])[0]).append("<div id='cycle_events_" + Object.values(cData[i])[0] + "' class='cycle_events'></div>");
               getEventID(Object.values(cData[i])[0]);
               for (var j = 0; j < pArray.length; j++) {
