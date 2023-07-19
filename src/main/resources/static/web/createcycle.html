@@ -37,6 +37,8 @@
     <div id="createEventDiv" display="none">
       <form id="form-create-event" action="createcycle.html" role="form">
             <div class="createEventDiv">
+              <label for="createEventCycleName" class="createEventCycleName_Label">For Cycle </label>
+              <input name="createEventCycleName" type="text" id="createEventCycleName" class="createEventName_Input">
               <label for="createEventName" class="createEventName_Label">Event name </label>
               <input name="createEventName" type="text" id="createEventName" class="createEventName_Input">
               <input id="btn-create-event" type="button" value="create" class="eventCreateButton"/>
@@ -99,7 +101,7 @@
             for (var i = 0; i < cLength; i++) {
               let cycleData = "Name: " + Object.values(cData[i])[1] + " | Start Date: " + Object.values(cData[i])[2] + " | End Date: " + Object.values(cData[i])[3];
               $("#myCycles").append("<div class='myCycles' id='myCycle" + Object.values(cData[i])[0] + "'>" + cycleData + " </div></br>");
-              $("#myCycle" + Object.values(cData[i])[0]).append("<button class='addEvent_Button' onclick='addEvent(" + Object.values(cData[i])[0] + ")'>Add Event</button></br>");
+              $("#myCycle" + Object.values(cData[i])[0]).append("<button class='addEvent_Button' onclick='addEvent(" + Object.values(cData[i])[0] + "," + Object.values(cData[i])[1] + ")'>Add Event</button></br>");
               $("#myCycle" + Object.values(cData[i])[0]).append("<div id='addEventDiv_" + Object.values(cData[i])[0] + "'></div>");
               $("#myCycle" + Object.values(cData[i])[0]).append("<div id='cycle_events_" + Object.values(cData[i])[0] + "' class='cycle_events'></div>");
               getEventID(Object.values(cData[i])[0]);
@@ -159,8 +161,12 @@
         });
       }
 
-      function addEvent(cid) {
-        $("#addEventDiv_" + cid).append("THIS SHOWS SOMETHING, CYCLE ID: " + cid);
+      function addEvent(cid,cname) {
+        ///$("#addEventDiv_" + cid).append("THIS SHOWS SOMETHING, CYCLE ID: " + cid);
+        let displayDiv = document.getElementById("createEventDiv");
+        displayDiv.style.display = "block";
+        let cycleName = document.getElementById("createEventCycleName");
+        cycleName.value = cname;
       }
 
       function addToProject(pid, cid) {
