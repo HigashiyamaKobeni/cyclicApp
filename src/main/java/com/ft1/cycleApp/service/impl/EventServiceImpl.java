@@ -43,8 +43,8 @@ public class EventServiceImpl implements IEventService {
     }
 
     @Override
-    public void insertEvent(Event newEvent, Integer userId) {
-        Integer rows = eventMapper.insertEvent(newEvent, cycleId);
+    public void insertEvent(Event newEvent) {
+        Integer rows = eventMapper.insertEvent(newEvent);
 
         if (rows != 1) {
             throw new InsertException("err at insert event");
