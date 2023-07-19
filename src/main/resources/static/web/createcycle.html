@@ -193,11 +193,9 @@
             let cLength = Object.keys(cData).length;
             for (var i = 0; i < cLength; i++) {
               let cycleName = Object.values(cData[i])[1];
-              for (var j = 0; j < pArray.length; j++) {
-                option.text = cycleName;
-                option.value = cycleName;
-                selectElement.add(option);
-              }
+              option.text = cycleName;
+              option.value = cycleName;
+              selectElement.add(option);
             }
           },
           error: function(xhr, status, error) {
