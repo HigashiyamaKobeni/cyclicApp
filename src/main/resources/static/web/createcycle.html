@@ -133,7 +133,7 @@
 
             console.log(cycleName + " " + eventName + "Checkbox Value (integer):", integerValue);
         });
-        $.ajax({
+        /*$.ajax({
           url:"/events/insert_event?event_name=" + eventName + "&actionable=X",
           type: "POST",
           dataType: "JSON",
@@ -147,7 +147,7 @@
           error: function(xhr) {
             alert("error" + xhr.message);
           }
-        });
+        });*/
       }
 
       function getEventID(cid) {
