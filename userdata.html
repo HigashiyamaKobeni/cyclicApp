@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<!--edge浏览器H5兼容设置-->
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<!--360浏览器H5兼容设置-->
+		<meta name="renderer" content="webkit" />
+		<title>change user info</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!--导入核心文件-->
+		<script src="../bootstrap3/js/holder.js"></script>
+		<link href="../bootstrap3/css/bootstrap.css" rel="stylesheet" type="text/css">
+		<script src="../bootstrap3/jquery-1.9.1.min.js"></script>
+		<script src="../bootstrap3/js/bootstrap.js"></script>
+		<!-- 字体图标 -->
+		<link rel="stylesheet" href="../bootstrap3/font-awesome-4.7.0/css/font-awesome.css" />
+		<link rel="stylesheet" type="text/css" href="../css/layout.css" />
+		<link rel="stylesheet" type="text/css" href="../css/top.css" />
+		<link rel="stylesheet" type="text/css" href="../css/footer.css" />
+	</head>
+
+	<body>
+
+					<div class="panel-body">
+						<!--修改资料表单开始-->
+						<form id="form-change-info" class="form-horizontal" role="form">
+							<div class="form-group">
+								<label class="col-md-2 control-label">用户名：</label>
+								<div class="col-md-8">
+									<input id="username" type="text" class="form-control" value="" readonly="readonly">
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label class="col-md-2 control-label">电子邮箱：</label>
+								<div class="col-md-8">
+									<input id="email" name="email" type="text" class="form-control" value = "">
+								</div>
+							</div>
+
+							<div class="form-group">
+								<div class="col-sm-offset-2 col-sm-10">
+									<input id="btn-change-info" type="button" class="btn btn-primary" value="change" />
+								</div>
+							</div>
+						</form>
+					</div>
+
+					<script type="text/javascript">
+						$(document).ready(function() {
+							$.ajax({
+								url: "/users/get_by_uid",
+								type: "GET",
+								data: $("#form-change-info").serialize(),
+								dataType: "JSON",
+								success: function(json) {
+									if (json.state == 200) {
+										$("#username").val(json.data.username);
+										$("#email").val(json.data.email);
+
+									} else {
+										alert("data not exist");
+									}
+								},
+
+								error: function(xhr) {
+									alert("error" + xhr.message);
+								}
+							})
+						})
+
+						$("#btn-change-info").click(function() {
+							$.ajax({
+								url: "/users/change_info",
+								type: "POST",
+								data: $("#form-change-info").serialize(),
+								dataType: "JSON",
+								success: function(json) {
+									if (json.state == 200) {
+										alert("change info success");
+
+										location.href = "index.html";
+
+									} else {
+										alert("change info fail");
+									}
+								},
+
+								error: function(xhr) {
+									alert("error" + xhr.message);
+								}
+							})
+						})
+					</script>
+
+	</body>
+
+</html>

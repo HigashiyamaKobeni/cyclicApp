@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AJAX Example</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+<div id="result"></div>
+
+<script>
+    $(document).ready(function() {
+        $.ajax({
+            url: "http://localhost:8080/projects/get_project",
+            type: "GET",
+            dataType: "json",
+            success: function(response) {
+                var arrayList = response.data;
+
+                var jsonString = JSON.stringify(arrayList[0]);
+
+                // $("#result").text(Object.keys(arrayList).length);
+                $("#result").text(jsonString);
+            },
+            error: function(xhr, status, error) {
+                console.log(error);
+            }
+        });
+    });
+</script>
+</body>
+</html>
+
+

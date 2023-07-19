@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="renderer" content="webkit">
+		<title>Login</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<script src="../bootstrap3/js/holder.js"></script>
+		<link href="../bootstrap3/css/bootstrap.css" rel="stylesheet" type="text/css">
+		<script src="../bootstrap3/jquery-1.9.1.min.js"></script>
+		<script src="../bootstrap3/js/bootstrap.js"></script>
+		<link rel="stylesheet" href="styles/login.css">
+		
+		
+
+	</head>
+	<body>
+
+		<header class="header">
+			<div class="left-section">
+				<h1> Welcome back, Cyclic Reminder App! </h1>
+			</div>
+	
+			<!-- <div class="middle-section">
+				<div class="search-bar">
+					<input type="text" class="search-input" placeholder="Search...">
+					<button class="search-button">Search</button>
+				</div>
+			</div> -->
+	
+			<div class="right-section">
+				<img src="photobg/right-section.png" width="50px">
+				
+			
+			</div>
+	
+	 </header>
+
+
+		<div class="login-container"> 
+
+			<div class="other-div slideshow">
+				<!-- Content for the second column (with red background) -->
+				<h2>Start Your Project Management With Us</h2>
+				<p>Discover the world's best project app for users.</p>
+				<img src="photobg/meeting-login.png" alt="Meeting Image">
+			</div>
+
+		<div class="container mycontent text-left">
+			
+			<div class="loginDiv">
+				
+
+				<form id="form-login" action="index.html"  class="form-horizontal" role="form">
+
+					<div class="form-group">
+						<label for="username" class="col-md-3 control-label">Username：</label>
+						<div class="col-md-8">
+							<input name="username" type="text" class="form-control" id="username"  placeholder="">
+						</div>
+					</div>
+					
+					<div class="form-group">
+						<label for="password" class="col-md-3 control-label"> Password：</label>
+						<div class="col-md-8">
+							<input name="password" type="text" class="form-control" id="password"  placeholder="">
+						</div>
+					</div>
+					
+					<div class="form-group">
+						<label class="col-md-3 control-label"></label>
+						<div class="col-md-8">
+
+						<div class="bottom-section"> 
+							<div class="login-flex"> <input id="btn-login" class="btn btn-primary" type="button" value="Login" /> 
+							</div>
+							
+							
+							<div class="signup-section"> <span class="pull-right"><small>No Account？</small><a href="register.html">Sign Up</a></span> 
+							</div>
+						 </div>
+							
+						</div>
+					</div>
+				</form>
+			
+			</div>
+		
+		</div>
+
+		
+	</div>
+
+	
+
+
+		<script type="text/javascript">
+			$("#btn-login").click(function() {
+				$.ajax({
+					url: "/users/login",
+					type: "POST",
+					data: $("#form-login").serialize(),
+					dataType: "JSON",
+					success: function(json) {
+						if (json.state == 200) {
+							alert("login success");
+
+							location.href = "index.html";
+						} else {
+							alert("login fail");
+						}
+					},
+
+					error: function(xhr) {
+						alert("error" + xhr.message);
+					}
+				})
+			})
+		</script>
+		<script>
+			// JavaScript (if you want to add multiple slides in the future)
+const slides = document.querySelectorAll(".slideshow");
+
+slides.forEach((slide, index) => {
+  slide.style.animationDelay = `${index}s`;
+});
+
+		</script>
+	</body>
+</html>
