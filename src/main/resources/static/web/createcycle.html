@@ -122,7 +122,32 @@
       function createEventOnCycle() {
         let cycleName = document.getElementById("createEventCycleName").value;
         let eventName = document.getElementById("createEventName").value;
-        alert(cycleName + " " + eventName);
+        let actionable = document.getElementById("createEventActionable");
+        let form = document.getElementById("form-create-event");
+        form.addEventListener("button", function(event) {
+            event.preventDefault();
+
+            // Convert checkbox value to integer (0 for unchecked, 1 for checked)
+            const integerValue = actionable.checked ? 1 : 0;
+            // Now you can use the integerValue as needed, for example, send it to the server or use it in your application logic.
+
+            console.log(cycleName + " " + eventName + "Checkbox Value (integer):", integerValue);
+        });
+        $.ajax({
+          url:"/events/insert_event?event_name=" + eventName + "&actionable=X",
+          type: "POST",
+          dataType: "JSON",
+          success: function(json) {
+            if (json.state == 200) {
+              alert("success");
+            } else {
+              alert("fail");
+            }
+          },
+          error: function(xhr) {
+            alert("error" + xhr.message);
+          }
+        });
       }
 
       function getEventID(cid) {
@@ -174,21 +199,6 @@
         ///$("#addEventDiv_" + cid).append("THIS SHOWS SOMETHING, CYCLE ID: " + cid);
         let displayDiv = document.getElementById("createEventDiv");
         displayDiv.style.display = "block";
-        /*$.ajax({
-          url:"/events/insert_event?event_name=X&actionable=X",
-          type: "POST",
-          dataType: "JSON",
-          success: function(json) {
-            if (json.state == 200) {
-              alert("success");
-            } else {
-              alert("fail");
-            }
-          },
-          error: function(xhr) {
-            alert("error" + xhr.message);
-          }
-        });*/
         $.ajax({
           url: "https://murdoch-2023-ict302-ft1-cyclicapp.up.railway.app/cycles/get_cycles_by_uid",
           type: "GET",
