@@ -40,7 +40,7 @@
         let cycle_Name = document.getElementById("cycleName").value;
         $.ajax({
           ///AJAX WILL PROCESS
-          url: "/cycles/insert_cycle?cycleName=" + cycle_Name,
+          url: "/cycles/insert_cycle?cycleName=",
           type: "POST",
           data: $("#form-create-cycle").serialize(),
           dataType: "JSON",
