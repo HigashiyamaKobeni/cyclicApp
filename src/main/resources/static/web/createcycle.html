@@ -38,7 +38,12 @@
       <form id="form-create-event" action="createcycle.html" role="form">
             <div class="createEventDiv">
               <label for="createEventCycleName" class="createEventCycleName_Label">For Cycle </label>
-              <input name="createEventCycleName" type="text" id="createEventCycleName" class="createEventName_Input">
+              <select id="createEventCycleName" name="createEventCycleName">
+                <option value="volvo">Volvo</option>
+                <option value="saab">Saab</option>
+                <option value="fiat">Fiat</option>
+                <option value="audi">Audi</option>
+              </select>
               <label for="createEventName" class="createEventName_Label">Event name </label>
               <input name="createEventName" type="text" id="createEventName" class="createEventName_Input">
               <input id="btn-create-event" type="button" value="create" class="eventCreateButton"/>
