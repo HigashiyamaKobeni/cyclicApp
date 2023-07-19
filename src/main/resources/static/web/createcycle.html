@@ -193,6 +193,7 @@
             let cLength = Object.keys(cData).length;
             for (var i = 0; i < cLength; i++) {
               let cycleName = Object.values(cData[i])[1];
+              console.log(cycleName);
               option.text = cycleName;
               option.value = cycleName;
               selectElement.add(option);
