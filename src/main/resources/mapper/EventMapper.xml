@@ -20,10 +20,12 @@
     <insert id="insertEvent" useGeneratedKeys="true" keyProperty="eventId">
         INSERT INTO event (
             event_name,
-            actionable
+            actionable,
+            cycleId,
         ) VALUES (
             #{eventName},
-            #{actionable}
+            #{actionable},
+            #{cycleId}
         )
     </insert>
 
