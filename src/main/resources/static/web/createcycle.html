@@ -129,7 +129,7 @@
             const integerValue = actionable.checked ? 1 : 0;
             console.log(cycleName + " " + eventName + "Checkbox Value (integer):", integerValue);
           $.ajax({
-            url:"/events/insert_event?event_name=" + eventName + "&actionable=" + integerValue,
+            url: "/events/insert_event?eventName=" + eventName + "&actionable=" + integerValue,
             type: "POST",
             dataType: "JSON",
             success: function(json) {
