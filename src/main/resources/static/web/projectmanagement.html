@@ -10,15 +10,39 @@
 
     </head>
     <body>
-        <div class="header">
-            <a href="userdata.html">User Info</a>
-            <a href="projectmanagement.html">Project Management</a>
-            <a href="createcycle.html">Cycle Management</a>
-        </div></br>
+        <div class="top-div">
+        <div class="top-text">
+            <p>cyclic App</p>
+        </div>
+    </div>
 
+    <div class="tab-div">
+        <div class="header">
+            <div class="tab" onclick="openTab('userInfo')">
+                <div id="userInfo" class="tab-content">
+                    <a class="link" href="userdata.html">User</a>
+                </div>
+            </div>
+            <div class="tab" onclick="openTab('projectmanagement')">
+                <div id="projectmanagement" class="tab-content">
+                    <a class="link" href="projectmanagement.html">Project</a>
+                </div>
+            </div>
+            <div class="tab" onclick="openTab('createcycle')">
+                <div id="createcycle" class="tab-content">
+                    <a class="link" href="createcycle.html">Cycle</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="vertical-line"></div>
+
+    <div class="right-div">
         <div class="createProject"><a href="project.html">Create Project</a></div>
 
         <div id="results"></div>
+    </div>
         <script>
             $(document).ready(function() {
                 let pKeys = [];
