@@ -34,7 +34,7 @@ public class EventController extends BaseController{
 
             event.setUserId(userId);
 
-            eventService(event);
+            eventService.insertEvent(event);
         }
 
         return new JsonResult<>(OK);
