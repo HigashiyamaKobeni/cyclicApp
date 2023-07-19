@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import javax.servlet.http.HttpSession;
 
 /** Base class in controller layer */
+@CrossOrigin
 public class BaseController {
     /** state code for success*/
     public static final int OK = 200;
