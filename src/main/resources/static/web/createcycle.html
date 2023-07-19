@@ -39,10 +39,6 @@
             <div class="createEventDiv">
               <label for="createEventCycleName" class="createEventCycleName_Label">For Cycle </label>
               <select id="createEventCycleName" name="createEventCycleName">
-                <option value="volvo">Volvo</option>
-                <option value="saab">Saab</option>
-                <option value="fiat">Fiat</option>
-                <option value="audi">Audi</option>
               </select>
               <label for="createEventName" class="createEventName_Label">Event name </label>
               <input name="createEventName" type="text" id="createEventName" class="createEventName_Input">
@@ -170,6 +166,44 @@
         ///$("#addEventDiv_" + cid).append("THIS SHOWS SOMETHING, CYCLE ID: " + cid);
         let displayDiv = document.getElementById("createEventDiv");
         displayDiv.style.display = "block";
+        var selectElement = document.getElementById("createEventCycleName");
+        var option = document.createElement("option");
+        /*$.ajax({
+          url:"/events/insert_event?event_name=X&actionable=X",
+          type: "POST",
+          dataType: "JSON",
+          success: function(json) {
+            if (json.state == 200) {
+              alert("success");
+            } else {
+              alert("fail");
+            }
+          },
+          error: function(xhr) {
+            alert("error" + xhr.message);
+          }
+        });*/
+        $.ajax({
+          url: "https://murdoch-2023-ict302-ft1-cyclicapp.up.railway.app/cycles/get_cycles_by_uid",
+          type: "GET",
+          dataType: "json",
+          success: function(response) {
+            let cData = response.data;
+            let cString = JSON.stringify(cData);
+            let cLength = Object.keys(cData).length;
+            for (var i = 0; i < cLength; i++) {
+              let cycleName = Object.values(cData[i])[1];
+              for (var j = 0; j < pArray.length; j++) {
+                option.text = cycleName;
+                option.value = cycleName;
+                selectElement.add(option);
+              }
+            }
+          },
+          error: function(xhr, status, error) {
+            console.log(error);
+          }
+        });
       }
 
       function addToProject(pid, cid) {
