@@ -51,7 +51,7 @@
                 function getProjectCycles(id) {
                     let cKeys = [];
                     $.ajax({
-                        url: "http://localhost:8080/projects/get_cycles?projectId=" + id,
+                        url: "https://murdoch-2023-ict302-ft1-cyclicapp.up.railway.app/projects/get_cycles?projectId=" + id,
                         type: "GET",
                         dataType: "json",
                         success: function(response) {
@@ -79,7 +79,7 @@
             });
             function removeCycle(pid, cid) {
                 $.ajax({
-                    url: "http://localhost:8080/projects/remove_cycle?projectId=" + pid + "&cycleId=" + cid,
+                    url: "https://murdoch-2023-ict302-ft1-cyclicapp.up.railway.app/projects/remove_cycle?projectId=" + pid + "&cycleId=" + cid,
                     type: "GET",
                     dataType: "json",
                     success: function (response) {
@@ -95,7 +95,7 @@
             function getCycleName(pid, cid) {
                 let id = parseInt(cid);
                 $.ajax({
-                    url: "http://localhost:8080/cycles/get_cycle?cycleId=" + id,
+                    url: "https://murdoch-2023-ict302-ft1-cyclicapp.up.railway.app/cycles/get_cycle?cycleId=" + id,
                     type: "GET",
                     dataType: "json",
                     success: function (response) {
@@ -116,7 +116,7 @@
             let id = parseInt(pid);
             //TO-DO
             $.ajax({
-            url: "http://localhost:8080/projects/delete_project?projectId=" + id,
+            url: "https://murdoch-2023-ict302-ft1-cyclicapp.up.railway.app/projects/delete_project?projectId=" + id,
             type: "POST",
             data: { integerData: id },
             success: function(response) {
