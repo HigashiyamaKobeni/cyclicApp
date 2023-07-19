@@ -17,7 +17,7 @@
 	<body>
 		<div class="loginDiv">
 			<p>Login page</p>
-			<form id="form-login" action="projectManagement.html"  class="form-horizontal" role="form">
+			<form id="form-login" action="projectmanagement.html"  class="form-horizontal" role="form">
 				<div class="usernameDiv">
 					<label for="username" class="username_Label">username：</label>
 					<input name="username" type="text" id="username" placeholder="" class="username_Input">
@@ -42,7 +42,7 @@
 					success: function(json) {
 						if (json.state == 200) {
 							alert("login success");
-						location.href = "projectManagement.html";
+						location.href = "projectmanagement.html";
 						} else {
 							alert("login fail");
 						}
