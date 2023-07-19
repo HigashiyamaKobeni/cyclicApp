@@ -44,7 +44,7 @@
               <input name="createEventName" type="text" id="createEventName" class="createEventName_Input">
               <label for="createEventActionable" class="createEventActionable_Label">Actionable </label>
               <input type="checkbox" id="createEventActionable" name="createEventActionable" value="actionable"></br>
-              <input id="btn-create-event" type="button" value="create" class="eventCreateButton" onclick="createEventOnCycle()"/>
+              <input id="btn-create-event" type="submit" value="create" class="eventCreateButton" onclick="createEventOnCycle()"/>
             </div>
           </form>
     </div>
@@ -124,13 +124,9 @@
         let eventName = document.getElementById("createEventName").value;
         let actionable = document.getElementById("createEventActionable");
         let form = document.getElementById("form-create-event");
-        form.addEventListener("button", function(event) {
+        form.addEventListener("submit", function(event) {
             event.preventDefault();
-
-            // Convert checkbox value to integer (0 for unchecked, 1 for checked)
             const integerValue = actionable.checked ? 1 : 0;
-            // Now you can use the integerValue as needed, for example, send it to the server or use it in your application logic.
-
             console.log(cycleName + " " + eventName + "Checkbox Value (integer):", integerValue);
         });
         /*$.ajax({
