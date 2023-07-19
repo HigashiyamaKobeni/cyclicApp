@@ -21,7 +21,7 @@
         INSERT INTO event (
             event_name,
             actionable,
-            user_id,
+            user_id
         ) VALUES (
             #{eventName},
             #{actionable},
