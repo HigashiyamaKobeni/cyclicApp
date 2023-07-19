@@ -20,9 +20,11 @@ public class EventController extends BaseController{
     private IEventService eventService;
 
     @RequestMapping("insert_event")
-    public JsonResult<Void> insertEvent(Event newEvent, Integer cycleId) {
+    public JsonResult<Void> insertEvent(Event newEvent, HttpSession session) {
 
-        eventService.insertEvent(newEvent, cycleId);
+        Integer userId = getuidFromSession(session);
+        
+        eventService.insertEvent(newEvent, userId);
 
         return new JsonResult<>(OK);
     }
