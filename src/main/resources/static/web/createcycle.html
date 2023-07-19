@@ -106,7 +106,7 @@
       function getEventID(cid) {
         let eid;
         $.ajax({
-          url: "http://localhost:8080/cycles/get_event_ids?cycleId=" + cid,
+          url: "https://murdoch-2023-ict302-ft1-cyclicapp.up.railway.app/cycles/get_event_ids?cycleId=" + cid,
           type: "GET",
           dataType: "json",
           success: function(response) {
@@ -130,7 +130,7 @@
 
       function displayEvent(eid, cid){
         $.ajax({
-          url: "http://localhost:8080/events/get_event?eventId=" + eid,
+          url: "https://murdoch-2023-ict302-ft1-cyclicapp.up.railway.app/events/get_event?eventId=" + eid,
           type: "GET",
           dataType: "json",
           success: function(response) {
