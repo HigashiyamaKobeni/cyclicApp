@@ -32,7 +32,7 @@ public class EventController extends BaseController{
 
             event.setActionable(actionable);
 
-            event.setUserId(uiserId);
+            event.setUserId(userId);
 
             eventService(event);
         }
