@@ -33,6 +33,7 @@
     </form></br>
 
     <div id="myCycles"></div></br>
+    <div id="myEvents"></div></br>
 
     <div id="createEventDiv" style="display: none;">
       <form id="form-create-event" action="createcycle.html" role="form">
@@ -120,7 +121,7 @@
       });
 
       function createEventOnCycle() {
-        let cycleName = document.getElementById("createEventCycleName").value;
+        let cycleId = document.getElementById("createEventCycleName").value;
         let eventName = document.getElementById("createEventName").value;
         let actionable = document.getElementById("createEventActionable");
         let form = document.getElementById("form-create-event");
@@ -129,7 +130,7 @@
             const integerValue = actionable.checked ? 1 : 0;
             console.log(cycleName + " " + eventName + "Checkbox Value (integer):", integerValue);
           $.ajax({
-            url: "/events/insert_event?eventName=" + eventName + "&actionable=" + integerValue,
+            url: "/events/insert_event?eventName=" + eventName + "&actionable=" + integerValue + "&cycleId=" + cycleId,
             type: "POST",
             dataType: "JSON",
             success: function(json) {
@@ -207,9 +208,10 @@
               var selectElement = document.getElementById("createEventCycleName");
               var option = document.createElement("option");
               let cycleName = Object.values(cData[i])[1];
+              let cycleId = Object.values(cData[i])[0];
               console.log(cycleName);
               option.text = cycleName;
-              option.value = cycleName;
+              option.value = cycleId;
               selectElement.add(option);
             }
           },
