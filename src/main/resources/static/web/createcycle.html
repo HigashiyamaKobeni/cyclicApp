@@ -166,8 +166,6 @@
         ///$("#addEventDiv_" + cid).append("THIS SHOWS SOMETHING, CYCLE ID: " + cid);
         let displayDiv = document.getElementById("createEventDiv");
         displayDiv.style.display = "block";
-        var selectElement = document.getElementById("createEventCycleName");
-        var option = document.createElement("option");
         /*$.ajax({
           url:"/events/insert_event?event_name=X&actionable=X",
           type: "POST",
@@ -192,6 +190,8 @@
             let cString = JSON.stringify(cData);
             let cLength = Object.keys(cData).length;
             for (var i = 0; i < cLength; i++) {
+              var selectElement = document.getElementById("createEventCycleName");
+              var option = document.createElement("option");
               let cycleName = Object.values(cData[i])[1];
               console.log(cycleName);
               option.text = cycleName;
