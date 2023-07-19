@@ -32,7 +32,17 @@
       </div>
     </form></br>
 
-    <div id="myCycles"></div>
+    <div id="myCycles"></div></br>
+
+    <div id="createEventDiv" display="none">
+      <form id="form-create-event" action="createcycle.html" role="form">
+            <div class="createEventDiv">
+              <label for="createEventName" class="createEventName_Label">Event name </label>
+              <input name="createEventName" type="text" id="createEventName" class="createEventName_Input">
+              <input id="btn-create-event" type="button" value="create" class="eventCreateButton"/>
+            </div>
+          </form>
+    </div>
 
     <script type="text/javascript">
       ///CREATE CYCLE BUTTON
@@ -150,16 +160,7 @@
       }
 
       function addEvent(cid) {
-        $("#addEventDiv_" + cid).append(
-          "<form id="form-create-event" action="createcycle.html" role="form">
-            <div class="createEventDiv">
-              <label for="createEventName" class="createEventName_Label">Event name </label>
-              <input name="createEventName" type="text" id="createEventName" class="createEventName_Input">
-              <input id="btn-create-event" type="button" value="create" class="eventCreateButton"/>
-            </div>
-          </form></br>"
-        );
-        ///$("#addEventDiv_" + cid).append("THIS SHOWS SOMETHING, CYCLE ID: " + cid);
+        $("#addEventDiv_" + cid).append("THIS SHOWS SOMETHING, CYCLE ID: " + cid);
       }
 
       function addToProject(pid, cid) {
