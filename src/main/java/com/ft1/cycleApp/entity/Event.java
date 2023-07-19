@@ -15,6 +15,8 @@ public class Event implements Serializable {
     private Integer noteId;
     private ArrayList<Integer> tagId;
     private Integer reminderId;
+    private Integer userId;
+    
     public Event() {}
 
     public Integer getActionable() {
@@ -23,6 +25,14 @@ public class Event implements Serializable {
 
     public void setActionable(Integer actionable) {
         this.actionable = actionable;
+    }
+
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
 
     public Integer getEventId() {
@@ -117,6 +127,7 @@ public class Event implements Serializable {
         if (getCircleId() != null ? !getCircleId().equals(event.getCircleId()) : event.getCircleId() != null)
             return false;
         if (getNoteId() != null ? !getNoteId().equals(event.getNoteId()) : event.getNoteId() != null) return false;
+        if (getUserId() != null ? !getUserId().equals(event.getUserId()) : event.getUserId() != null) return false;
         if (getTagId() != null ? !getTagId().equals(event.getTagId()) : event.getTagId() != null) return false;
         return getReminderId() != null ? getReminderId().equals(event.getReminderId()) : event.getReminderId() == null;
     }
@@ -131,6 +142,7 @@ public class Event implements Serializable {
         result = 31 * result + (getEventStatus() != null ? getEventStatus().hashCode() : 0);
         result = 31 * result + (getCircleId() != null ? getCircleId().hashCode() : 0);
         result = 31 * result + (getNoteId() != null ? getNoteId().hashCode() : 0);
+        result = 31 * result + (getUserId() != null ? getUserId().hashCode() : 0);
         result = 31 * result + (getTagId() != null ? getTagId().hashCode() : 0);
         result = 31 * result + (getReminderId() != null ? getReminderId().hashCode() : 0);
         return result;
@@ -144,10 +156,11 @@ public class Event implements Serializable {
                 ", eventName='" + eventName + '\'' +
                 ", startDate=" + startDate +
                 ", endDate=" + endDate +
-                ", taskStatus=" + eventStatus +
+                ", eventStatus=" + eventStatus +
                 ", circleId=" + circleId +
                 ", noteId=" + noteId +
-                ", tagIds=" + tagId +
+                ", userId=" + userId +
+                ", tagId=" + tagId +
                 ", reminderId=" + reminderId +
                 '}';
     }
