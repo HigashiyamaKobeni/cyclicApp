@@ -108,7 +108,6 @@
           $("#myCycle" + Object.values(cData[i])[0]).append("<button class='addEvent_Button' onclick='addEvent()'>Add Event</button></br>");
           $("#myCycle" + Object.values(cData[i])[0]).append("<div id='addEventDiv_" + Object.values(cData[i])[0] + "'></div>");
           $("#myCycle" + Object.values(cData[i])[0]).append("<div id='cycle_events_" + Object.values(cData[i])[0] + "' class='cycle_events'></div>");
-          //getEventIDbyUID();
           for (var j = 0; j < pArray.length; j++) {
             $("#myCycle" + Object.values(cData[i])[0]).append("<button class='myCycles_Button' onclick='addToProject(" + pArray[j] + "," + Object.values(cData[i])[0] + ")'>Add to Project " + pArray[j] + "</button>&nbsp");
           }
@@ -121,7 +120,6 @@
 
     // NEW v14
     let eid;
-    let eChicken = "";
     $.ajax({
       url: "https://murdoch-2023-ict302-ft1-cyclicapp.up.railway.app/events/get_event_by_uid",
       type: "GET",
@@ -131,7 +129,10 @@
         let evLength = Object.keys(evData).length;
         console.log("EVENT DATA" + evData);
         console.log("Length: " + evLength);
-        eChicken += Object.values(evData);
+        for (var i = 0; i < evLength; i++);
+        {
+          $("#myEventsDiv").append("Event Name: " + Object.values(evData[i])[2] + "</br>");
+        }
       },
       error: function(xhr, status, error) {
         console.log(error);
