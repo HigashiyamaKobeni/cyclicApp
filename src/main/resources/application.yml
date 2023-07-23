@@ -4,8 +4,11 @@ spring:
     username: root
     password: KNLsTRIZzbtuVDFw1crV
 
-  resources:
-    static-locations: classpath:/static/
+resources:
+  static-locations: classpath:/static/
+  static-cache-period: 3600
+  template-locations: classpath:/templates/
+  cache-period: 3600
 
 mybatis:
   mapper-locations:
