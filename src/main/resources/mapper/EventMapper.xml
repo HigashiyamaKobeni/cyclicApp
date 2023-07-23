@@ -140,7 +140,4 @@
         WHERE event_id = #{eventId}
     </update>
 
-    <select id="getEventByUid">
-        SELECT * FROM event WHERE user_id
-    </select>
 </mapper>
