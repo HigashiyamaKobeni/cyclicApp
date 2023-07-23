@@ -1,262 +1,265 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <title>Cycle Management</title>
+<head>
+  <meta charset="UTF-8">
+  <title>Cycle Management</title>
 
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="renderer" content="webkit" />
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="../bootstrap3/js/holder.js"></script>
-    <script src="../bootstrap3/jquery-1.9.1.min.js"></script>
-    <script src="../bootstrap3/js/bootstrap.js"></script>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="renderer" content="webkit" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="../bootstrap3/js/holder.js"></script>
+  <script src="../bootstrap3/jquery-1.9.1.min.js"></script>
+  <script src="../bootstrap3/js/bootstrap.js"></script>
 
-    <!-- CSS LINK HERE -->
-    <link href="css/header.css" rel="stylesheet" type="text/css"> <!-- Header -->
-    <link href="css/createCycle.css" rel="stylesheet" type="text/css"> <!-- Main -->
+  <!-- CSS LINK HERE -->
+  <link href="css/header.css" rel="stylesheet" type="text/css"> <!-- Header -->
+  <link href="css/createCycle.css" rel="stylesheet" type="text/css"> <!-- Main -->
 
-  </head>
-  <body>
+</head>
+<body>
 
-  <div class="header">
-    <a href="userdata.html">User Info</a>
-    <a href="projectmanagement.html">Project Management</a>
-    <a href="createcycle.html">Cycle Management</a>
-  </div></br>
+<div class="header">
+  <a href="userdata.html">User Info</a>
+  <a href="projectmanagement.html">Project Management</a>
+  <a href="createcycle.html">Cycle Management</a>
+</div></br>
 
-    <form id="form-create-cycle" action="createcycle.html" role="form">
-      <div class="cycleDiv">
-        <label for="cycleName" class="cycleName_Label">cycle name </label>
-        <input name="cycleName" type="text" id="cycleName" class="cycleName_Input">
-        <input id="btn-create-cycle" type="button" value="create" class="cycleCreateButton"/>
-      </div>
-    </form></br>
+<form id="form-create-cycle" action="createcycle.html" role="form">
+  <div class="cycleDiv">
+    <label for="cycleName" class="cycleName_Label">cycle name </label>
+    <input name="cycleName" type="text" id="cycleName" class="cycleName_Input">
+    <input id="btn-create-cycle" type="button" value="create" class="cycleCreateButton"/>
+  </div>
+</form></br>
 
-    <div id="myCycles"></div></br>
-    <div id="myEvents"></div></br>
+<div id="myCycles"></div></br>
+<div id="myEventsDiv"></div></br>
 
-    <div id="createEventDiv" style="display: none;">
-      <form id="form-create-event" action="createcycle.html" role="form">
-            <div class="createEventDiv">
-              <label for="createEventCycleName" class="createEventCycleName_Label">For Cycle </label>
-              <select id="createEventCycleName" name="createEventCycleName">
-              </select></br>
-              <label for="createEventName" class="createEventName_Label">Event name </label>
-              <input name="createEventName" type="text" id="createEventName" class="createEventName_Input">
-              <label for="createEventActionable" class="createEventActionable_Label">Actionable </label>
-              <input type="checkbox" id="createEventActionable" name="createEventActionable" value="actionable"></br>
-              <input id="btn-create-event" type="submit" value="create" class="eventCreateButton" onclick="createEventOnCycle()"/>
-            </div>
-          </form>
+<div id="createEventDiv" style="display: none;">
+  <form id="form-create-event" action="createcycle.html" role="form">
+    <div class="createEventDiv">
+      <label for="createEventCycleName" class="createEventCycleName_Label">For Cycle </label>
+      <select id="createEventCycleName" name="createEventCycleName">
+      </select></br>
+      <label for="createEventName" class="createEventName_Label">Event name </label>
+      <input name="createEventName" type="text" id="createEventName" class="createEventName_Input">
+      <label for="createEventActionable" class="createEventActionable_Label">Actionable </label>
+      <input type="checkbox" id="createEventActionable" name="createEventActionable" value="actionable"></br>
+      <input id="btn-create-event" type="submit" value="create" class="eventCreateButton" onclick="createEventOnCycle()"/>
     </div>
+  </form>
+</div>
 
-    <script type="text/javascript">
-      ///CREATE CYCLE BUTTON
-      $("#btn-create-cycle").click(function() {
-        let cycle_Name = document.getElementById("cycleName").value;
-        $.ajax({
-          ///AJAX WILL PROCESS
-          url: "/cycles/insert_cycle",
-          type: "POST",
-          data: $("#form-create-cycle").serialize(),
-          dataType: "JSON",
-          success: function(json) {
-            if (json.state == 200) {
-              alert("create cycle success");
-            location.reload();
-            } else {
-              alert("create cycle fail");
-            }
-          },
-          error: function(xhr) {
-            alert("error" + xhr.message);
+<script type="text/javascript">
+  ///CREATE CYCLE BUTTON
+  $("#btn-create-cycle").click(function() {
+    let cycle_Name = document.getElementById("cycleName").value;
+    $.ajax({
+      ///AJAX WILL PROCESS
+      url: "/cycles/insert_cycle",
+      type: "POST",
+      data: $("#form-create-cycle").serialize(),
+      dataType: "JSON",
+      success: function(json) {
+        if (json.state == 200) {
+          alert("create cycle success");
+          location.reload();
+        } else {
+          alert("create cycle fail");
+        }
+      },
+      error: function(xhr) {
+        alert("error" + xhr.message);
+      }
+    });
+  });
+
+  let pArray = [];
+  $.ajax({
+    url: "/projects/get_projectids",
+    type: "GET",
+    dataType: "json",
+    success: function(response) {
+      var pLength = Object.keys(response.data).length;
+
+      for (var i = 0; i < pLength; i++) {
+        pArray[i] = Object.values(response.data)[i];
+        ///console.log(pArray[i]);
+      }
+    },
+    error: function(xhr, status, error) {
+      console.log(error);
+    }
+  });
+
+  $(document).ready(function() {
+    $.ajax({
+      url: "https://murdoch-2023-ict302-ft1-cyclicapp.up.railway.app/cycles/get_cycles_by_uid",
+      type: "GET",
+      dataType: "json",
+      success: function(response) {
+        let cData = response.data;
+        let cString = JSON.stringify(cData);
+        let cLength = Object.keys(cData).length;
+        console.log(cString);
+        for (var i = 0; i < cLength; i++) {
+          let cycleData = "Name: " + Object.values(cData[i])[1] + " | Start Date: " + Object.values(cData[i])[2] + " | End Date: " + Object.values(cData[i])[3];
+          $("#myCycles").append("<div class='myCycles' id='myCycle" + Object.values(cData[i])[0] + "'>" + cycleData + " </div></br>");
+          $("#myCycle" + Object.values(cData[i])[0]).append("<button class='addEvent_Button' onclick='addEvent()'>Add Event</button></br>");
+          $("#myCycle" + Object.values(cData[i])[0]).append("<div id='addEventDiv_" + Object.values(cData[i])[0] + "'></div>");
+          $("#myCycle" + Object.values(cData[i])[0]).append("<div id='cycle_events_" + Object.values(cData[i])[0] + "' class='cycle_events'></div>");
+          getEventIDbyUID();
+          for (var j = 0; j < pArray.length; j++) {
+            $("#myCycle" + Object.values(cData[i])[0]).append("<button class='myCycles_Button' onclick='addToProject(" + pArray[j] + "," + Object.values(cData[i])[0] + ")'>Add to Project " + pArray[j] + "</button>&nbsp");
           }
-        });
-      });
+        }
+      },
+      error: function(xhr, status, error) {
+        console.log(error);
+      }
+    });
+  });
 
-      let pArray = [];
+  function createEventOnCycle() {
+    let cycleId = document.getElementById("createEventCycleName").value;
+    let eventName = document.getElementById("createEventName").value;
+    let actionable = document.getElementById("createEventActionable");
+    let form = document.getElementById("form-create-event");
+    form.addEventListener("submit", function(event) {
+      event.preventDefault();
+      const integerValue = actionable.checked ? 1 : 0;
+      console.log(cycleName + " " + eventName + "Checkbox Value (integer):", integerValue);
       $.ajax({
-        url: "/projects/get_projectids",
-        type: "GET",
-        dataType: "json",
-        success: function(response) {
-          var pLength = Object.keys(response.data).length;
-
-          for (var i = 0; i < pLength; i++) {
-            pArray[i] = Object.values(response.data)[i];
-            ///console.log(pArray[i]);
+        url: "/events/insert_event?eventName=" + eventName + "&actionable=" + integerValue + "&cycleId=" + cycleId,
+        type: "POST",
+        dataType: "JSON",
+        success: function(json) {
+          if (json.state == 200) {
+            alert("success");
+          } else {
+            alert("fail");
           }
         },
-        error: function(xhr, status, error) {
-          console.log(error);
+        error: function(xhr) {
+          alert("error" + xhr.message);
         }
       });
+    });
+  }
 
-      $(document).ready(function() {
-        $.ajax({
-          url: "https://murdoch-2023-ict302-ft1-cyclicapp.up.railway.app/cycles/get_cycles_by_uid",
-          type: "GET",
-          dataType: "json",
-          success: function(response) {
-            let cData = response.data;
-            let cString = JSON.stringify(cData);
-            let cLength = Object.keys(cData).length;
-            console.log(cString);
-            for (var i = 0; i < cLength; i++) {
-              let cycleData = "Name: " + Object.values(cData[i])[1] + " | Start Date: " + Object.values(cData[i])[2] + " | End Date: " + Object.values(cData[i])[3];
-              $("#myCycles").append("<div class='myCycles' id='myCycle" + Object.values(cData[i])[0] + "'>" + cycleData + " </div></br>");
-              $("#myCycle" + Object.values(cData[i])[0]).append("<button class='addEvent_Button' onclick='addEvent()'>Add Event</button></br>");
-              $("#myCycle" + Object.values(cData[i])[0]).append("<div id='addEventDiv_" + Object.values(cData[i])[0] + "'></div>");
-              $("#myCycle" + Object.values(cData[i])[0]).append("<div id='cycle_events_" + Object.values(cData[i])[0] + "' class='cycle_events'></div>");
-              getEventIDbyUID();
-              for (var j = 0; j < pArray.length; j++) {
-                $("#myCycle" + Object.values(cData[i])[0]).append("<button class='myCycles_Button' onclick='addToProject(" + pArray[j] + "," + Object.values(cData[i])[0] + ")'>Add to Project " + pArray[j] + "</button>&nbsp");
-              }
-            }
-          },
-          error: function(xhr, status, error) {
-            console.log(error);
+  function getEventID(cid) {
+    let eid;
+    $.ajax({
+      url: "https://murdoch-2023-ict302-ft1-cyclicapp.up.railway.app/cycles/get_event_ids?cycleId=" + cid,
+      type: "GET",
+      dataType: "json",
+      success: function(response) {
+        let eventData = response.data;
+        let eventLength = Object.keys(eventData).length;
+        if (eventLength > 0) {
+          let eventString = JSON.stringify(eventData);
+          eid = eventString;
+          console.log("Stringify: " + eid);
+          for (var i = 0; i < eventLength; i++) {
+            console.log("Array: " + Object.values(eventData)[i]);
+            displayEvent(Object.values(eventData)[i], cid);
           }
-        });
-      });
-
-      function createEventOnCycle() {
-        let cycleId = document.getElementById("createEventCycleName").value;
-        let eventName = document.getElementById("createEventName").value;
-        let actionable = document.getElementById("createEventActionable");
-        let form = document.getElementById("form-create-event");
-        form.addEventListener("submit", function(event) {
-            event.preventDefault();
-            const integerValue = actionable.checked ? 1 : 0;
-            console.log(cycleName + " " + eventName + "Checkbox Value (integer):", integerValue);
-          $.ajax({
-            url: "/events/insert_event?eventName=" + eventName + "&actionable=" + integerValue + "&cycleId=" + cycleId,
-            type: "POST",
-            dataType: "JSON",
-            success: function(json) {
-              if (json.state == 200) {
-                alert("success");
-              } else {
-                alert("fail");
-              }
-            },
-            error: function(xhr) {
-              alert("error" + xhr.message);
-            }
-          });
-        });
+        }
+      },
+      error: function(xhr, status, error) {
+        console.log(error);
       }
+    });
+  }
 
-      function getEventID(cid) {
-        let eid;
-        $.ajax({
-          url: "https://murdoch-2023-ict302-ft1-cyclicapp.up.railway.app/cycles/get_event_ids?cycleId=" + cid,
-          type: "GET",
-          dataType: "json",
-          success: function(response) {
-            let eventData = response.data;
-            let eventLength = Object.keys(eventData).length;
-            if (eventLength > 0) {
-              let eventString = JSON.stringify(eventData);
-              eid = eventString;
-              console.log("Stringify: " + eid);
-              for (var i = 0; i < eventLength; i++) {
-                console.log("Array: " + Object.values(eventData)[i]);
-                displayEvent(Object.values(eventData)[i], cid);
-              }
-            }
-          },
-          error: function(xhr, status, error) {
-            console.log(error);
-          }
-        });
+  // New
+  function getEventIDbyUID() {
+    let eid;
+    $.ajax({
+      url: "https://murdoch-2023-ict302-ft1-cyclicapp.up.railway.app/events/get_event_by_uid",
+      type: "GET",
+      dataType: "json",
+      success: function(response) {
+        let eventData = response.data;
+        let eventLength = Object.keys(eventData).length;
+        console.log(eventData);
+      },
+      error: function(xhr, status, error) {
+        console.log(error);
       }
+    });
+  }
 
-      // New
-      function getEventIDbyUID() {
-        let eid;
-        $.ajax({
-          url: "https://murdoch-2023-ict302-ft1-cyclicapp.up.railway.app/events/get_event_by_uid",
-          type: "GET",
-          dataType: "json",
-          success: function(response) {
-            let eventData = response.data;
-            let eventLength = Object.keys(eventData).length;
-            console.log(eventData);
-          },
-          error: function(xhr, status, error) {
-            console.log(error);
-          }
-        });
-      }
+  function displayEvent(eid, cid) {
+    $.ajax({
+      url: "https://murdoch-2023-ict302-ft1-cyclicapp.up.railway.app/events/get_event?eventId=" + eid,
+      type: "GET",
+      dataType: "json",
+      success: function(response) {
+        let data = response.data;
+        let string = JSON.stringify(data);
+        let events = Object.values(data);
+        console.log(string);
+        console.log("#cycle_events_" + cid);
+        $("#cycle_events_" + cid).append("<div class='eventDiv' id='event_" + events[1] + "'>Event Name: " + events[2] + "</div></br>");
+        console.log("Success");
 
-      function displayEvent(eid, cid){
-        $.ajax({
-          url: "https://murdoch-2023-ict302-ft1-cyclicapp.up.railway.app/events/get_event?eventId=" + eid,
-          type: "GET",
-          dataType: "json",
-          success: function(response) {
-            let data = response.data;
-            let string = JSON.stringify(data);
-            let events = Object.values(data);
-            console.log(string);
-            console.log("#cycle_events_" + cid);
-            $("#cycle_events_" + cid).append("<div class='eventDiv' id='event_" + events[1] + "'>Event Name: " +  events[2] + "</div></br>");
-            console.log("Success");
-          },
-          error: function(xhr, status, error) {
-            console.log(error);
-          }
-        });
+        // Append the event to myEventsDiv
+        $("#myEventsDiv").append("<div class='eventDiv' id='event_" + events[1] + "'>Event Name: " + events[2] + "</div></br>");
+      },
+      error: function(xhr, status, error) {
+        console.log(error);
       }
+    });
+  }
 
-      function addEvent() {
-        ///$("#addEventDiv_" + cid).append("THIS SHOWS SOMETHING, CYCLE ID: " + cid);
-        let displayDiv = document.getElementById("createEventDiv");
-        displayDiv.style.display = "block";
-        $.ajax({
-          url: "https://murdoch-2023-ict302-ft1-cyclicapp.up.railway.app/cycles/get_cycles_by_uid",
-          type: "GET",
-          dataType: "json",
-          success: function(response) {
-            let cData = response.data;
-            let cString = JSON.stringify(cData);
-            let cLength = Object.keys(cData).length;
-            for (var i = 0; i < cLength; i++) {
-              var selectElement = document.getElementById("createEventCycleName");
-              var option = document.createElement("option");
-              let cycleName = Object.values(cData[i])[1];
-              let cycleId = Object.values(cData[i])[0];
-              console.log(cycleName);
-              option.text = cycleName;
-              option.value = cycleId;
-              selectElement.add(option);
-            }
-          },
-          error: function(xhr, status, error) {
-            console.log(error);
-          }
-        });
+  function addEvent() {
+    ///$("#addEventDiv_" + cid).append("THIS SHOWS SOMETHING, CYCLE ID: " + cid);
+    let displayDiv = document.getElementById("createEventDiv");
+    displayDiv.style.display = "block";
+    $.ajax({
+      url: "https://murdoch-2023-ict302-ft1-cyclicapp.up.railway.app/cycles/get_cycles_by_uid",
+      type: "GET",
+      dataType: "json",
+      success: function(response) {
+        let cData = response.data;
+        let cString = JSON.stringify(cData);
+        let cLength = Object.keys(cData).length;
+        for (var i = 0; i < cLength; i++) {
+          var selectElement = document.getElementById("createEventCycleName");
+          var option = document.createElement("option");
+          let cycleName = Object.values(cData[i])[1];
+          let cycleId = Object.values(cData[i])[0];
+          console.log(cycleName);
+          option.text = cycleName;
+          option.value = cycleId;
+          selectElement.add(option);
+        }
+      },
+      error: function(xhr, status, error) {
+        console.log(error);
       }
+    });
+  }
 
-      function addToProject(pid, cid) {
-        ///ADD CYCLE TO PROJECT FUNCTION
-        $.ajax({
-          url: "/projects/add_cycle?projectId=" + pid + "&cycleId=" + cid,
-          type: "POST",
-          dataType: "JSON",
-          success: function(json) {
-            if (json.state == 200) {
-              alert("success");
-            } else {
-              alert("fail");
-            }
-          },
-          error: function(xhr) {
-            alert("error" + xhr.message);
-          }
-        });
+  function addToProject(pid, cid) {
+    ///ADD CYCLE TO PROJECT FUNCTION
+    $.ajax({
+      url: "/projects/add_cycle?projectId=" + pid + "&cycleId=" + cid,
+      type: "POST",
+      dataType: "JSON",
+      success: function(json) {
+        if (json.state == 200) {
+          alert("success");
+        } else {
+          alert("fail");
+        }
+      },
+      error: function(xhr) {
+        alert("error" + xhr.message);
       }
-    </script>
-  </body>
+    });
+  }
+</script>
+</body>
 </html>
