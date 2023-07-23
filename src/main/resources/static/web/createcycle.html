@@ -183,7 +183,7 @@
         let eventData = response.data;
         let eventLength = Object.keys(eventData).length;
         console.log(eventData);
-        $("#myEventsDiv").append(eventData + "</br>");
+        $("#myEventsDiv").append(eventData[0] + "</br>");
       },
       error: function(xhr, status, error) {
         console.log(error);
