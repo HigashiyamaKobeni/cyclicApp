@@ -147,7 +147,7 @@
     });
   }
 
-  function getEventID(cid) {
+  /*function getEventID(cid) {
     let eid;
     $.ajax({
       url: "https://murdoch-2023-ict302-ft1-cyclicapp.up.railway.app/cycles/get_event_ids?cycleId=" + cid,
@@ -170,9 +170,9 @@
         console.log(error);
       }
     });
-  }
+  }*/
 
-  // New v4
+  // New v5
   function getEventIDbyUID() {
     let eid;
     $.ajax({
@@ -194,7 +194,7 @@
     });
   }
 
-  function displayEvent(eid, cid) {
+  /*function displayEvent(eid, cid) {
     $.ajax({
       url: "https://murdoch-2023-ict302-ft1-cyclicapp.up.railway.app/events/get_event?eventId=" + eid,
       type: "GET",
@@ -215,7 +215,7 @@
         console.log(error);
       }
     });
-  }
+  }*/
 
   function addEvent() {
     ///$("#addEventDiv_" + cid).append("THIS SHOWS SOMETHING, CYCLE ID: " + cid);
