@@ -108,7 +108,7 @@
               $("#myCycle" + Object.values(cData[i])[0]).append("<button class='addEvent_Button' onclick='addEvent()'>Add Event</button></br>");
               $("#myCycle" + Object.values(cData[i])[0]).append("<div id='addEventDiv_" + Object.values(cData[i])[0] + "'></div>");
               $("#myCycle" + Object.values(cData[i])[0]).append("<div id='cycle_events_" + Object.values(cData[i])[0] + "' class='cycle_events'></div>");
-              getEventID(Object.values(cData[i])[0]);
+              getEventIDbyUID(Object.values(cData[i])[0]);
               for (var j = 0; j < pArray.length; j++) {
                 $("#myCycle" + Object.values(cData[i])[0]).append("<button class='myCycles_Button' onclick='addToProject(" + pArray[j] + "," + Object.values(cData[i])[0] + ")'>Add to Project " + pArray[j] + "</button>&nbsp");
               }
@@ -163,6 +163,25 @@
               for (var i = 0; i < eventLength; i++) {
                 console.log("Array: " + Object.values(eventData)[i]);
                 displayEvent(Object.values(eventData)[i], cid);
+              }
+            }
+          },
+          error: function(xhr, status, error) {
+            console.log(error);
+          }
+        });
+      }
+
+      function getEventIDbyUID() {
+        let eid;
+        $.ajax({
+          url: "https://murdoch-2023-ict302-ft1-cyclicapp.up.railway.app/events/get_event_by_uid",
+          type: "GET",
+          dataType: "json",
+          success: function(response) {
+            let eventData = response.data;
+            let eventLength = Object.keys(eventData).length;
+            console.log(eventData);
               }
             }
           },
