@@ -1,0 +1,67 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.divide-two-grid {
+  display: flex;
+  justify-content: center;
+}
+
+.uiDiv {
+  flex: 2; /* Adjust the flex value to make it bigger to the left */
+  background-color: none; /* Change the alpha value to control the transparency */
+  padding: 20px; /* Adjust the padding as needed */
+}
+
+.container.mycontent.text-left {
+  flex: 1;
+  padding: 20px; /* Adjust the padding as needed */
+}
+
+.container.mycontent.text-left .regDiv h1 {
+  font-family: 'Pacifico', cursive;
+  /* Add any other styling you want for the h1 element here */
+}
+
+  /* Add CSS style to make the input fields bigger */
+  .form-control {
+    height: 25px; /* Adjust the height as needed */
+    font-size: 12px; /* Adjust the font size as needed */
+  }
+
+  /* Add CSS style to create space between each form group */
+  .form-group {
+    margin-bottom: 20px; /* Adjust the margin as needed */
+  }
+  .control-label {
+    margin-top: 10px; /* Adjust the margin as needed */
+  }
+
+.signup-div {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* To horizontally center the content */
+  margin-top: 10px;
+  
+}
+.signup-button,
+.login-link {
+  margin-right: 10px; /* Adjust the margin as needed */
+}
+.signup-button {
+  margin-bottom: 10px; /* Add some margin between the button and the login link */
+}
+
+.login-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* To horizontally center the login link */
+}
