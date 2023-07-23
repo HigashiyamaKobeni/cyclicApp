@@ -5,39 +5,82 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="renderer" content="webkit" />
 		<title>Register</title>
-
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<script src="../bootstrap3/js/holder.js"></script>
+		<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
 		<script src="../bootstrap3/jquery-1.9.1.min.js"></script>
 		<script src="../bootstrap3/js/bootstrap.js"></script>
 
-		<!-- CSS LINK HERE -->
-		<link href="css/register.css" rel="stylesheet" type="text/css"> <!-- Main -->
+		<link href="../bootstrap3/css/register.css" rel="stylesheet" type="text/css">
 
 	</head>
 	<body>
-		<div class="registerDiv">
-			<p>sign up page</p>
-			<form id="form-reg" role="form" class="register_Form">
-				<div class="usernameDiv">
-					<label class="username_Label">username：</label>
-						<input id="username" name="username" type="text" placeholder="" class="username_Input">
+
+		<div class="divide-two-grid"> 
+
+			<div class="divide-two-grid"> 
+				<!-- UI div for styling and layouts -->
+				<div class="uiDiv" >
+					<!-- Your content for the UI div here -->
+					<video autoplay loop muted width="500" height="400">
+						<source src="registerUIdiv.mp4" type="video/mp4">
+						<!-- Add more source elements for other video formats if needed -->
+						Your browser does not support the video tag.
+					</video>
 				</div>
-				<div class="passwordDiv">
-					<label class="password_Label"> password：</label>
-					<input name="password" type="text" placeholder="" class="password_Input">
-				</div>
-				<div class="confirmPasswordDiv">
-					<label class="confirmPassword_Label"> confirm password：</label>
-					<input type="text" placeholder="" class="confirmPassword_Input">
-				</div>
-				<div class="registerButtonDiv">
-					<input id="btn-reg" type="button" value="sign up now" class="registerButton_Input"/>
-					<span class="hasAccount"><small>has account？</small><a href="login.html">login</a></span>
-				</div>
-			</form>
+
+		<div class="container mycontent text-left">
+			<div class="regDiv">
+				<h1>Cycle Reminder App</h1>
+				<p style="color: rgba(128, 128, 128, 0.5);">Sign up to use the best project management app.</p>
+				<form id="form-reg" class="form-horizontal" role="form">
+
+					<div class="form-group" style="margin-bottom: 10px;">
+						<label class="col-md-3 control-label">Username </label>
+						<div class="col-md-8">
+							<input id="username" name="username" type="text" class="form-control" placeholder="Enter your username">
+						</div>
+					</div>
+					
+					<div class="form-group" style="margin-bottom: 10px;">
+						<label class="col-md-3 control-label"> Password </label>
+						<div class="col-md-8">
+							<input name="password" type="text" class="form-control" placeholder="Enter your password">
+						</div>
+					</div>
+					
+					<div class="form-group" style="margin-bottom: 10px;">
+						<label class="col-md-3 control-label"> Confirm password </label>
+						<div class="col-md-8">
+							<input type="text" class="form-control" placeholder="Enter your password again">
+						</div>
+					</div>
+						
+					<div class="form-group">
+						<label class="col-md-3 control-label"></label>
+						
+						<div class="signup-div">
+							<div class="signup-button">
+								<input id="btn-reg" class="btn btn-primary" type="button" value="Sign Up Now" />
+							</div>
+							<div class="login-link">
+								<span> <small>Has Account?  </small>
+									<a href="login.html">Login</a></span>
+							</div>
+						</div>
+						
+					</div>
+
+				</form>
+			</div>
 		</div>
+		
+	</div>
+	
+
 		<script type="text/javascript">
+
+
 			$("#btn-reg").click(function() {
 				$.ajax({
 					url: "/users/reg",
@@ -45,13 +88,15 @@
 					data: $("#form-reg").serialize(),
 					dataType: "JSON",
 					success: function(json) {
-					if (json.state == 200) {
-						alert("register success");
-						location.href = "login.html";
+						if (json.state == 200) {
+							alert("register success");
+
+							location.href = "login.html";
 						} else {
 							alert("username exist");
 						}
 					},
+
 					error: function(xhr) {
 						alert("error" + xhr.message);
 					}
@@ -59,4 +104,5 @@
 			})
 		</script>
 	</body>
+
 </html>
