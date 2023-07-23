@@ -184,8 +184,10 @@
         let eventLength = Object.keys(eventData).length;
         console.log(eventData);
         console.log("Length: " + eventLength);
-        let eName = Object.values(eventData[i])[2];
+        for (var i = 0; i < eventLength; i++) {
+          let eName = Object.values(eventData[i])[2];
           $("#myEventsDiv").append("Event Name: " + eName + "</br>");
+        }
       },
       error: function(xhr, status, error) {
         console.log(error);
