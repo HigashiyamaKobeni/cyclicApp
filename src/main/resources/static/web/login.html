@@ -15,23 +15,92 @@
 
 	</head>
 	<body>
-		<div class="loginDiv">
-			<p>Login page</p>
-			<form id="form-login" action="projectmanagement.html"  class="form-horizontal" role="form">
-				<div class="usernameDiv">
-					<label for="username" class="username_Label">username：</label>
-					<input name="username" type="text" id="username" placeholder="" class="username_Input">
+		<header class="header">
+			<div class="left-section">
+				<h1> Welcome back, Cyclic Reminder App! </h1>
+			</div>
+	
+			<!-- <div class="middle-section">
+				<div class="search-bar">
+					<input type="text" class="search-input" placeholder="Search...">
+					<button class="search-button">Search</button>
 				</div>
-				<div class="passwordDiv">
-					<label for="password" class="password_Label"> password：</label>
-					<input name="password" type="text" id="password" placeholder="" class="password_Input">
+			</div> -->
+	
+			<div class="right-section">
+				<img src="photobg/right-section.png" width="50px">
+				
+			
+			</div>
+	
+	 </header>
+
+
+		<div class="login-container"> 
+
+			<div class="other-div slideshow">
+				<!-- Content for the second column (with red background) -->
+				<h2>Start Your Project Management With Us</h2>
+				<p>Discover the world's best project app for users.</p>
+				<img src="photobg/meeting-login.png" alt="Meeting Image">
+			</div>
+
+		<div class="container mycontent text-left">
+			
+			<div class="icon-text-div">
+				<!-- Add your icon here -->
+				<img src="photobg/icon-text-div.png" class="hello-user-icon">				
+				<!-- Add your text here -->
+				<p>Hello, user</p>
+			</div>
+			
+			<div class="loginDiv">
+				
+
+				<form id="form-login" action="index.html"  class="form-horizontal" role="form">
+
+					<div class="form-group">
+						<label for="username" class="col-md-3 control-label">Username:</label>
+						<div class="col-md-8">
+							<input name="username" type="text" class="form-control" id="username" placeholder="Enter username">
+						</div>
+					</div>
+					
+					<div class="form-group">
+						<label for="password" class="col-md-3 control-label">Password:</label>
+						<div class="col-md-8">
+								<input name="password" type="password" class="form-control" id="password" placeholder="Enter password">
+								<label class="show-password-label">
+										<input type="checkbox" id="showPassword"> Show Password
+								</label>
+						</div>
 				</div>
-				<div class="loginButtonDiv">
-					<input id="btn-login" type="button" value="login" class="login_button"/>
-					<span class="noAccount"><small>no account？</small><a href="register.html">sign up</a></span>
-				</div>
-			</form>
+				
+					
+					<div class="form-group">
+						<label class="col-md-3 control-label"></label>
+						<div class="col-md-8">
+
+						<div class="bottom-section"> 
+							<div class="login-flex"> <input id="btn-login" class="btn btn-primary" type="button" value="Login" /> 
+							</div>
+							
+							
+							<div class="signup-section"> <span class="pull-right"><small>Don't you have an account？</small><a href="register.html">Sign Up</a></span> 
+							</div>
+						 </div>
+							
+						</div>
+					</div>
+				</form>
+			
+			</div>
+		
 		</div>
+
+		
+	</div>
+
 		<script type="text/javascript">
 			$("#btn-login").click(function() {
 				$.ajax({
@@ -53,5 +122,31 @@
 				});
 			});
 		</script>
+		<script>
+			// JavaScript (if you want to add multiple slides in the future)
+const slides = document.querySelectorAll(".slideshow");
+
+slides.forEach((slide, index) => {
+  slide.style.animationDelay = `${index}s`;
+});
+
+		</script>
+<script>
+  // Get references to the password input and show password checkbox
+  const passwordInput = document.getElementById("password");
+  const showPasswordCheckbox = document.getElementById("showPassword");
+
+  // Function to toggle the password visibility
+  function togglePasswordVisibility() {
+    if (showPasswordCheckbox.checked) {
+      passwordInput.type = "text";
+    } else {
+      passwordInput.type = "password";
+    }
+  }
+
+  // Add event listener to the checkbox to call the toggle function
+  showPasswordCheckbox.addEventListener("change", togglePasswordVisibility);
+</script>
 	</body>
 </html>
