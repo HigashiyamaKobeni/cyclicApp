@@ -48,6 +48,15 @@ public class EventController extends BaseController{
         return new JsonResult<>(OK);
     }
 
+    @RequestMapping("get_event_by_uid")
+    public JsonResult<ArrayList<Event>> getEventByUid(HttpSession session) {
+        Integer userId = getuidFromSession(session);
+
+        ArrayList<Event> result = eventService.getEventByUid(userId);
+
+        return new JsonResult<>(OK, result);    
+    }
+
     @RequestMapping("get_event")
     public JsonResult<Event> getEvent(Integer eventId) {
 
