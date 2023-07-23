@@ -118,10 +118,8 @@
         console.log(error);
       }
     });
-  });
-  
-  // New v11
-  function getEventIDbyUID() {
+
+    // NEW v12
     let eid;
     let eName = "";
     $.ajax({
@@ -133,14 +131,13 @@
         let eventLength = Object.keys(eventData).length;
         console.log(eventData);
         console.log("Length: " + eventLength);
-          eName += Object.values(eventData);
-        $("#myEventsDiv").append("Event Name: " + eName + "</br>");
+        eName += Object.values(eventData);
       },
       error: function(xhr, status, error) {
         console.log(error);
       }
     });
-  }
+  });
 
   function createEventOnCycle() {
     let cycleId = document.getElementById("createEventCycleName").value;
