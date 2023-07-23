@@ -128,7 +128,7 @@
       dataType: "json",
       success: function(response) {
         let evData = response.data;
-        let evLength = Object.keys(eventData).length;
+        let evLength = Object.keys(evData).length;
         console.log("EVENT DATA" + evData);
         console.log("Length: " + evLength);
         eChicken += Object.values(evData);
