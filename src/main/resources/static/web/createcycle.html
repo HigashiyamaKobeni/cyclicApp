@@ -172,7 +172,7 @@
     });
   }*/
 
-  // New v6
+  // New v7
   function getEventIDbyUID() {
     let eid;
     $.ajax({
@@ -183,6 +183,7 @@
         let eventData = response.data;
         let eventLength = Object.keys(eventData).length;
         console.log(eventData);
+        console.log("Length: " + eventLength);
         for (var i = 0; i < eventLength; i++) {
           let eName = Object.values(eventData[i])[3];
           $("#myEventsDiv").append("Event Name: " + eName + "</br>");
@@ -217,7 +218,7 @@
     });
   }*/
 
-  function addEvent() {
+  /*function addEvent() {
     ///$("#addEventDiv_" + cid).append("THIS SHOWS SOMETHING, CYCLE ID: " + cid);
     let displayDiv = document.getElementById("createEventDiv");
     displayDiv.style.display = "block";
@@ -244,7 +245,7 @@
         console.log(error);
       }
     });
-  }
+  }*/
 
   function addToProject(pid, cid) {
     ///ADD CYCLE TO PROJECT FUNCTION
