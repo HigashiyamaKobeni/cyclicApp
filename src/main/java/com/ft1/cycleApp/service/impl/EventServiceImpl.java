@@ -40,6 +40,27 @@ public class EventServiceImpl implements IEventService {
         if (originEvent.getReminderId() != null) {
             targetEvent.setReminderId(originEvent.getReminderId());
         }
+
+        if (originEvent.getUserId() != null) {
+            targetEvent.setUserId(originEvent.getUserId());
+        }
+    }
+
+    @Override
+    public ArrayList<Event> getEventByUid(Integer userId) {
+        ArrayList<Event> events = new ArrayList<>();
+
+        ArrayList<Event> result = eventMapper.getEventByUid(userId);
+
+        if (result != null) {
+            for (Event event : result) {
+                Event newEvent = duplicateEvent(event);
+                
+                events.add(newEvent)
+            }
+        }
+        
+        return events;
     }
 
     @Override
