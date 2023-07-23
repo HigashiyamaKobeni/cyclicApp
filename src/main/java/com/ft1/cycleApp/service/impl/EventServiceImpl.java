@@ -56,7 +56,7 @@ public class EventServiceImpl implements IEventService {
             for (Event event : result) {
                 Event newEvent = duplicateEvent(event);
                 
-                events.add(newEvent)
+                events.add(newEvent);
             }
         }
         
