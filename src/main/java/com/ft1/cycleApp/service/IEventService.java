@@ -12,7 +12,7 @@ public interface IEventService {
 
     Event getEvent(Integer eventId);
 
-    Event getEventByUid(Integer userId);
+    ArrayList<Event> getEventByUid(Integer userId);
 
     void updateEventName(String newEventName, Integer eventId);
 
