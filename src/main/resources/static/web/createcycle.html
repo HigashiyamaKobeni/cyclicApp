@@ -172,7 +172,7 @@
     });
   }*/
 
-  // New v7
+  // New v8
   function getEventIDbyUID() {
     let eid;
     $.ajax({
@@ -184,10 +184,8 @@
         let eventLength = Object.keys(eventData).length;
         console.log(eventData);
         console.log("Length: " + eventLength);
-        for (var i = 0; i < eventLength; i++) {
-          let eName = Object.values(eventData[i]);
+        let eName = Object.values(eventData[i]);
           $("#myEventsDiv").append("Event Name: " + eName + "</br>");
-        }
       },
       error: function(xhr, status, error) {
         console.log(error);
