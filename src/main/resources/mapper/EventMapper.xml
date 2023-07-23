@@ -17,6 +17,23 @@
         <result column="reminder_id" property="reminderId"/>
     </resultMap>
 
+        <resultMap id="EventUserMap" type="com.ft1.cycleApp.entity.Event">
+                <!--match schema resouce differ from class atribute-->
+                <id column="user_id" property="userId"></id>
+                <result column="event_id" property="eventId" />
+                <result column="actionable" property="actionable" />
+                <result column="event_name" property="eventName" />
+                <result column="start_date" property="startDate" />
+                <result column="end_date" property="endDate" />
+                <result column="event_status" property="eventStatus" />
+                <result column="note_id" property="noteId"/>
+                <result column="reminder_id" property="reminderId"/>
+        </resultMap>
+
+        <select id="getEventByUid" resultMap="EventUserMap">
+	        SELECT * FROM event WHERE user_id = #{userId}
+        </select>
+        
     <insert id="insertEvent" useGeneratedKeys="true" keyProperty="eventId">
         INSERT INTO event (
             event_name,
