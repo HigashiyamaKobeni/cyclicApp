@@ -119,19 +119,19 @@
       }
     });
 
-    // NEW v12
+    // NEW v14
     let eid;
-    let eName = "";
+    let eChicken = "";
     $.ajax({
       url: "https://murdoch-2023-ict302-ft1-cyclicapp.up.railway.app/events/get_event_by_uid",
       type: "GET",
       dataType: "json",
       success: function(response) {
-        let eventData = response.data;
-        let eventLength = Object.keys(eventData).length;
-        console.log(eventData);
-        console.log("Length: " + eventLength);
-        eName += Object.values(eventData);
+        let evData = response.data;
+        let evLength = Object.keys(eventData).length;
+        console.log("EVENT DATA" + evData);
+        console.log("Length: " + evLength);
+        eChicken += Object.values(evData);
       },
       error: function(xhr, status, error) {
         console.log(error);
