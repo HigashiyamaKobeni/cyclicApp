@@ -12,6 +12,8 @@ public interface IEventService {
 
     Event getEvent(Integer eventId);
 
+    Event getEventByUid(Integer userId);
+
     void updateEventName(String newEventName, Integer eventId);
 
     void addTag(Integer eventId, Integer tagId);
