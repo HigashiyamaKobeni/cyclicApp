@@ -32,15 +32,13 @@
   </div>
 </form></br>
 
-<div id="myCycles"></div></br>
+<div id="myCycles"></div></br></br>
+  <button class='addEvent_Button' onclick='addEvent()'>Add Event</button></br>
 <div id="myEventsDiv"></div></br>
 
 <div id="createEventDiv" style="display: none;">
   <form id="form-create-event" action="createcycle.html" role="form">
     <div class="createEventDiv">
-      <label for="createEventCycleName" class="createEventCycleName_Label">For Cycle </label>
-      <select id="createEventCycleName" name="createEventCycleName">
-      </select></br>
       <label for="createEventName" class="createEventName_Label">Event name </label>
       <input name="createEventName" type="text" id="createEventName" class="createEventName_Input">
       <label for="createEventActionable" class="createEventActionable_Label">Actionable </label>
@@ -203,7 +201,6 @@ function addEvent() {
   }
     
   function createEventOnCycle() {
-    let cycleId = document.getElementById("createEventCycleName").value;
     let eventName = document.getElementById("createEventName").value;
     let actionable = document.getElementById("createEventActionable");
     let form = document.getElementById("form-create-event");
@@ -245,7 +242,6 @@ function addEvent() {
           cArray[i] = Object.values(cData[i])[0];
           getEventID(Object.values(cData[i])[0]);
           $("#myCycles").append("<div class='myCycles' id='myCycle" + Object.values(cData[i])[0] + "'>" + cycleData + " </div></br>");
-          $("#myCycle" + Object.values(cData[i])[0]).append("<button class='addEvent_Button' onclick='addEvent()'>Add Event</button></br>");
           $("#myCycle" + Object.values(cData[i])[0]).append("<div id='addEventDiv_" + Object.values(cData[i])[0] + "'></div>");
           $("#myCycle" + Object.values(cData[i])[0]).append("<div id='cycle_events_" + Object.values(cData[i])[0] + "' class='cycle_events'></div>");
           for (var j = 0; j < pArray.length; j++) {
