@@ -114,7 +114,7 @@
             $("#myCycle" + Object.values(cData[i])[0]).append("<button class='myCycles_Button' onclick='addToProject(" + pArray[j] + "," + Object.values(cData[i])[0] + ")'>Add to Project " + pArray[j] + "</button>&nbsp");
           }
         }
-        getEventByUID.apply(null, cArray);
+        getEventByUID(cArray);
       },
       error: function(xhr, status, error) {
         console.log(error);
@@ -149,9 +149,11 @@
           let eventData = "Name: " + Object.values(eData[i])[2];
           $("#myEventsDiv").append("<div id='eventsDiv_" + Object.values(eData[i])[1] + "'>" + eventData + "</div></br>");
           console.log(eventData);
+          console.log(cArray.length);
           for (var j = 0; j < cArray.length; j++) {
             $("#eventsDiv_" + Object.values(eData[i])[1]).append("<button class='myEvents_button'>Add to Cycle " + cArray[j] + " </button>&nbsp");
           }
+          
         }
       },
       error: function(xhr, status, error) {
