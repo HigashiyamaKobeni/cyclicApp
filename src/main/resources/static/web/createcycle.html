@@ -121,7 +121,7 @@
       }
     });
 
-    function getEventByUID(int cDataID) {
+    function getEventByUID(cDataID) {
     $.ajax({
       url: "https://murdoch-2023-ict302-ft1-cyclicapp.up.railway.app/events/get_event_by_uid",
       type: "GET",
@@ -136,7 +136,7 @@
           $("#myEventsDiv").append("<div class='eventsDiv_" + Object.values(eData[i])[1] + "'>" + eventData + "</div></br>");
           console.log(eventData);
         }
-        $("eventsDiv_" + Object.values(eData[i])[1]).append("<button>Add to Cycle " + Object.values(cData[i])[1] + "</button>");
+        $("eventsDiv_" + Object.values(eData[i])[1]).append("<button>Add to Cycle " + cDataID + "</button>");
       },
       error: function(xhr, status, error) {
         console.log(error);
