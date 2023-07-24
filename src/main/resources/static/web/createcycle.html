@@ -110,10 +110,10 @@
           $("#myCycle" + Object.values(cData[i])[0]).append("<button class='addEvent_Button' onclick='addEvent()'>Add Event</button></br>");
           $("#myCycle" + Object.values(cData[i])[0]).append("<div id='addEventDiv_" + Object.values(cData[i])[0] + "'></div>");
           $("#myCycle" + Object.values(cData[i])[0]).append("<div id='cycle_events_" + Object.values(cData[i])[0] + "' class='cycle_events'></div>");
-          addEventToCycle(Object.values(cData[i])[0]);
           for (var j = 0; j < pArray.length; j++) {
             $("#myCycle" + Object.values(cData[i])[0]).append("<button class='myCycles_Button' onclick='addToProject(" + pArray[j] + "," + Object.values(cData[i])[0] + ")'>Add to Project " + pArray[j] + "</button>&nbsp");
           }
+          addEventToCycle(Object.values(cData[i])[0]);
         }
       },
       error: function(xhr, status, error) {
@@ -123,9 +123,23 @@
 
     function addEventToCycle(cid) {
       for (var i = 0; i < eventsID.length; i++) {
-        $("#eventsDiv_" + eventsID).append("<button class='myEvents_button'>Add to Cycle " + cid + " </button>&nbsp");
+        $("#eventsDiv_" + eventsID[i]).append("<button class='myEvents_button' onclick='insertEventsCycle(" + cid + "," + eventsID[i] + ")'>Add to Cycle " + cid + " </button>&nbsp");
       }
       
+    }
+
+    function insertEventsCycle(cid, eid) {
+      $.ajax({
+      url: "https://murdoch-2023-ict302-ft1-cyclicapp.up.railway.app/cycle/add_event?cycleId=" + cid + "&eventId=" + eid,
+      type: "GET",
+      dataType: "json",
+      success: function(response) {
+        console.log("Success");
+      },
+      error: function(xhr, status, error) {
+        console.log(error);
+      }
+    });
     }
 
     function getEventByUID() {
