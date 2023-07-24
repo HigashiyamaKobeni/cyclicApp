@@ -123,7 +123,7 @@
 
     function addEventToCycle(cid) {
       for (var i = 0; i < eventsID.length; i++) {
-        $("#eventsDiv_" + eventsID[i]).append("<button class='myEvents_button' onclick='insertEventsCycle(" + cid + "," + eventsID[i] + ")'>Add to Cycle " + cid + " </button>&nbsp");
+        $("#eventsDiv_" + eventsID[i]).append("<button class='myEvents_button'>Add to Cycle " + cid + " </button>&nbsp");
       }
       
     }
@@ -143,12 +143,12 @@
     }
 
     function getEventByUID() {
+      //eventsID = [];
     $.ajax({
       url: "https://murdoch-2023-ict302-ft1-cyclicapp.up.railway.app/events/get_event_by_uid",
       type: "GET",
       dataType: "json",
       success: function(response) {
-        eventsID = [];
         let eData = response.data;
         let eString = JSON.stringify(eData);
         let eLength = Object.keys(eData).length;
