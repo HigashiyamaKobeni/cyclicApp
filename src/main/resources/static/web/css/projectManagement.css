@@ -1,5 +1,4 @@
-.createProject,
-  #results {
+.createProject {
     text-align: center;
     margin: 20px;
   }
@@ -14,6 +13,9 @@
 .createProject a:hover {
     background-color: lightgrey;
   }
+.projectResult {
+
+}
 
 .results {
 
@@ -43,7 +45,7 @@
 }
 
 .right-div {
-    
+    margin-top: 70px
 }
 
 .top-div {
