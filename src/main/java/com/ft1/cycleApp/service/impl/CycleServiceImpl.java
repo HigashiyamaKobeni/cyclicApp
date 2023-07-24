@@ -239,7 +239,7 @@ public class CycleServiceImpl implements ICycleService {
     public void removeEvent(Integer cycleId, Integer eventId) {
         Integer rows = cycleMapper.removeEvent(cycleId, eventId);
 
-        intialDate(cycleId);
+        initialDate(cycleId);
         
         if (rows != 1) {
             throw new BindException("err at removing event");
