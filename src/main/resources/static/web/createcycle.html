@@ -93,7 +93,8 @@
   });
 
   $(document).ready(function() {
-    let cyclesArray = [];
+    let eventsID = [];
+    getEventByUID();
     $.ajax({
       url: "https://murdoch-2023-ict302-ft1-cyclicapp.up.railway.app/cycles/get_cycles_by_uid",
       type: "GET",
@@ -109,7 +110,7 @@
           $("#myCycle" + Object.values(cData[i])[0]).append("<button class='addEvent_Button' onclick='addEvent()'>Add Event</button></br>");
           $("#myCycle" + Object.values(cData[i])[0]).append("<div id='addEventDiv_" + Object.values(cData[i])[0] + "'></div>");
           $("#myCycle" + Object.values(cData[i])[0]).append("<div id='cycle_events_" + Object.values(cData[i])[0] + "' class='cycle_events'></div>");
-          getEventByUID(Object.values(cData[i])[0]);
+          addEventToCycle(Object.values(cData[i])[0]);
           for (var j = 0; j < pArray.length; j++) {
             $("#myCycle" + Object.values(cData[i])[0]).append("<button class='myCycles_Button' onclick='addToProject(" + pArray[j] + "," + Object.values(cData[i])[0] + ")'>Add to Project " + pArray[j] + "</button>&nbsp");
           }
@@ -120,21 +121,29 @@
       }
     });
 
-    function getEventByUID(cid) {
+    function addEventToCycle(cid) {
+      for (var i = 0; i < eventsID.length; i++) {
+        $("#eventsDiv_" + eventsID).append("<button class='myEvents_button'>Add to Cycle " + cid + " </button>&nbsp");
+      }
+      
+    }
+
+    function getEventByUID() {
     $.ajax({
       url: "https://murdoch-2023-ict302-ft1-cyclicapp.up.railway.app/events/get_event_by_uid",
       type: "GET",
       dataType: "json",
       success: function(response) {
+        eventsID = null;
         let eData = response.data;
         let eString = JSON.stringify(eData);
         let eLength = Object.keys(eData).length;
         console.log(eString);
         for (var i = 0; i < eLength; i++) {
           let eventData = "Name: " + Object.values(eData[i])[2];
-          $("#myEventsDiv").append("<div class='eventsDiv_" + Object.values(eData[i])[1] + "'>" + eventData + "</div></br>");
+          $("#myEventsDiv").append("<div id='eventsDiv_" + Object.values(eData[i])[1] + "'>" + eventData + "</div></br>");
           console.log(eventData);
-          $("#eventsDiv_" + Object.values(eData[i])[1]).append("<button class='myEvents_button'>Add to Cycle " + cid + "</button>&nbsp");
+          eventsID[i] = Object.values(eData[i])[1];
         }
       },
       error: function(xhr, status, error) {
