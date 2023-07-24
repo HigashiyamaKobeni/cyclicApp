@@ -120,7 +120,7 @@
         $("#cycle_events_" + cid).append("<div class='eventDiv' id='event_" + events[1] + "'>Event Name: " + events[2] + " " + events[0] + "</div></br>");
         
         console.log("Success");
-        if (events[0])
+        if (events[0] == 0)
         {
           $("#event_" + events[1]).append("<input type='checkbox' id='event_" + events[1] + "_isactionable' name='isActionable' value='actionable'></br>");
         }
