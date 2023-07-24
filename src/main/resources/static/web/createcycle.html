@@ -106,6 +106,30 @@
     });
     }
 
+
+  function displayEvent(eid, cid) {
+    $.ajax({
+      url: "https://murdoch-2023-ict302-ft1-cyclicapp.up.railway.app/events/get_event?eventId=" + eid,
+      type: "GET",
+      dataType: "json",
+      success: function(response) {
+        let data = response.data;
+        let string = JSON.stringify(data);
+        let events = Object.values(data);
+        console.log(string);
+        console.log("#cycle_events_" + cid);
+        $("#cycle_events_" + cid).append("<div class='eventDiv' id='event_" + events[1] + "'>Event Name: " + events[2] + "</div></br>");
+        console.log("Success");
+
+        // Append the event to myEventsDiv
+        $("#myEventsDiv").append("<div class='eventDiv' id='event_" + events[1] + "'>Event Name: " + events[2] + "</div></br>");
+      },
+      error: function(xhr, status, error) {
+        console.log(error);
+      }
+    });
+  }
+  
   $(document).ready(function() {
     $.ajax({
       url: "https://murdoch-2023-ict302-ft1-cyclicapp.up.railway.app/cycles/get_cycles_by_uid",
@@ -152,6 +176,7 @@
           console.log(cArray.length);
           for (var j = 0; j < cArray.length; j++) {
             $("#eventsDiv_" + Object.values(eData[i])[1]).append("<button class='myEvents_button' onclick='insertEventsCycle(" + cArray[j] + "," + Object.values(eData[i])[1] + ")'>Add to Cycle " + cArray[j] + "</button>");
+            displayEvent(Object.values(eData[i])[1], cArray[j]);
           }
           
         }
@@ -218,28 +243,7 @@
   }*/
 
 
-  /*function displayEvent(eid, cid) {
-    $.ajax({
-      url: "https://murdoch-2023-ict302-ft1-cyclicapp.up.railway.app/events/get_event?eventId=" + eid,
-      type: "GET",
-      dataType: "json",
-      success: function(response) {
-        let data = response.data;
-        let string = JSON.stringify(data);
-        let events = Object.values(data);
-        console.log(string);
-        console.log("#cycle_events_" + cid);
-        $("#cycle_events_" + cid).append("<div class='eventDiv' id='event_" + events[1] + "'>Event Name: " + events[2] + "</div></br>");
-        console.log("Success");
-
-        // Append the event to myEventsDiv
-        $("#myEventsDiv").append("<div class='eventDiv' id='event_" + events[1] + "'>Event Name: " + events[2] + "</div></br>");
-      },
-      error: function(xhr, status, error) {
-        console.log(error);
-      }
-    });
-  }*/
+  
 
   /*function addEvent() {
     ///$("#addEventDiv_" + cid).append("THIS SHOWS SOMETHING, CYCLE ID: " + cid);
