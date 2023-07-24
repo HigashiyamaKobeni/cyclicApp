@@ -92,6 +92,20 @@
     }
   });
 
+  function insertEventsCycle(cid, eid) {
+      $.ajax({
+      url: "https://murdoch-2023-ict302-ft1-cyclicapp.up.railway.app/cycles/add_event?cycleId=" + cid + "&eventId=" + eid,
+      type: "GET",
+      dataType: "json",
+      success: function(response) {
+        console.log("Success");
+      },
+      error: function(xhr, status, error) {
+        console.log(error);
+      }
+    });
+    }
+
   $(document).ready(function() {
     $.ajax({
       url: "https://murdoch-2023-ict302-ft1-cyclicapp.up.railway.app/cycles/get_cycles_by_uid",
@@ -137,7 +151,7 @@
           console.log(eventData);
           console.log(cArray.length);
           for (var j = 0; j < cArray.length; j++) {
-            $("#eventsDiv_" + Object.values(eData[i])[1]).append("<button class='myEvents_button' onclick='insertEventsCycle(" + cArray[j] + "," + Object.values(eData[i])[1] + ")'>Add to Cycle " + cArray[j] + " </button>&nbsp");
+            $("#eventsDiv_" + Object.values(eData[i])[1]).append("<button class='myEvents_button' onclick='insertEventsCycle(" + cArray[j] + "," + Object.values(eData[i])[1] + ")'>Add to Cycle " + cArray[j] + "</button>");
           }
           
         }
@@ -148,19 +162,7 @@
     });
     }
     
-    function insertEventsCycle(cid, eid) {
-      $.ajax({
-      url: "https://murdoch-2023-ict302-ft1-cyclicapp.up.railway.app/cycles/add_event?cycleId=" + cid + "&eventId=" + eid,
-      type: "GET",
-      dataType: "json",
-      success: function(response) {
-        console.log("Success");
-      },
-      error: function(xhr, status, error) {
-        console.log(error);
-      }
-    });
-    }
+    
  
 
   function createEventOnCycle() {
