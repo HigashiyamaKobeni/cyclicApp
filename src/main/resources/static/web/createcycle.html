@@ -113,7 +113,7 @@
           for (var j = 0; j < pArray.length; j++) {
             $("#myCycle" + Object.values(cData[i])[0]).append("<button class='myCycles_Button' onclick='addToProject(" + pArray[j] + "," + Object.values(cData[i])[0] + ")'>Add to Project " + pArray[j] + "</button>&nbsp");
           }
-          getEventByUID();
+          getEventByUID(Object.values(cData[i])[0]);
         }
       },
       error: function(xhr, status, error) {
