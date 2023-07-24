@@ -123,6 +123,7 @@
 
     function addEventToCycle(cid) {
       for (var i = 0; i < eventsID.length; i++) {
+        console.log(eventsID[i]);
         $("#eventsDiv_" + eventsID[i]).append("<button class='myEvents_button'>Add to Cycle " + cid + " </button>&nbsp");
       }
       
