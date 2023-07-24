@@ -14,7 +14,8 @@
     background-color: lightgrey;
   }
 .projectResult {
-
+    grid-template-columns: repeat(6, 1fr);
+    display: grid;
 }
 
 .results {
@@ -24,6 +25,8 @@
 .myProjects {
     text-align: center;
     margin: 20px;
+    display: flex;
+    flex-direction: column;
 }
 .deleteProject_Button {
 
