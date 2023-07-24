@@ -133,10 +133,10 @@
         console.log("String: " + evString);
         for (var i = 0; i < evLength; i++);
         {
-          $("#myEventsDiv").append("<div id='eventDiv_" + evData[i].eventId + "'>Event Name: " + evData[i].eventName + "</div></br>");
+          $("#myEventsDiv").append("<div id='eventDiv_" + evData[i] + "'>Event Name: " + evData[i] + "</div></br>");
         
         for (var j = 0; j < cLength; j++) {
-          $("eventDiv_" + evData[i].eventId).append("<button class='addEventToCycleButton' onclick='addToCycle(" + cData[j].cycleId + ">Add to Cycle " + cData[j].cycleName + "</button>");
+          $("eventDiv_" + evData[i]).append("<button class='addEventToCycleButton' onclick='addToCycle(" + cData[j].cycleId + "‘）>Add to Cycle " + cData[j].cycleName + "</button>");
         }
         }
       },
