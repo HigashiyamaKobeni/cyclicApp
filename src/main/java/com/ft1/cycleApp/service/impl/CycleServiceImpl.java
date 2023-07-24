@@ -15,6 +15,43 @@ public class CycleServiceImpl implements ICycleService {
     @Autowired
     private CycleMapper cycleMapper;
 
+    void initialDate(Integer cycleId) {
+        ArrayList<Integer> eventIds = cycleMapper.checkEvent(cycleId);
+
+        cycleMapper.setStartDate(null,cycleId);
+
+        cycleMapper.setStartDate(null,cycleId);
+
+        if (eventIds != null) {
+            for (Integer eId : eventIds) {
+                Event e = eventMapper.getEvent(eId);
+
+                if (e.getStartDate() != null) {
+                    if (cycleMapper.getCycle(cycleId).getStartDate() == null) {
+                        cycleMapper.setStartDate(e.getStartDate(), cycleId);
+                    } else {
+                        if (cycleMapper.getCycle(cycleId).getStartDate().compareTo(e.getStartDate()) > 0) {
+                            cycleMapper.setStartDate(e.getStartDate(), cycleId);
+                        }
+                    }
+                }
+
+                if (e.getEndDate() != null) {
+                    if (cycleMapper.getCycle(cycleId).getEndDate() == null) {
+                        cycleMapper.setEndDate(e.getEndDate(), cycleId);
+                    } else {
+                        if (cycleMapper.getCycle(cycleId).getEndDate().compareTo(e.getEndDate()) < 0) {
+                            cycleMapper.setEndDate(e.getEndDate(), cycleId);
+                        }
+                    }
+
+
+                }
+
+            }
+        }
+    }
+
     private void duplicateCycle(Cycle originCycle, Cycle targetCycle) {
         targetCycle.setCycleName(originCycle.getCycleName());
 
@@ -186,6 +223,8 @@ public class CycleServiceImpl implements ICycleService {
     public void addEvent(Integer cycleId, Integer eventId) {
         Integer rows = cycleMapper.addEvent(cycleId, eventId);
 
+        initialDate(cycleId);
+        
         if (rows != 1) {
             throw new BindException("err at adding event");
         }
@@ -195,6 +234,8 @@ public class CycleServiceImpl implements ICycleService {
     public void removeEvent(Integer cycleId, Integer eventId) {
         Integer rows = cycleMapper.removeEvent(cycleId, eventId);
 
+        intialDate(cycleId);
+        
         if (rows != 1) {
             throw new BindException("err at removing event");
         }
