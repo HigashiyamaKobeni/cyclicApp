@@ -118,16 +118,11 @@
         console.log(string);
         console.log("#cycle_events_" + cid);
         $("#cycle_events_" + cid).append("<div class='eventDiv' id='event_" + events[1] + "'>Event Name: " + events[2] + "</div></br>");
-        console.log("Success");
-        if (event[0] == 1) {
-          console.log("ASDASDASDASD" + event[0]);
-          $("#event_" + events[1]).append("<input type='checkbox' id='event_" + events[1] + "_isactionable' name='isActionable' value='actionable'></br>");
-        } else {
-          console.log("WWWWWWWWWWWW" + event[0]);
+        for (var i = 0; i < events.length; i++) {
+          console.log(events[i]);
         }
-        // Append the event to myEventsDiv
-       // $("#myEventsDiv").append("<div class='eventDiv' id='event_" + events[1] + "'>Event Name: " + events[2] + "</div></br>");
-      },
+        console.log("Success");
+          $("#event_" + events[1]).append("<input type='checkbox' id='event_" + events[1] + "_isactionable' name='isActionable' value='actionable'></br>");
       error: function(xhr, status, error) {
         console.log(error);
       }
