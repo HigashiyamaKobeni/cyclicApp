@@ -90,7 +90,7 @@
                                 for (var i = 0; i < cyclesLength; i++) {
                                     $("#cycles_" + id).append("<div class='project_cycles_inner' id='project_" + id + "_cycle_" + cKeys[i] + "'></div>");
                                     getCycleName(id, cKeys[i]);
-                                    $("#project_" + id + "_cycle_" + cKeys[i]).append(" <div class"removeButton"><button class='removeCycle_Button' onclick='removeCycle(" + id + "," + cKeys[i] + ")'>Remove Cycle</button></div>");
+                                    $("#project_" + id + "_cycle_" + cKeys[i]).append("<button class='removeCycle_Button' onclick='removeCycle(" + id + "," + cKeys[i] + ")'>Remove Cycle</button>");
                                 }
                             } else {
                                 $("#cycles_" + id).append("NO CYCLES IN THIS PROJECT");
