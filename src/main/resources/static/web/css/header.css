@@ -1,5 +1,6 @@
 .header{
     display: flex;
+    justify-content: center;
     margin: 10px;
     border-bottom: 2px solid;
     border-bottom-color: lightgrey;
