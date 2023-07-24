@@ -134,7 +134,7 @@
       type: "GET",
       dataType: "json",
       success: function(response) {
-        eventsID = null;
+        eventsID = [];
         let eData = response.data;
         let eString = JSON.stringify(eData);
         let eLength = Object.keys(eData).length;
