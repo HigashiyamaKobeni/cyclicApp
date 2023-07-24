@@ -117,6 +117,8 @@
         console.log(error);
       }
     });
+
+    
     $.ajax({
       url: "https://murdoch-2023-ict302-ft1-cyclicapp.up.railway.app/events/get_event_by_uid",
       type: "GET",
@@ -136,33 +138,7 @@
         console.log(error);
       }
     });
-    // NEW v18
-    /*let eid;
-    $.ajax({
-      url: "https://murdoch-2023-ict302-ft1-cyclicapp.up.railway.app/events/get_event_by_uid",
-      type: "GET",
-      dataType: "json",
-      success: function(response) {
-        let evData = response.data;
-        let evLength = Object.keys(evData).length;
-        let evString = JSON.stringify(evData);
-        console.log("EVENT DATA" + evData);
-        console.log("Length: " + evLength);
-        console.log("String: " + evString);
-        for (var i = 0; i < evLength; i++);
-        {
-          $("#myEventsDiv").append("<div id='eventDiv_" + evData[i] + "'>Event Name: " + evData[i] + "</div></br>");
-        
-        for (var j = 0; j < cLength; j++) {
-          $("eventDiv_" + evData[i]).append("<button class='addEventToCycleButton' onclick='addToCycle(" + cData[j].cycleId + "‘）>Add to Cycle " + cData[j].cycleName + "</button>");
-        }
-        }
-      },
-      error: function(xhr, status, error) {
-        console.log(error);
-      }
-    });
-  });*/
+ 
 
   function createEventOnCycle() {
     let cycleId = document.getElementById("createEventCycleName").value;
