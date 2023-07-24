@@ -133,7 +133,7 @@
         console.log("String: " + evString);
         for (var i = 0; i < evLength; i++);
         {
-          $("#myEventsDiv").append("Event Name: " + evData[i][2] + "</br>");
+          $("#myEventsDiv").append("Event Name: " + Object.values(evData[i])[2] + "</br>");
         }
       },
       error: function(xhr, status, error) {
