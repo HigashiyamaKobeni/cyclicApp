@@ -151,7 +151,7 @@
           console.log(eventData);
           console.log(cArray.length);
           for (var j = 0; j < cArray.length; j++) {
-            $("#eventsDiv_" + Object.values(eData[i])[1]).append("<button class='myEvents_button'>Add to Cycle " + cArray[j] + " </button>&nbsp");
+            $("#eventsDiv_" + Object.values(eData[i])[1]).append("<button class='myEvents_button' onclick='insertEventsCycle(" + cArray[j] + "," + Object.values(eData[i])[1] + ")'>Add to Cycle " + cArray[j] + " </button>&nbsp");
           }
           
         }
