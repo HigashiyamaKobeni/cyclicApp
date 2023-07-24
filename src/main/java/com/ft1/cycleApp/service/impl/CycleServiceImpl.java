@@ -10,10 +10,15 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.Date;
 
+import com.ft1.cycleApp.entity.Event;
+import com.ft1.cycleApp.mapper.EventMapper;
+
 @Service
 public class CycleServiceImpl implements ICycleService {
     @Autowired
     private CycleMapper cycleMapper;
+    @Autowired
+    private EventMapper eventMapper;
 
     void initialDate(Integer cycleId) {
         ArrayList<Integer> eventIds = cycleMapper.checkEvent(cycleId);
