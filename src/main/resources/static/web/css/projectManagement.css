@@ -1,13 +1,27 @@
+.createProject,
+  #results {
+    text-align: center;
+    margin: 20px;
+  }
 .createProject {
-
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: bold;
 }
 /*----------------------*/
+
+.createProject a:hover {
+    background-color: lightgrey;
+  }
+
 .results {
 
 }
 /*----------------------*/
 .myProjects {
-
+    text-align: center;
+    margin: 20px;
 }
 .deleteProject_Button {
 
@@ -29,6 +43,7 @@
 }
 
 .right-div {
+    
 }
 
 .top-div {
