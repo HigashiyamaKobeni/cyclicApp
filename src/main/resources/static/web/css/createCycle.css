@@ -19,10 +19,19 @@
 }
 /*----------------------*/
 .myCycles {
-
+text-align: center;
+border: 1px solid #ccc;
+padding: 20px;
 }
 .addEvent_Button {
-
+text-align: center;
+border: 1px solid #ccc;
+padding: 20px;
+}
+.myEventDiv {
+text-align: center;
+border: 1px solid #ccc;
+padding: 20px;
 }
 .cycle_events {
 
