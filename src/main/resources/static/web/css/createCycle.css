@@ -1,5 +1,16 @@
-.cycleDiv {
+ body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* This ensures the content is centered vertically */
+            margin: 0;
+     }
+           
 
+.cycleDiv {
+            text-align: center; /* Optional: To center the content inside cycleDiv */
+            border: 1px solid #ccc;
+            padding: 20px;
 }
 .cycleName_Label {
 
