@@ -47,9 +47,12 @@ margin-inline-end: 0px;
     transition: all .5s ease;
     text-align: center;
     font-family: Bradley Hand, cursive;
-    width: 110px;
+    width: 147px;
     margin: 5px;
-    height: 38px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .tab:hover {
