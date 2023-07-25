@@ -103,7 +103,35 @@
 
 		
 	</div>
+		<script type="text/javascript">
+			$("#form-login").on("submit", function(event) {
+				// Prevent the default form submission behavior
+				event.preventDefault();
+				// Call the login function to handle form submission
+				login();
+			});
 
+			// Function to handle the login process
+			function login() {
+				$.ajax({
+					url: "/users/login",
+					type: "POST",
+					data: $("#form-login").serialize(),
+					dataType: "JSON",
+					success: function(json) {
+						if (json.state == 200) {
+							alert("login success");
+							location.href = "projectmanagement.html";
+						} else {
+							alert("login fail");
+						}
+					},
+					error: function(xhr) {
+						alert("error" + xhr.message);
+					}
+				});
+			}
+		</script>
 		<script type="text/javascript">
 			$("#btn-login").click(function() {
 				$.ajax({
