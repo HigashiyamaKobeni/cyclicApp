@@ -89,12 +89,15 @@
                             if (cyclesLength > 0) {
                                 for (var i = 0; i < cyclesLength; i++) {
                                     $("#cycles_" + id).append("<div class='project_cycles_inner' id='project_" + id + "_cycle_" + cKeys[i] + "'></div>");
-                                    getCycleName(id, cKeys[i]);
+                                    getCycleName(id, cKeys[i], function(cName) {
+                                    $("#project_" + id + "_cycle_" + cKeys[i]).append(cName);
                                     $("#project_" + id + "_cycle_" + cKeys[i]).append("<button class='removeCycle_Button' onclick='removeCycle(" + id + "," + cKeys[i] + ")'>Remove Cycle</button>");
+                                    });
                                 }
                             } else {
                                 $("#cycles_" + id).append("NO CYCLES IN THIS PROJECT");
-                            }
+                                }
+
                         },
                         error: function(xhr, status, error) {
                             console.log(error);
@@ -117,26 +120,27 @@
                     }
                 });
             }
-            function getCycleName(pid, cid) {
+            function getCycleName(pid, cid, callback) {
                 let id = parseInt(cid);
-                $.ajax({
-                    url: "https://murdoch-2023-ict302-ft1-cyclicapp.up.railway.app/cycles/get_cycle?cycleId=" + id,
-                    type: "GET",
-                    dataType: "json",
-                    success: function (response) {
-                    // Handle the success response
-                        let cList = response.data;
-                        let cString = JSON.stringify(cList);
-                        let cParse = JSON.parse(cString);
-                        let cName = Object.values(cParse)[1];
-                        $("#project_" + pid + "_cycle_" + id).append(cName);
-                    },
-                    error: function (xhr, status, error) {
-                    // Handle the error
-                        console.error(error);
-                    }
-                });
-            }
+    $.ajax({
+        url: "https://murdoch-2023-ict302-ft1-cyclicapp.up.railway.app/cycles/get_cycle?cycleId=" + id,
+        type: "GET",
+        dataType: "json",
+        success: function(response) {
+            // Handle the success response
+            let cList = response.data;
+            let cString = JSON.stringify(cList);
+            let cParse = JSON.parse(cString);
+            let cName = Object.values(cParse)[1];
+            callback(cName); // Call the callback function with the cycle name
+        },
+        error: function(xhr, status, error) {
+            // Handle the error
+            console.error(error);
+        }
+    });
+}
+
             function deleteProject(pid) {
             let id = parseInt(pid);
             //TO-DO
