@@ -124,6 +124,21 @@
         {
           $("#event_" + events[1]).append("<input type='checkbox' id='event_" + events[1] + "_isactionable' name='isActionable' value='actionable'></br>");
         }
+        $("#event_" + events[1]).append("<button class='deleteEvent_" + events[1] + "' onclick='deleteEvent(" + events[1] + ")'>Delete Event</button>");
+      },
+      error: function(xhr, status, error) {
+        console.log(error);
+      }
+    });
+  }
+  function deleteEvent(eid) {
+    $.ajax({
+      url: "https://murdoch-2023-ict302-ft1-cyclicapp.up.railway.app/events/delete_event?eventId=" + eid,
+      type: "GET",
+      dataType: "json",
+      success: function(response) {
+        alert("success");
+        location.reload();
       },
       error: function(xhr, status, error) {
         console.log(error);
