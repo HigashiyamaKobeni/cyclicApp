@@ -124,7 +124,6 @@
         {
           $("#event_" + events[1]).append("<input type='checkbox' id='event_" + events[1] + "_isactionable' name='isActionable' value='actionable'></br>");
         }
-        $("#event_" + events[1]).append("<button class='deleteEvent_" + events[1] + "' onclick='deleteEvent(" + events[1] + ")'>Delete Event</button>");
       },
       error: function(xhr, status, error) {
         console.log(error);
@@ -291,6 +290,7 @@ function addEvent() {
           console.log(cArray.length);
           for (var j = 0; j < cArray.length; j++) {
             $("#eventsDiv_" + Object.values(eData[i])[1]).append("<button class='myEvents_button' onclick='insertEventsCycle(" + cArray[j] + "," + Object.values(eData[i])[1] + ")'>Add to Cycle " + cArray[j] + "</button>");
+            $("#eventsDiv_" + Object.values(eData[i])[1]).append("<button class='deleteEvent_" + events[1] + "' onclick='deleteEvent(" + Object.values(eData[i])[1] + ")'>Delete Event</button>");
           }
           
         }
