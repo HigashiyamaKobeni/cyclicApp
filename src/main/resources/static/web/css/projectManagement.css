@@ -28,6 +28,12 @@
     display: flex;
     flex-direction: column;
 }
+ .myProjects {
+    border-radius: 30px;
+    border: 1px solid #ccc; /* Optional: Add a border for better visualization */
+    padding: 10px; /* Optional: Add some padding for better spacing */
+           
+}
 .deleteProject_Button {
 
 }
