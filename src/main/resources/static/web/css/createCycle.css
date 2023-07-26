@@ -71,7 +71,9 @@ color: blue;
 font-weight: 600;
 }
 
-.deleteEvent {
+[class^="deleteEvent_"] {
 color: blue;
 font-weight: 600;
 }
+
+
