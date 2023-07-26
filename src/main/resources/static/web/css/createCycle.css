@@ -12,25 +12,33 @@
 
 }
 .cycleName_Input {
-
+padding: 8px;
+border-radius: 10px;
+border: 1px solid rgb(252, 210, 0);
+}
 }
 .cycleCreateButton {
-
+color: white;
+padding: 8px;
+border-radius: 50px;
+cursor: pointer;
+background-color: RGB(24, 119, 242);
+border: 1px solid RGB(24, 119, 242);
+box-shadow: 0 2px 5px rgba(213, 217, 217, 0.5);
 }
 /*----------------------*/
 .myCycles {
 text-align: center;
-border: 1px solid #ccc;
+border: 2px solid #ccc;
 padding: 20px;
 }
 .addEvent_Button {
 text-align: center;
-border: 1px solid #ccc;
 padding: 20px;
 }
 .myEventDiv {
 text-align: center;
-border: 1px solid #ccc;
+border: 2px solid #ccc;
 padding: 20px;
 }
 .cycle_events {
