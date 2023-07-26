@@ -48,8 +48,12 @@
   </div>
 </form></br>
 
-<div id="myCycles"></div></br></br>
-  <button class='addEvent_Button' onclick='addEvent()'>Add Event</button></br>
+<div class="boxCycles" id="myCycles">
+  
+</div></br></br>
+  <div class="centered-container">
+  <button class='addEvent_Button' onclick='addEvent()'> Create Event</button></br>
+  </div>
 <div id="createEventDiv" style="display: none;">
   <form id="form-create-event" action="createcycle.html" role="form">
     <div class="createEventDiv">
@@ -303,12 +307,12 @@ function addEvent() {
         console.log(eString);
         for (var i = 0; i < eLength; i++) {
           eArray[i] = Object.values(eData[i])[1];
-          let eventData = "Name: " + Object.values(eData[i])[2];
+          let eventData = "Event Name: " + Object.values(eData[i])[2];
           $("#myEventsDiv").append("<div id='eventsDiv_" + Object.values(eData[i])[1] + "'>" + eventData + "</div></br>");
           console.log(eventData);
           console.log(cArray.length);
           for (var j = 0; j < cArray.length; j++) {
-            $("#eventsDiv_" + Object.values(eData[i])[1]).append("<button class='myEvents_button' onclick='insertEventsCycle(" + cArray[j] + "," + Object.values(eData[i])[1] + ")'>Add to Cycle " + cArray[j] + "</button>");
+            $("#eventsDiv_" + Object.values(eData[i])[1]).append("<button class='myEvents_button' onclick='insertEventsCycle(" + cArray[j] + "," + Object.values(eData[i])[1] + ")'>+ Add to Cycle " + cArray[j] + "</button>");
            
           }
            $("#eventsDiv_" + Object.values(eData[i])[1]).append("</br><button class='deleteEvent_" + Object.values(eData[i])[1] + "' onclick='deleteEvent(" + Object.values(eData[i])[1] + ")'>Delete Event</button>");
