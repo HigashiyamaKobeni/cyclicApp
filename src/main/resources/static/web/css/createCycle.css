@@ -67,9 +67,11 @@ font-weight: 600;
 margin-top: 20px;
 }
 .myEvents_button {
-
+color: blue;
+font-weight: 600;
 }
 
-.deleteEvent_ {
-
+.deleteEvent {
+color: blue;
+font-weight: 600;
 }
