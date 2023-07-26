@@ -2,7 +2,9 @@
            
      }
            
-
+.centered-container {
+  text-align: center;
+}
 .cycleDiv {
             text-align: center; /* Optional: To center the content inside cycleDiv */
             border: 1px solid #ccc;
@@ -47,7 +49,7 @@ border: 2px solid #ccc;
 padding: 20px;
 }
 .cycle_events {
-
+margin-bottom: 20px;
 }
 .myCycles_Button {
 color: blue;
@@ -56,4 +58,11 @@ font-weight: 600;
 /*----------------------*/
 .eventDiv {
 margin-top: 20px;
+}
+.myEvents_button {
+
+}
+
+.deleteEvent_ {
+
 }
