@@ -312,10 +312,10 @@ function addEvent() {
           console.log(eventData);
           console.log(cArray.length);
           for (var j = 0; j < cArray.length; j++) {
-            $("#eventsDiv_" + Object.values(eData[i])[1]).append("<br><button class='myEvents_button' onclick='insertEventsCycle(" + cArray[j] + "," + Object.values(eData[i])[1] + ")'>+ Add to Cycle " + cArray[j] + "</button>");
+            $("#eventsDiv_" + Object.values(eData[i])[1]).append("<br><br><button class='myEvents_button' onclick='insertEventsCycle(" + cArray[j] + "," + Object.values(eData[i])[1] + ")'>+ Add to Cycle " + cArray[j] + "</button>");
            
           }
-           $("#eventsDiv_" + Object.values(eData[i])[1]).append("</br><button class='deleteEvent_" + Object.values(eData[i])[1] + "' onclick='deleteEvent(" + Object.values(eData[i])[1] + ")'>Delete Event</button>");
+           $("#eventsDiv_" + Object.values(eData[i])[1]).append("</br><br><button class='deleteEvent_" + Object.values(eData[i])[1] + "' onclick='deleteEvent(" + Object.values(eData[i])[1] + ")'>Delete Event</button>");
         }
       },
       error: function(xhr, status, error) {
