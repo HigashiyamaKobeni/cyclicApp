@@ -9,3 +9,21 @@ margin-right: 20px
 .changePassword {
 
 }
+
+/* Assuming you have already defined a style for buttons with the class "button" */
+.button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #007bff; /* You can change this to any color you like */
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+/* Optional: Add some hover effect to make it look interactive */
+.button:hover {
+  background-color: #0056b3; /* You can choose a different color for the hover effect */
+  cursor: pointer;
+}
+
