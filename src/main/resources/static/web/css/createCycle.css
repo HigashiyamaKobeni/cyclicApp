@@ -74,6 +74,11 @@ font-weight: 600;
 [class^="deleteEvent_"] {
 color: blue;
 font-weight: 600;
+font-size: 17px;
+padding: 10px 20px;
+border-radius: 30px;
+border: 2px solid rgb(60, 50, 3);
+background-color: lightblue;
 }
 
 
