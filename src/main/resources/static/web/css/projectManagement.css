@@ -49,6 +49,7 @@
   background-size: 50.5% calc(var(--_p,0%)/2 + .5%);
   outline-offset: .1em;
   transition: background-size .4s, background-position 0s .4s;
+  margin-top: 20px;
 }
 
 button.deleteProject_Button:hover {
@@ -63,9 +64,9 @@ button.deleteProject_Button:active {
 
 button.deleteProject_Button {
   font-family: system-ui, sans-serif;
-  font-size: 3.5rem;
+  font-size: 10px;
   cursor: pointer;
-  padding: .1em .6em;
+  padding: 3px;
   font-weight: bold;  
   border: none;
 }
