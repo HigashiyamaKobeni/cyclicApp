@@ -14,12 +14,14 @@
  font-family: 'Poppins', sans-serif;
  font-weight: bold;
 }
+
 .cycleName_Input {
 padding: 8px;
 border-radius: 10px;
 border: 2px solid rgb(252, 210, 0);
 }
-}
+
+
 .cycleCreateButton {
 color: white;
 padding: 8px;
@@ -30,9 +32,14 @@ border: 1px solid RGB(24, 119, 242);
 box-shadow: 0 2px 5px rgba(213, 217, 217, 0.5);
 }
 /*----------------------*/
+.boxCyles {
+
+}
+
 .myCycles {
 text-align: center;
 border: 2px solid #ccc;
+border-top: none;
 padding: 20px;
 }
 .addEvent_Button {
