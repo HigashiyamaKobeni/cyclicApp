@@ -54,6 +54,8 @@ color: white;
 text-align: center;
 border: 2px solid #ccc;
 padding: 20px;
+grid-template-columns: repeat(6, 1fr);
+display: grid;
 }
 .cycle_events {
 margin-bottom: 20px;
@@ -83,7 +85,16 @@ background-color: lightblue;
 
 /* CSS style for elements with id starting with 'eventsDiv_' */
 [id^="eventsDiv_"] {
-  
+padding-top: 40px;
+padding-bottom: 25px;
+padding-left: 25px;
+padding-right: 25px;
+border-left: 1px solid rgb(231, 231, 231);
+border-right: 1px solid rgb(231, 231, 231);
+border-bottom: 1px solid rgb(231, 231, 231);
+border-top: 1px solid rgb(231, 231, 231);
+display: flex;
+flex-direction: column;
 }
 
 
