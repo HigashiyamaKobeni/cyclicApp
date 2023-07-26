@@ -9,22 +9,35 @@
 
 }
 .username_Input {
-
+width: 100%;
+padding: 8px;
+border: 1px solid #ccc;
+border-radius: 4px;
 }
 /*----------------------*/
 .emailDiv {
-
+margin-left: 27px;
 }
 .email_Label {
 
 }
 .email_Input {
-
+width: 100%;
+padding: 8px;
+border: 1px solid #ccc;
+border-radius: 4px;
 }
 /*----------------------*/
 .changeButtonDiv {
 
 }
 .changeButton_Input {
-
+text-align: center;
+padding: 5px;
+border-radius: 30px;
+background-color: RGB(24, 119, 242);
+border: 1px solid RGB(24, 119, 242);
+color: white;
+margin-top: 10px;
+margin-left: 70px;
 }
