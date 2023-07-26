@@ -35,7 +35,11 @@ padding: 20px;
 }
 .addEvent_Button {
 text-align: center;
-padding: 20px;
+padding: 10px;
+border-radius: 30px;
+background-color: RGB(24, 119, 242);
+border: 1px solid RGB(24, 119, 242);
+color: white;
 }
 .myEventDiv {
 text-align: center;
@@ -46,9 +50,10 @@ padding: 20px;
 
 }
 .myCycles_Button {
-
+color: blue;
+font-weight: 600;
 }
 /*----------------------*/
 .eventDiv {
-
+margin-top: 20px;
 }
