@@ -56,7 +56,7 @@
       <label for="createEventName" class="createEventName_Label">Event name </label>
       <input name="createEventName" type="text" id="createEventName" class="createEventName_Input">
       <label for="createEventActionable" class="createEventActionable_Label">Actionable </label>
-      <input type="checkbox" id="createEventActionable" name="createEventActionable" value="actionable"></br>
+      <input type="checkbox" id="createEventActionable" name="createEventActionable" value="actionable">
       <input id="btn-create-event" type="submit" value="create" class="eventCreateButton" onclick="createEventOnCycle()"/>
     </div>
   </form>
@@ -136,7 +136,7 @@
         let events = Object.values(data);
         console.log(string);
         console.log("#cycle_events_" + cid);
-        $("#cycle_events_" + cid).append("<div class='eventDiv' id='event_" + events[1] + "'>Event Name: " + events[2] + "</div></br>");
+        $("#cycle_events_" + cid).append("<div class='eventDiv' id='event_" + events[1] + "'>Event Name: " + events[2] + "</div>");
         
         console.log("Success");
         if (events[0] == 1)
@@ -273,14 +273,14 @@ function addEvent() {
         let cLength = Object.keys(cData).length;
         console.log(cString);
         for (var i = 0; i < cLength; i++) {
-          let cycleData = "Name: " + Object.values(cData[i])[1] + " | Start Date: " + Object.values(cData[i])[2] + " | End Date: " + Object.values(cData[i])[3];
+          let cycleData = "Cycle Name: " + Object.values(cData[i])[1] + " | Start Date: " + Object.values(cData[i])[2] + " | End Date: " + Object.values(cData[i])[3];
           cArray[i] = Object.values(cData[i])[0];
           getEventID(Object.values(cData[i])[0]);
           $("#myCycles").append("<div class='myCycles' id='myCycle" + Object.values(cData[i])[0] + "'>" + cycleData + " </div></br>");
           $("#myCycle" + Object.values(cData[i])[0]).append("<div id='addEventDiv_" + Object.values(cData[i])[0] + "'></div>");
           $("#myCycle" + Object.values(cData[i])[0]).append("<div id='cycle_events_" + Object.values(cData[i])[0] + "' class='cycle_events'></div>");
           for (var j = 0; j < pArray.length; j++) {
-            $("#myCycle" + Object.values(cData[i])[0]).append("<button class='myCycles_Button' onclick='addToProject(" + pArray[j] + "," + Object.values(cData[i])[0] + ")'>Add to Project " + pArray[j] + "</button>&nbsp");
+            $("#myCycle" + Object.values(cData[i])[0]).append("<button class='myCycles_Button' onclick='addToProject(" + pArray[j] + "," + Object.values(cData[i])[0] + ")'>+ Add to Project " + pArray[j] + "</button>&nbsp");
           }
         }
         getEventByUID(cArray);
