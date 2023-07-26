@@ -1,8 +1,10 @@
 .userdataDiv {
-
+display: flex;
+justify-content: center;
+margin: 10px;
 }
 .changeEmail {
-
+margin-right: 20px
 }
 .changePassword {
 
