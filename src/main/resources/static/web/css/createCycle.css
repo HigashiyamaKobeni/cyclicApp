@@ -68,6 +68,14 @@ font-weight: 600;
 .eventDiv {
 margin-top: 20px;
 }
+
+#createEventDiv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
 .myEvents_button {
 color: blue;
 font-weight: 600;
