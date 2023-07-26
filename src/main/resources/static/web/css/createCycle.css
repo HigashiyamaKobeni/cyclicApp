@@ -81,4 +81,10 @@ border: 2px solid rgb(60, 50, 3);
 background-color: lightblue;
 }
 
+/* CSS style for elements with id starting with 'eventsDiv_' */
+[id^="eventsDiv_"] {
+  
+}
+
+
 
