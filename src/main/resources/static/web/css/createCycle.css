@@ -9,12 +9,13 @@
             padding: 20px;
 }
 .cycleName_Label {
-
+ font-family: 'Poppins', sans-serif;
+ font-weight: bold;
 }
 .cycleName_Input {
 padding: 8px;
 border-radius: 10px;
-border: 1px solid rgb(252, 210, 0);
+border: 2px solid rgb(252, 210, 0);
 }
 }
 .cycleCreateButton {
