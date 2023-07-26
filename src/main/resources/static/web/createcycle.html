@@ -308,7 +308,7 @@ function addEvent() {
         for (var i = 0; i < eLength; i++) {
           eArray[i] = Object.values(eData[i])[1];
           let eventData = "Event Name: " + Object.values(eData[i])[2];
-          $("#myEventsDiv").append("<div class="displayEventGrid" id='eventsDiv_" + Object.values(eData[i])[1] + "'>" + eventData + "</div></br>");
+          $("#myEventsDiv").append("<div id='eventsDiv_" + Object.values(eData[i])[1] + "'>" + eventData + "</div></br>");
           console.log(eventData);
           console.log(cArray.length);
           for (var j = 0; j < cArray.length; j++) {
