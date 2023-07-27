@@ -374,8 +374,9 @@ function addEvent() {
           $("#myCycles").append("<div class='myCycles' id='myCycle" + Object.values(cData[i])[0] + "'>" + cycleData + " </div></br>");
           $("#myCycle" + Object.values(cData[i])[0]).append("<div id='addEventDiv_" + Object.values(cData[i])[0] + "'></div>");
 
-
           // ===================== display note ==========================
+          $("#myCycle" + Object.values(cData[i])[0]).append("<div id='noteContainer_" + Object.values(cData[i])[0] + "'></div>");
+
           getNoteIdByCycleId(Object.values(cData[i])[0]);
           // ================================================================
           
