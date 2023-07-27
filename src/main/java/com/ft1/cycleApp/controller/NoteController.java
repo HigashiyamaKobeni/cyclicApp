@@ -21,10 +21,10 @@ public class NoteController extends BaseController {
     }
 
     @RequestMapping("insert_note")
-    public JsonResult<Void> insertNote(Note note) {
-        noteService.insertNote(note);
+    public JsonResult<Integer> insertNote(Note note) {
+        Integer noteId = noteService.insertNote(note);
 
-        return new JsonResult<>(OK);
+        return new JsonResult<>(OK, noteId);
     }
 
     @RequestMapping("delete_note")
