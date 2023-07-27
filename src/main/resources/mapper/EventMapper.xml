@@ -46,6 +46,10 @@
         )
     </insert>
 
+	<select id="getNoteId" resultType="java.lang.Integer">
+		SELECT note_id FROM event WHERE event_id = #{eventId}
+	</select>
+
     <delete id="deleteEvent">
         DELETE FROM event
         WHERE event_id=#{eventId}
