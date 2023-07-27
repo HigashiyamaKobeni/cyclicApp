@@ -489,6 +489,11 @@ function addEvent() {
     showPopup($(this).html());
   });
 
+    // Mouseleave event handler for the popup container
+  $("#popupContainer").mouseleave(function () {
+    hidePopup();
+  });
+
   // Click event handler for closing the popup when clicked outside the popup content
   $(document).on("click", "#popupContainer", function(event) {
     if (!$(event.target).closest(".popup-content").length) {
