@@ -26,7 +26,7 @@ public class NoteServiceImpl implements INoteService {
     public Integer insertNote(Note note) {
         Integer rows = noteMapper.insertNote(note);
 
-        Integer noteId = note.getId();
+        Integer noteId = note.getNoteId();
 
         if (rows != 1) {
             throw new InsertException("error at note inserting");
