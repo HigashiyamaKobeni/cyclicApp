@@ -90,13 +90,7 @@
       data: requestData,
       dataType: "json",
       success: function(response) {
-        const responseObj = JSON.parse(response);
-
-        // Use Object.values to get an array of property values
-        const propertyValues = Object.values(responseObj);
-        
-        // 从响应中提取note数据
-        var noteDetails = propertyValues[1];
+        var noteDetails = response.data.noteDetails;
   
         var noteContainerId = "noteContainer_" + cycleId;
         $("#" + noteContainerId).text("Note: " + noteDetails);
