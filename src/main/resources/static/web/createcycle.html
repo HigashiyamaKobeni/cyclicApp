@@ -397,8 +397,10 @@ function addEvent() {
           }
         });
       }
-  function updateStartEnd(cid, startDate, endDate)
+  function updateStartEnd(cid)
       {
+        getStartDateById(cid);
+        getEndDateById(cid);
          $.ajax({
           url: "/cycles/set_start_date?newStartDate=" + startDate + "&cycleId=" + cid,
           type: "POST",
@@ -430,11 +432,22 @@ function addEvent() {
       }
   var startDate;
   var endDate;
-  function getValueById(ID) {
+  function getStartDateById(ID) {
   const element = document.getElementById(`startDateInput_${ID}`);
   if (element) {
     const value = element.value;
     console.log(value);
+    startDate = value;
+  } else {
+    console.log(`Element with ID "startDateInput_${ID}" not found.`);
+  }
+}
+  function getEndDateById(ID) {
+  const element = document.getElementById(`endDateInput_${ID}`);
+  if (element) {
+    const value = element.value;
+    console.log(value);
+    endDate = value;
   } else {
     console.log(`Element with ID "startDateInput_${ID}" not found.`);
   }
@@ -476,8 +489,7 @@ function addEvent() {
           $("#myCycle" + Object.values(cData[i])[0]).append("<input type='date' id='startDateInput_" + Object.values(cData[i])[0] + "' name='startDateInput' value='2022-07-22'></br>");
           $("#myCycle" + Object.values(cData[i])[0]).append("<input type='date' id='endDateInput_" + Object.values(cData[i])[0] + "' name='endDateInput' value='2022-07-22'></br>");
 
-          getValueById(Object.values(cData[i])[0]);
-          $("#myCycle" + Object.values(cData[i])[0]).append("<button class='updateStartEndDateButton' onclick='updateStartEnd(" + Object.values(cData[i])[0] +"," + startDate + "," + endDate + ")'>Update Start and End Date</button>");
+          $("#myCycle" + Object.values(cData[i])[0]).append("<button class='updateStartEndDateButton' onclick='updateStartEnd(" + Object.values(cData[i])[0] + ")'>Update Start and End Date</button>");
       
           $("#myCycle" + Object.values(cData[i])[0]).append("<div id='cycle_events_" + Object.values(cData[i])[0] + "' class='cycle_events'></div>");
           for (var j = 0; j < pArray.length; j++) {
