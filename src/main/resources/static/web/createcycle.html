@@ -468,35 +468,37 @@ function addEvent() {
     });
     }
   });
-
-    $(document).ready(function() {
-  // Hover event handler
-  $(".myCycles").hover(function() {
-    // Show the popup container
+</script>
+<script type="text/javascript">
+  // Function to show the popup container and add content to it
+  function showPopup(content) {
     $("#popupContainer").fadeIn();
-    // Add the content of the hovered myCycles element to the popup container
-    $("#popupContainer").html($(this).html());
-  }, function() {
-    // Hide the popup container when the mouse leaves the myCycles element
+    $("#popupContainer").html(content);
+  }
+
+  // Function to hide the popup container
+  function hidePopup() {
     $("#popupContainer").fadeOut();
+  }
+
+  // Hover event handler for myCycles elements
+  $(".myCycles").hover(function() {
+    showPopup($(this).html());
+  }, function() {
+    hidePopup();
   });
 
-  // Click event handler (optional - Uncomment this if you want the popup to appear on click instead of hover)
+  // Click event handler for myCycles elements
   $(".myCycles").click(function() {
-    // Show the popup container
-     $("#popupContainer").fadeIn();
-    // Add the content of the clicked myCycles element to the popup container
-     $("#popupContainer").html($(this).html());
-   });
+    showPopup($(this).html());
+  });
 
   // Click event handler for closing the popup when clicked outside the popup content
   $("#popupContainer").click(function(event) {
     if (!$(event.target).closest(".popup-content").length) {
-      // Hide the popup container when clicking outside the content
-      $(this).fadeOut();
+      hidePopup();
     }
   });
-});
 </script>
 
 </body>
