@@ -129,7 +129,7 @@
           data: { cycleId: cycleId }, // Pass the cycleId as a parameter in the query string
           success: function(response) {
             var noteData = response.data;
-          // The received data contains the noteId
+            // The received data contains the noteId
             var noteId = Object.values(noteData)[2];
             var noteString = JSON.stringify(noteId);
             console.log("NOTEId: " + noteString);
