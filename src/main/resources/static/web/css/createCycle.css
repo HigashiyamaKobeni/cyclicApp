@@ -20,10 +20,12 @@ h2 {
       font-weight: bold;
       /* Add other styling properties here as needed */
       font-family: 'Roboto', sans-serif;
+      color: rgb(84, 75, 75);
 }
 
 h3 {
-
+font-family: 'Signika', sans-serif;
+color: lightcoral;
 }
 
 .cycleName_Label {
