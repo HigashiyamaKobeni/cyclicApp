@@ -58,30 +58,7 @@
                    }
                  });
             }
-            if (tagId !== null) {
-                const data = {
-                    tagId: tagId,
-                    noteId: noteId
-                };
-
-                $.ajax({
-                   url: "/tags/add_note_to_tag",
-                   type: "POST",
-                   data: data,
-                   dataType: "JSON",
-                   success: function(json) {
-                     if (json.state == 200) {
-                       alert("add note success");
-                       location.reload();
-                     } else {
-                       alert("add note fail");
-                     }
-                   },
-                   error: function(xhr) {
-                     alert("error" + xhr.message);
-                   }
-                 });
-            }
+            
             if (eventId !== null) {
                 const data = {
                     eventId: eventId,
