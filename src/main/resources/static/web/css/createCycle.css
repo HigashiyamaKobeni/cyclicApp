@@ -12,7 +12,7 @@ margin-bottom: 30px;
 }
 
 .cycleDiv {
-            text-align: center; /* Optional: To center the content inside cycleDiv */
+            text-align: center; 
             border: 1px solid #ccc;
             padding: 20px;
 }
@@ -54,21 +54,24 @@ margin-top: 30px;box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 
 /* Your existing CSS styles remain the same */
 
 /* Styles for the popup container */
-#popupContainer {
+/* #popupContainer {
   display: none;
   background-color: #fff;
   border: 1px solid #ccc;
   padding: 10px;
   z-index: 9999;
-}
+} */
 
 .popup-container {
-  display: none;
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent black background */
+  background-color: rgba(191, 133, 133, 0.6);
   z-index: 9999; /* Ensure it appears above other elements */
 }
 
