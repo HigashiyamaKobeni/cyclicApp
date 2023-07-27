@@ -257,7 +257,7 @@
   function deleteEvent(eid) {
     $.ajax({
       url: "https://murdoch-2023-ict302-ft1-cyclicapp.up.railway.app/events/delete_event?eventId=" + eid,
-      type: "GET",
+      type: "POST",
       dataType: "json",
       success: function(response) {
         alert("success");
