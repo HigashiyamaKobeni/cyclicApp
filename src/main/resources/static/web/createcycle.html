@@ -411,7 +411,7 @@ function addEvent() {
           // ===================== add tag button ==========================
           $("#myCycle" + Object.values(cData[i])[0]).append("<button class='addTagButton' onclick='addTag(" + Object.values(cData[i])[0] + ")'>Add Tag</button>");
           // ================================================================
-          
+          $("#myCycle" + Object.values(cData[i])[0]).append("<button class='deleteCycleButton' onclick='deleteCycle(" + Object.values(cData[i])[0] + ")'>Delete Cycle</button>");
           $("#myCycle" + Object.values(cData[i])[0]).append("<div id='cycle_events_" + Object.values(cData[i])[0] + "' class='cycle_events'></div>");
           for (var j = 0; j < pArray.length; j++) {
             $("#myCycle" + Object.values(cData[i])[0]).append("<button class='myCycles_Button' onclick='addToProject(" + pArray[j] + "," + Object.values(cData[i])[0] + ")'>+ Add to Project " + pArray[j] + "</button>&nbsp");
@@ -426,6 +426,24 @@ function addEvent() {
       }
     });
 
+    function deleteCycle(cid)
+      {
+         $.ajax({
+          url: "/cycles/deleteCycle?cycleId=" cid,
+          type: "POST",
+          dataType: "JSON",
+          success: function(json) {
+            if (json.state == 200) {
+              alert("success");
+            } else {
+              alert("fail");
+            }
+          },
+          error: function(xhr) {
+            alert("error" + xhr.message);
+          }
+        });
+      }
     
 
     function getEventByUID(cArray, cNames) {
