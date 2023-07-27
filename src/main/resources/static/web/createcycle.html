@@ -85,7 +85,7 @@
   
     // 发送AJAX请求到后端
     $.ajax({
-      url: "/notes/get_note_by_noteid",
+      url: "https://murdoch-2023-ict302-ft1-cyclicapp.up.railway.app/notes/get_note_by_noteid",
       type: "GET",
       data: requestData,
       dataType: "json",
@@ -109,7 +109,7 @@
     
   function getNoteIdByCycleId(cycleId) {
       $.ajax({
-          url: "cycles/get_note_id",
+          url: "https://murdoch-2023-ict302-ft1-cyclicapp.up.railway.app/cycles/get_note_id",
           type: "GET",
           dataType: "json",
           data: { cycleId: cycleId }, // Pass the cycleId as a parameter in the query string
