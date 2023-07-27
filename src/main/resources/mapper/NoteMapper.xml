@@ -15,7 +15,7 @@
         <result column="note_details" property="noteDetails" />
     </resultMap>
 
-    <insert id="insertNote" useGeneratedKeys="true" keyProperty="noteId">
+    <insert id="insertNote" parameterType="Note" useGeneratedKeys="true" keyProperty="id">
         INSERT INTO note (
             note_details
         ) VALUES (
