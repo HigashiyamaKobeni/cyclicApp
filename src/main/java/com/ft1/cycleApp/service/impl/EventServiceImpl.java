@@ -47,6 +47,17 @@ public class EventServiceImpl implements IEventService {
     }
 
     @Override
+    public Integer getNoteId(Integer eventId) {
+        Integer noteId = eventMapper.getNoteId(eventId);
+
+        if (noteId == null) {
+            throw new EntityNotFoundException("not found note");
+        }
+
+        return noteId;
+    }
+
+    @Override
     public ArrayList<Event> getEventByUid(Integer userId) {
         ArrayList<Event> events = new ArrayList<>();
 
