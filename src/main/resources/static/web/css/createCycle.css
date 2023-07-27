@@ -35,6 +35,7 @@ box-shadow: 0 2px 5px rgba(213, 217, 217, 0.5);
 .boxCycles {
 grid-template-columns: repeat(6, 1fr);
 display: grid;
+margin-left: 200px;
 }
 
 .myCycles {
