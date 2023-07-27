@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create Note</title>
+    <script src="../bootstrap3/js/holder.js"></script>
+    <script src="../bootstrap3/jquery-1.9.1.min.js"></script>
+    <script src="../bootstrap3/js/bootstrap.js"></script>
+</head>
+<body>
+    <h1>Create Note</h1>
+    <form id="addNoteForm">
+        <label for="noteId">Note Name:</label>
+        <input type="text" id="noteName" name="noteName" required>
+        <input id="btn-create-note" type="button" value="createNote" class="createNoteButton"/>
+    </form>
+
+    <script>
+
+        $("#btn-create-note").click(function() {
+
+            const noteName = document.getElementById("noteName").value;
+
+            $.ajax({
+               url: "/notes/insert_note",
+               type: "POST",
+               data: {noteName : noteName}
+               dataType: "JSON",
+               success: function(json) {
+                   if (json.state == 200) {
+                       alert("create note success");
+                    } else {
+                       alert("create note fail");
+                    }
+                },
+                error: function(xhr) {
+                     alert("error" + xhr.message);
+                }
+            });
+
+            
+            window.location.href = "addnote.html";
+            
+        });
+    </script>
+</body>
+</html>
