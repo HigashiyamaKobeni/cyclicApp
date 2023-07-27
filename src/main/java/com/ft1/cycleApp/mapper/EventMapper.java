@@ -16,6 +16,8 @@ public interface EventMapper {
 
     Integer updateEventName(String newEventName, Integer eventId);
 
+    Integer getNoteId(Integer eventId);
+
     Integer addTag(Integer eventId, Integer tagId);
 
     ArrayList<Integer> getTag(Integer eventId);
