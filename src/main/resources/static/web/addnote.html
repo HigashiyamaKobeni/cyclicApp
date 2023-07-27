@@ -16,14 +16,11 @@
         <input id="btn-add-note" type="button" value="addNote" class="addNoteButton"/>
     </form>
 
-    <input id="btn-create-note" type="button" value="createNote" class="createNoteButton"/>
+    <label for="noteDetails">Note Name:</label>
+        <input type="text" id="noteDetails" name="noteDetails" required>
+        <input id="btn-create-note" type="button" value="createNote" class="createNoteButton"/>
 
     <script>
-
-        $("#btn-create-note").click(function() {
-            window.location.href = "createnote.html";
-        })
-        
         // 解析 URL 中的参数
         const urlParams = new URLSearchParams(window.location.search);
 
@@ -32,10 +29,34 @@
         const tagId = urlParams.get("tagId");
         const eventId = urlParams.get("eventId");
 
+        $("#btn-create-note").click(function() {
+
+            const noteDetails = document.getElementById("noteDetails").value;
+
+            console.log(noteDetails);
+
+            $.ajax({
+               url: "/notes/insert_note",
+               type: "POST",
+               data: {noteDetails: noteDetails},
+               dataType: "JSON",
+               success: function(json) {
+
+                    var noteId = response.data;
+                    var noteString = JSON.stringify(noteId);
+                    console.log("NOTEId: " + noteString);
+                    if (noteId != null) {
+                        addNote(noteId);
+                    }
+                },
+                error: function(xhr) {
+                     alert("error" + xhr.message);
+                }
+            });
         
 
         // 监听表单提交事件
-        $("#btn-add-note").click(function() {
+        function addNote(noteId) {
 
             // 获取表单输入字段的值
             const noteId = document.getElementById("noteId").value;
@@ -93,7 +114,7 @@
             
             window.location.href = "projectmanagement.html";
             
-        });
+        }
     </script>
 </body>
 </html>
