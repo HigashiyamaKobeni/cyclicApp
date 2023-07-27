@@ -12,6 +12,8 @@ public interface CycleMapper {
 
     Cycle getCycle(Integer cycleId);
 
+    Integer getNoteId(Integer cycleId);
+
     Integer setCycleName(String cycleName, Integer cycleId);
 
     Integer setStartDate(Date newStartDate, Integer cycleId);
