@@ -5,6 +5,11 @@
 .centered-container {
   text-align: center;
 }
+
+.borderLine-Event {
+
+}
+
 .cycleDiv {
             text-align: center; /* Optional: To center the content inside cycleDiv */
             border: 1px solid #ccc;
@@ -54,10 +59,10 @@ color: white;
 }
 .myEventDiv {
 text-align: center;
-border: 2px solid #ccc;
 padding: 20px;
 grid-template-columns: repeat(6, 1fr);
 display: grid;
+margin-left: 190px; 
 }
 .cycle_events {
 margin-bottom: 20px;
