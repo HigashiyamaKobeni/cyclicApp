@@ -16,7 +16,7 @@
     </resultMap>
 
 
-        <insert id="insertNote" parameterType="Note" useGeneratedKeys="true" keyProperty="noteId">
+        <insert id="insertNote" useGeneratedKeys="true" keyProperty="noteId">
                     INSERT INTO note (note_details) VALUES (#{noteDetails})
         </insert>
 
