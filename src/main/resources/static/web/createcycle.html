@@ -72,6 +72,18 @@
 </div></br>
 
 <script type="text/javascript">
+  /*  add note function
+   *  desc: use to add note to cycle within cycle boxes
+  */
+  // =============================================================
+  function addNote(cycleId) {
+      location.href = "addnote.html?cycleId=" + cycleId;
+  }
+  // =============================================================
+  
+
+
+  
   ///CREATE CYCLE BUTTON
   $("#btn-create-cycle").click(function() {
     let cycle_Name = document.getElementById("cycleName").value;
@@ -282,6 +294,11 @@ function addEvent() {
           getEventID(Object.values(cData[i])[0]);
           $("#myCycles").append("<div class='myCycles' id='myCycle" + Object.values(cData[i])[0] + "'>" + cycleData + " </div></br>");
           $("#myCycle" + Object.values(cData[i])[0]).append("<div id='addEventDiv_" + Object.values(cData[i])[0] + "'></div>");
+          
+          // ===================== add note button ==========================
+          $("#myCycle" + Object.values(cData[i])[0]).append("<button class='addNoteButton' onclick='addNote(" + Object.values(cData[i])[0] + ")'>Add Note</button>");
+          // ================================================================
+          
           $("#myCycle" + Object.values(cData[i])[0]).append("<div id='cycle_events_" + Object.values(cData[i])[0] + "' class='cycle_events'></div>");
           for (var j = 0; j < pArray.length; j++) {
             $("#myCycle" + Object.values(cData[i])[0]).append("<button class='myCycles_Button' onclick='addToProject(" + pArray[j] + "," + Object.values(cData[i])[0] + ")'>+ Add to Project " + pArray[j] + "</button>&nbsp");
