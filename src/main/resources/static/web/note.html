@@ -32,34 +32,7 @@
                 })
             })
         
-        document.getElementById("insertNoteForm").addEventListener("submit", function(event) {
-            event.preventDefault();
-
-            const noteDetails = document.getElementById("noteDetails").value;
-
-            // Create an object with the 'noteDetails' property
-            const noteObject = {
-                noteDetails: noteDetails
-            };
-
-            // Send the AJAX POST request
-            const xhr = new XMLHttpRequest();
-            xhr.open("POST", "/insert_note", true);
-            xhr.setRequestHeader("Content-Type", "application/json");
-            xhr.onreadystatechange = function() {
-                if (xhr.readyState === 4) {
-                    if (xhr.status === 200) {
-                        // Request successful
-                        const response = JSON.parse(xhr.responseText);
-                        console.log(response);
-                    } else {
-                        // Request failed
-                        console.error("Error:", xhr.status, xhr.statusText);
-                    }
-                }
-            };
-            xhr.send(JSON.stringify(noteObject));
-        });
+        
     </script>
 </body>
 </html>
