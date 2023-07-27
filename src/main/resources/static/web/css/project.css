@@ -1,6 +1,5 @@
 .createProjectDiv {
 text-align: center;
-border: 1px solid #ccc;
 padding: 20px;
 }
 }
@@ -15,9 +14,9 @@ padding: 20px;
 
 }
 .projectName_Input {
-padding: 8px;
+padding: 6px;
 border: 1px solid #ccc;
-border-radius: 4px;
+border-radius: 3px;
 }
 /*----------------------*/
 .createProjectDiv {
