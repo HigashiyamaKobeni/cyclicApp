@@ -118,9 +118,10 @@
           type: "GET",
           dataType: "json",
           data: { cycleId: cycleId }, // Pass the cycleId as a parameter in the query string
-          success: function(data) {
+          success: function(response) {
+            var noteData = response.data;
           // The received data contains the noteId
-            var noteId = data.data
+            var noteId = noteData.data;
             var noteString = JSON.stringify(noteId);
             console.log("NOTEId: " + noteString);
 
