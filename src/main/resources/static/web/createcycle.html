@@ -429,7 +429,7 @@ function addEvent() {
     function deleteCycle(cid)
       {
          $.ajax({
-          url: "/cycles/delete_cycle?cycleId=" cid,
+          url: "/cycles/delete_cycle?cycleId=" + cid,
           type: "POST",
           dataType: "JSON",
           success: function(json) {
