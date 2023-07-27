@@ -8,22 +8,23 @@
 </head>
 <body>
     <h1>Create Note</h1>
-    <form id="addNoteForm">
-        <label for="noteId">Note Name:</label>
-        <input type="text" id="noteName" name="noteName" required>
+        
+        <label for="noteDetails">Note Name:</label>
+        <input type="text" id="noteDetails" name="noteDetails" required>
         <input id="btn-create-note" type="button" value="createNote" class="createNoteButton"/>
-    </form>
 
     <script>
 
         $("#btn-create-note").click(function() {
 
-            const noteName = document.getElementById("noteName").value;
+            const noteDetails = document.getElementById("noteDetails").value;
+
+            console.log(noteDetails);
 
             $.ajax({
                url: "/notes/insert_note",
                type: "POST",
-               data: {noteName : noteName},
+               data: {noteDetails: noteDetails},
                dataType: "JSON",
                success: function(json) {
                    if (json.state == 200) {
