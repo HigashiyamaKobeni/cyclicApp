@@ -344,10 +344,12 @@ function addEvent() {
            
           }
            $("#eventsDiv_" + Object.values(eData[i])[1]).append("</br><br><button class='deleteEvent_" + Object.values(eData[i])[1] + "' onclick='deleteEvent(" + Object.values(eData[i])[1] + ")'>Delete Event</button>");
+        
+          // ===================== add note button ==========================
+           $("#myEventsDiv" + Object.values(eData[i])[1]).append("<button class='addNoteButton' onclick='addNote2(" + Object.values(eData[i])[1] + ")'>Add Note</button>");
+          // ================================================================
         }
-            // ===================== add note button ==========================
-            $("#myEventsDiv" + Object.values(eData[i])[1]).append("<button class='addNoteButton' onclick='addNote2(" + Object.values(eData[i])[1] + ")'>Add Note</button>");
-            // ================================================================
+            
       },
       error: function(xhr, status, error) {
         console.log(error);
