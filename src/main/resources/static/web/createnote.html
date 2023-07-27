@@ -23,7 +23,7 @@
             $.ajax({
                url: "/notes/insert_note",
                type: "POST",
-               data: {noteName : noteName}
+               data: {noteName : noteName},
                dataType: "JSON",
                success: function(json) {
                    if (json.state == 200) {
