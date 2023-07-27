@@ -42,7 +42,7 @@
                dataType: "JSON",
                success: function(json) {
 
-                    var noteId = response.data;
+                    var noteId = json.data;
                     var noteString = JSON.stringify(noteId);
                     console.log("NOTEId: " + noteString);
                     if (noteId != null) {
