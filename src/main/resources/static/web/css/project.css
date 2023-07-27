@@ -15,12 +15,20 @@ padding: 20px;
 
 }
 .projectName_Input {
-
+padding: 8px;
+border: 1px solid #ccc;
+border-radius: 4px;
 }
 /*----------------------*/
 .createProjectDiv {
 
 }
 .createProject_Button {
-
+text-align: center;
+padding: 5px;
+background-color: RGB(24, 119, 242);
+border: 1px solid RGB(24, 119, 242);
+color: white;
+margin-top: 10px;
+margin-left: 70px;
 }
