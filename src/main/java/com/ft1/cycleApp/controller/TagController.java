@@ -97,15 +97,9 @@ public class TagController extends BaseController{
     }
 
     @RequestMapping("add_note_to_tag")
-    public JsonResult<Void> addNoteToTag(Integer tagId, String noteDetails) {
+    public JsonResult<Void> addNoteToTag(Integer tagId, Integer noteId) {
 
-        Note note = new Note();
-
-        note.setNoteDetails(noteDetails);
-
-        noteService.insertNote(note);
-
-        tagService.bindNoteToTag(tagId, note.getNoteId());
+        tagService.bindNoteToTag(tagId, noteId);
 
         return new JsonResult<>(OK);
     }
