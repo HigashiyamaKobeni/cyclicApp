@@ -383,6 +383,7 @@ function addEvent() {
       dataType: "json",
       success: function(response) {
         let cArray = [];
+        let cNames = [];
         let cData = response.data;
         let cString = JSON.stringify(cData);
         let cLength = Object.keys(cData).length;
@@ -390,6 +391,7 @@ function addEvent() {
         for (var i = 0; i < cLength; i++) {
           let cycleData = "Cycle Name: " + Object.values(cData[i])[1] + " | Start Date: " + Object.values(cData[i])[2] + " | End Date: " + Object.values(cData[i])[3];
           cArray[i] = Object.values(cData[i])[0];
+          cNames[i] = Object.values(cData[i])[1];
           getEventID(Object.values(cData[i])[0]);
           $("#myCycles").append("<div class='myCycles' id='myCycle" + Object.values(cData[i])[0] + "'>" + cycleData + " </div></br>");
           $("#myCycle" + Object.values(cData[i])[0]).append("<div id='addEventDiv_" + Object.values(cData[i])[0] + "'></div>");
