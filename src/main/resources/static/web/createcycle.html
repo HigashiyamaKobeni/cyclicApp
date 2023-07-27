@@ -306,6 +306,10 @@ function addEvent() {
           // ===================== add note button ==========================
           $("#myCycle" + Object.values(cData[i])[0]).append("<button class='addNoteButton' onclick='addNote(" + Object.values(cData[i])[0] + ")'>Add Note</button>");
           // ================================================================
+
+          // ===================== add tag button ==========================
+          $("#myCycle" + Object.values(cData[i])[0]).append("<button class='addTagButton' onclick='addTag(" + Object.values(cData[i])[0] + ")'>Add Tag</button>");
+          // ================================================================
           
           $("#myCycle" + Object.values(cData[i])[0]).append("<div id='cycle_events_" + Object.values(cData[i])[0] + "' class='cycle_events'></div>");
           for (var j = 0; j < pArray.length; j++) {
@@ -347,6 +351,10 @@ function addEvent() {
         
           // ===================== add note button ==========================
            $("#eventsDiv_" + Object.values(eData[i])[1]).append("<button class='addNoteButton' onclick='addNote2(" + Object.values(eData[i])[1] + ")'>Add Note</button>");
+          // ================================================================
+
+          // ===================== add tag button ==========================
+           $("#eventsDiv_" + Object.values(eData[i])[1]).append("<button class='addTagButton' onclick='addTag2(" + Object.values(eData[i])[1] + ")'>Add Tag</button>");
           // ================================================================
         }
             
