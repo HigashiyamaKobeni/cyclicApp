@@ -72,6 +72,61 @@
 </div></br>
 
 <script type="text/javascript">
+  
+  // added by zek
+  // display note function
+  // ===============================================================
+
+  function displayNoteByNoteId(noteId) {
+    // 创建一个包含发送到AJAX请求中的数据的对象
+    var requestData = {
+      noteId: noteId
+    };
+  
+    // 发送AJAX请求到后端
+    $.ajax({
+      url: "/notes/get_note_by_noteid",
+      type: "GET",
+      data: requestData,
+      dataType: "json",
+      success: function(response) {
+        // 从响应中提取note数据
+        var note = response.note;
+  
+        var noteContainerId = "noteContainer_" + noteId;
+        $("#" + noteContainerId).text("Note: " + note);
+      },
+      error: function(xhr, status, error) {
+        console.error("获取note失败:", error);
+        document.getElementById("noteContainer").innerText = "获取note失败: " + error;
+      }
+    });
+  }
+  
+  // added by zek
+  // get noteId function
+  // ===============================================================
+    
+  function getNoteIdByCycleId(cycleId) {
+      $.ajax({
+          url: "/get_note_id",
+          type: "GET",
+          dataType: "json",
+          data: { cycleId: cycleId }, // Pass the cycleId as a parameter in the query string
+          success: function(data) {
+          // The received data contains the noteId
+            var noteId = data.noteId;
+
+            displayNoteByNoteId(noteId);
+          },
+          error: function(xhr, status, error) {
+            console.error("Error fetching noteId:", error);
+          }
+      });
+    }
+
+  // ===============================================================
+  
   /*  add note function
    *  desc: use to add note to cycle within cycle boxes
   */
@@ -318,6 +373,11 @@ function addEvent() {
           getEventID(Object.values(cData[i])[0]);
           $("#myCycles").append("<div class='myCycles' id='myCycle" + Object.values(cData[i])[0] + "'>" + cycleData + " </div></br>");
           $("#myCycle" + Object.values(cData[i])[0]).append("<div id='addEventDiv_" + Object.values(cData[i])[0] + "'></div>");
+
+
+          // ===================== display note ==========================
+          getNoteIdByCycleId(Object.values(cData[i])[0]);
+          // ================================================================
           
           // ===================== add note button ==========================
           $("#myCycle" + Object.values(cData[i])[0]).append("<button class='addNoteButton' onclick='addNote(" + Object.values(cData[i])[0] + ")'>Add Note</button>");
@@ -333,11 +393,15 @@ function addEvent() {
           }
         }
         getEventByUID(cArray);
+
+        
       },
       error: function(xhr, status, error) {
         console.log(error);
       }
     });
+
+    
 
     function getEventByUID(cArray) {
     $.ajax({
