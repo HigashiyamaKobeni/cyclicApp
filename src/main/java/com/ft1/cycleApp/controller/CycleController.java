@@ -30,6 +30,13 @@ public class CycleController extends BaseController {
         return new JsonResult<>(OK);
     }
 
+    @RequestMapping("get_note_id")
+    public JsonResult<Integer> getNoteId(Integer cycleId) {
+        Integer noteId = cycleService.getNoteId(cycleId);
+
+        return new JsonResult<>(OK, noteId);
+    }
+
     @RequestMapping("delete_cycle")
     public JsonResult<Void> deleteCycle(Integer cycleId) {
         cycleService.deleteCycle(cycleId);
