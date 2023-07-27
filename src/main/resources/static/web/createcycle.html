@@ -85,9 +85,8 @@
   
     // 发送AJAX请求到后端
     $.ajax({
-      url: "https://murdoch-2023-ict302-ft1-cyclicapp.up.railway.app/notes/get_note",
+      url: "https://murdoch-2023-ict302-ft1-cyclicapp.up.railway.app/notes/get_note?noteId=" + noteId,
       type: "GET",
-      data:  {noteId: noteId},
       dataType: "json",
       success: function(response) {
         var noteData = response.data
