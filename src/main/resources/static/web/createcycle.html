@@ -85,15 +85,15 @@
   
     // 发送AJAX请求到后端
     $.ajax({
-      url: "https://murdoch-2023-ict302-ft1-cyclicapp.up.railway.app/notes/get_note?noteId=" + noteId,
+      url: "https://murdoch-2023-ict302-ft1-cyclicapp.up.railway.app/notes/get_note",
       type: "GET",
-      data: requestData,
+      data:  {noteId: noteId},
       dataType: "json",
       success: function(response) {
         var noteData = response.data
         var noteString = JSON.stringify(noteData);
-        var noteDetails = Object.values(noteData)[1];
-        console.log("NOTESTRING: " + noteString);
+        //var noteDetails = Object.values(noteData[0])[1];
+        console.log(noteString);
         // Check if the response data is not null or undefined
         if (noteDetails) {
           var noteContainerId = "noteContainer_" + cycleId;
