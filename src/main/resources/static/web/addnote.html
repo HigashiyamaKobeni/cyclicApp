@@ -16,7 +16,14 @@
         <input id="btn-add-note" type="button" value="addNote" class="addNoteButton"/>
     </form>
 
+    <input id="btn-create-note" type="button" value="createNote" class="createNoteButton"/>
+
     <script>
+
+        $("#btn-create-note").click(function() {
+            window.location.href = "createnote.html";
+        })
+        
         // 解析 URL 中的参数
         const urlParams = new URLSearchParams(window.location.search);
 
