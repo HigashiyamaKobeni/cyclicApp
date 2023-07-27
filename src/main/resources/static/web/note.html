@@ -12,6 +12,26 @@
     </form>
 
     <script>
+        $("#submit").click(function() {
+                $.ajax({
+                    url: "/notes/insert_note",
+                    type: "POST",
+                    data: $("#insertNoteForm").serialize(),
+                    dataType: "JSON",
+                    success: function(json) {
+                    if (json.state == 200) {
+                        alert("create note success");
+                        location.href = "projectmanagement.html";
+                        } else {
+                            alert("create note fail");
+                        }
+                    },
+                    error: function(xhr) {
+                        alert("error" + xhr.message);
+                    }
+                })
+            })
+        
         document.getElementById("insertNoteForm").addEventListener("submit", function(event) {
             event.preventDefault();
 
