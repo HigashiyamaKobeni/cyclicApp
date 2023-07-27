@@ -90,6 +90,17 @@ public class CycleServiceImpl implements ICycleService {
     }
 
     @Override
+    public Integer getNoteId(Integer cycleId) {
+        Integer noteId = cycleMapper.getNoteId(cycleId);
+
+        if (noteId == null) {
+            throw new EntityNotFoundException("not found note");
+        }
+
+        return noteId;
+    }
+    
+    @Override
     public void insertCycle(Cycle newCycle) {
         Integer rows = cycleMapper.insertCycle(newCycle);
 
