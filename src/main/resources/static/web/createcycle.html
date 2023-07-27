@@ -90,11 +90,16 @@
       data: requestData,
       dataType: "json",
       success: function(response) {
+        const responseObj = JSON.parse(response);
+
+        // Use Object.values to get an array of property values
+        const propertyValues = Object.values(responseObj);
+        
         // 从响应中提取note数据
-        var note = response.note;
+        var noteDetails = propertyValues[1];
   
         var noteContainerId = "noteContainer_" + cycleId;
-        $("#" + noteContainerId).text("Note: " + note.noteDetails);
+        $("#" + noteContainerId).text("Note: " + noteDetails);
       },
       error: function(xhr, status, error) {
         console.error("获取note失败:", error);
