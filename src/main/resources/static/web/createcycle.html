@@ -397,16 +397,16 @@ function addEvent() {
           }
         });
       }
-  function updateStartEnd(cid)
+  function updateStart(cid)
       {
         getStartDateById(cid);
-        getEndDateById(cid);
          $.ajax({
           url: "/cycles/set_start_date?newStartDate=" + startDate + "&cycleId=" + cid,
           type: "POST",
           dataType: "JSON",
           success: function(json) {
             if (json.state == 200) {
+              location.reload();
             } else {
               alert("fail");
             }
@@ -415,12 +415,17 @@ function addEvent() {
             alert("error" + xhr.message);
           }
         });
+      }
+  function updateEnd(cid)
+      {
+        getStartDateById(cid);
          $.ajax({
-          url: "/cycles/set_end_date?newEndDate=" + endDate + "&cycleId=" + cid,
+          url: "/cycles/set_start_date?newEndDate=" + endDate + "&cycleId=" + cid,
           type: "POST",
           dataType: "JSON",
           success: function(json) {
             if (json.state == 200) {
+              location.reload();
             } else {
               alert("fail");
             }
@@ -487,10 +492,11 @@ function addEvent() {
           
           $("#myCycle" + Object.values(cData[i])[0]).append("<button class='deleteCycleButton' onclick='deleteCycle(" + Object.values(cData[i])[0] + ")'>Delete Cycle</button>");
           $("#myCycle" + Object.values(cData[i])[0]).append("<input type='date' id='startDateInput_" + Object.values(cData[i])[0] + "' name='startDateInput' value='2022-07-22'></br>");
-          $("#myCycle" + Object.values(cData[i])[0]).append("<input type='date' id='endDateInput_" + Object.values(cData[i])[0] + "' name='endDateInput' value='2022-07-22'></br>");
+          $("#myCycle" + Object.values(cData[i])[0]).append("<button class='updateStartDateButton' onclick='updateStart(" + Object.values(cData[i])[0] + ")'>Update Start Date</button>");
 
-          $("#myCycle" + Object.values(cData[i])[0]).append("<button class='updateStartEndDateButton' onclick='updateStartEnd(" + Object.values(cData[i])[0] + ")'>Update Start and End Date</button>");
-      
+          $("#myCycle" + Object.values(cData[i])[0]).append("<input type='date' id='endDateInput_" + Object.values(cData[i])[0] + "' name='endDateInput' value='2022-07-22'></br>");
+          $("#myCycle" + Object.values(cData[i])[0]).append("<button class='updateEndDateButton' onclick='updateEnd(" + Object.values(cData[i])[0] + ")'>Update End Date</button>");
+          
           $("#myCycle" + Object.values(cData[i])[0]).append("<div id='cycle_events_" + Object.values(cData[i])[0] + "' class='cycle_events'></div>");
           for (var j = 0; j < pArray.length; j++) {
             $("#myCycle" + Object.values(cData[i])[0]).append("<button class='myCycles_Button' onclick='addToProject(" + pArray[j] + "," + Object.values(cData[i])[0] + ")'>+ Add to Project " + pArray[j] + "</button>&nbsp");
