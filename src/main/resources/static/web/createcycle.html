@@ -418,9 +418,9 @@ function addEvent() {
       }
   function updateEnd(cid)
       {
-        getStartDateById(cid);
+        getEndDateById(cid);
          $.ajax({
-          url: "/cycles/set_start_date?newEndDate=" + endDate + "&cycleId=" + cid,
+          url: "/cycles/set_end_date?newEndDate=" + endDate + "&cycleId=" + cid,
           type: "POST",
           dataType: "JSON",
           success: function(json) {
