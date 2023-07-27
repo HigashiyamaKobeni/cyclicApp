@@ -92,8 +92,8 @@
       success: function(response) {
         var noteData = response.data
         var noteString = JSON.stringify(noteData);
+        console.log("NOTESTRING: " + noteString);
         var noteDetails = Object.values(noteData)[1];
-        console.log(noteString);
         // Check if the response data is not null or undefined
         if (noteDetails) {
           var noteContainerId = "noteContainer_" + cycleId;
