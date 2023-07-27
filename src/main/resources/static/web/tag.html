@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Insert Tag</title>
+    <script src="../bootstrap3/js/holder.js"></script>
+    <script src="../bootstrap3/jquery-1.9.1.min.js"></script>
+    <script src="../bootstrap3/js/bootstrap.js"></script>
+    
+</head>
+<body>
+    <h1>Insert Note</h1>
+    <form id="insertTagForm">
+        <label for="noteDetails">Note Details:</label>
+        <input type="text" id="tagName" name="tagName" required>
+        <input id="btn-create-tag"type="button" value="submit" class="createTag_Button"/>
+    </form>
+
+    <script>
+        $("#btn-create-tag").click(function() {
+                $.ajax({
+                    url: "/tags/insert_tag",
+                    type: "POST",
+                    data: $("#insertTagForm").serialize(),
+                    dataType: "JSON",
+                    success: function(json) {
+                    if (json.state == 200) {
+                        alert("create tag success");
+                        location.href = "projectmanagement.html";
+                        } else {
+                            alert("create tag fail");
+                        }
+                    },
+                    error: function(xhr) {
+                        alert("error" + xhr.message);
+                    }
+                })
+            })
+        
+        
+    </script>
+</body>
+</html>
