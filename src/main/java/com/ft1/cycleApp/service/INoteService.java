@@ -6,7 +6,7 @@ public interface INoteService {
 
     void updateNodeDetails(Integer noteId, String noteDetails);
 
-    void insertNote(Note note);
+    Integer insertNote(Note note);
 
     void  deleteNote(Integer noteId);
 
