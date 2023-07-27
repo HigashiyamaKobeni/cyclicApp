@@ -6,8 +6,8 @@
 <body>
     <h1>Insert Note</h1>
     <form id="insertNoteForm">
-        <label for="noteName">Note Name:</label>
-        <input type="text" id="noteName" name="noteName" required>
+        <label for="noteDetails">Note Details:</label>
+        <input type="text" id="noteDetails" name="noteDetails" required>
         <button type="submit">Submit</button>
     </form>
 
@@ -16,11 +16,17 @@
             event.preventDefault();
 
             const formData = new FormData(this);
-            const noteName = formData.get("noteName");
+            const noteDetails = formData.get("noteDetails");
 
+            // Create an object with the 'noteDetails' property
+            const noteObject = {
+                noteDetails: noteDetails
+            };
+
+            // Send the AJAX POST request
             fetch("/insert_note", {
                 method: "POST",
-                body: JSON.stringify({ noteName: noteName }),
+                body: JSON.stringify(noteObject),
                 headers: {
                     "Content-Type": "application/json"
                 }
