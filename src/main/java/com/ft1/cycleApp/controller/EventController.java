@@ -42,7 +42,7 @@ public class EventController extends BaseController{
 
     @RequestMapping("get_note_id")
     public JsonResult<Integer> getNoteId(Integer eventId) {
-        Integer noteId = cycleService.getNoteId(eventId);
+        Integer noteId = eventService.getNoteId(eventId);
 
         return new JsonResult<>(OK, noteId);
     }
