@@ -130,7 +130,7 @@
           success: function(response) {
             var noteData = response.data;
           // The received data contains the noteId
-            var noteId = noteData.data;
+            var noteId = noteData[2];
             var noteString = JSON.stringify(noteId);
             console.log("NOTEId: " + noteString);
 
