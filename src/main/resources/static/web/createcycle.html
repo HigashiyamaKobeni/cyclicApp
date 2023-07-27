@@ -93,7 +93,9 @@
         // Check if the response data is not null or undefined
         if (response && response.data && response.data.noteDetails) {
           // Access the 'noteDetails' property from the response data
-          var noteDetails = response.data.noteDetails;
+          var noteData = response.data
+
+          var noteDetails = Object.values(noteDate)[1];
   
           var noteContainerId = "noteContainer_" + cycleId;
           $("#" + noteContainerId).text("Note: " + noteDetails);
