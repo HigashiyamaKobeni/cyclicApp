@@ -82,6 +82,14 @@
   // =============================================================
   
 
+  /*  add note function2
+   *  desc: use to add note to event within event boxes
+  */
+  // =============================================================
+  function addNote2(eventId) {
+      location.href = "addnote.html?eventId=" + eventId;
+  }
+  // =============================================================
 
   
   ///CREATE CYCLE BUTTON
@@ -326,6 +334,11 @@ function addEvent() {
           eArray[i] = Object.values(eData[i])[1];
           let eventData = "Event Name: " + Object.values(eData[i])[2];
           $("#myEventsDiv").append("<div id='eventsDiv_" + Object.values(eData[i])[1] + "'>" + eventData + "</div></br>");
+          
+          // ===================== add note button ==========================
+          $("#myEventsDiv" + Object.values(eData[i])[1]).append("<button class='addNoteButton' onclick='addNote2(" + Object.values(eData[i])[1] + ")'>Add Note</button>");
+          // ================================================================
+          
           console.log(eventData);
           console.log(cArray.length);
           for (var j = 0; j < cArray.length; j++) {
