@@ -262,13 +262,16 @@
       url: "/events/delete_event?eventId=" + eid,
       type: "POST",
       dataType: "json",
-      success: function(response) {
-        alert("success");
-        location.reload();
-      },
-      error: function(xhr, status, error) {
-        console.log(error);
-      }
+      success: function(json) {
+            if (json.state == 200) {
+              alert("success");
+            } else {
+              alert("fail");
+            }
+          },
+          error: function(xhr) {
+            alert("error" + xhr.message);
+          }
     });
   }
   function getEventID(cid) {
