@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Note</title>
+    <script src="../bootstrap3/js/holder.js"></script>
+    <script src="../bootstrap3/jquery-1.9.1.min.js"></script>
+    <script src="../bootstrap3/js/bootstrap.js"></script>
+</head>
+<body>
+    <h1>Add Note</h1>
+    <form id="addtagForm">
+        <label for="tagId">tag ID:</label>
+        <input type="text" id="tagId" name="tagId" required>
+        <input id="btn-add-tag" type="button" value="addTag" class="addTagButton"/>
+    </form>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+
+        const cycleId = urlParams.get("cycleId");
+        const eventId = urlParams.get("eventId");
+        
+
+        $("#btn-add-note").click(function() {
+
+            const tagId = document.getElementById("tagId").value;
+
+            if (cycleId !== null) {
+                const data = {
+                    cycleId: cycleId,
+                    tagId: tagId
+                };
+
+                $.ajax({
+                   url: "/cycles/add_tag",
+                   type: "POST",
+                   data: data,
+                   dataType: "JSON",
+                   success: function(json) {
+                     if (json.state == 200) {
+                       alert("add tag success");
+                       location.reload();
+                     } else {
+                       alert("add tag fail");
+                     }
+                   },
+                   error: function(xhr) {
+                     alert("error" + xhr.message);
+                   }
+                 });
+            }
+
+            if (eventId !== null) {
+                const data = {
+                    eventId: eventId,
+                    tagId: tagId
+                };
+
+                $.ajax({
+                   url: "/tags/add_tag",
+                   type: "POST",
+                   data: data,
+                   dataType: "JSON",
+                   success: function(json) {
+                     if (json.state == 200) {
+                       alert("add tag success");
+                       location.reload();
+                     } else {
+                       alert("add tag fail");
+                     }
+                   },
+                   error: function(xhr) {
+                     alert("error" + xhr.message);
+                   }
+                 });
+            }
+            
+
+            
+        });
+    </script>
+</body>
+</html>
