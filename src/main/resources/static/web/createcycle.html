@@ -94,7 +94,7 @@
         var note = response.note;
   
         var noteContainerId = "noteContainer_" + cycleId;
-        $("#" + noteContainerId).text("Note: " + note);
+        $("#" + noteContainerId).text("Note: " + note.noteDetails);
       },
       error: function(xhr, status, error) {
         console.error("获取note失败:", error);
