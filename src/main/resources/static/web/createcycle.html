@@ -482,24 +482,23 @@ function addEvent() {
   }
 
   // Hover event handler for myCycles elements
-  $(".myCycles").hover(function() {
+  $(document).on("mouseenter", ".myCycles", function() {
     showPopup($(this).html());
-  }, function() {
-    hidePopup();
   });
 
   // Click event handler for myCycles elements
-  $(".myCycles").click(function() {
+  $(document).on("click", ".myCycles", function() {
     showPopup($(this).html());
   });
 
   // Click event handler for closing the popup when clicked outside the popup content
-  $("#popupContainer").click(function(event) {
+  $(document).on("click", "#popupContainer", function(event) {
     if (!$(event.target).closest(".popup-content").length) {
       hidePopup();
     }
   });
 </script>
+
 
 </body>
 </html>
