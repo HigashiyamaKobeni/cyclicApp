@@ -16,10 +16,14 @@ margin-bottom: 30px;
             border: 1px solid #ccc;
             padding: 20px;
 }
-h2, h3 {
+h2 {
       font-weight: bold;
       /* Add other styling properties here as needed */
       font-family: 'Roboto', sans-serif;
+}
+
+h3 {
+
 }
 
 .cycleName_Label {
