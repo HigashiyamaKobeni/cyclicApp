@@ -8,11 +8,11 @@
     <form id="insertNoteForm">
         <label for="noteDetails">Note Details:</label>
         <input type="text" id="noteDetails" name="noteDetails" required>
-        <button type="submit">Submit</button>
+        <input id="btn-create-note"type="button" value="submite" class="createNote_Button"/>
     </form>
 
     <script>
-        $("#submit").click(function() {
+        $("#btn-create-note").click(function() {
                 $.ajax({
                     url: "/notes/insert_note",
                     type: "POST",
