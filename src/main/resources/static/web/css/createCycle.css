@@ -19,6 +19,7 @@ margin-bottom: 30px;
 h2, h3 {
       font-weight: bold;
       /* Add other styling properties here as needed */
+      font-family: 'Roboto', sans-serif;
 }
 
 .cycleName_Label {
@@ -69,7 +70,7 @@ margin-top: 30px;box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 
   margin-left: 285px;
   bottom: 100px;
   width: 500px;
-  height: 450px;
+  height: 600px;
   background-color: rgba(173, 203, 249, 1);
   border-radius: 35px;
   z-index: 9999;
