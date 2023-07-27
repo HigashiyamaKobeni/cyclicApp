@@ -90,10 +90,16 @@
       data: requestData,
       dataType: "json",
       success: function(response) {
-        var noteDetails = response.data.noteDetails;
+        // Check if the response data is not null or undefined
+        if (response && response.data && response.data.noteDetails) {
+          // Access the 'noteDetails' property from the response data
+          var noteDetails = response.data.noteDetails;
   
-        var noteContainerId = "noteContainer_" + cycleId;
-        $("#" + noteContainerId).text("Note: " + noteDetails);
+          var noteContainerId = "noteContainer_" + cycleId;
+          $("#" + noteContainerId).text("Note: " + noteDetails);
+        } else {
+          console.error("Invalid response data or missing 'noteDetails' property");
+        }
       },
       error: function(xhr, status, error) {
         console.error("获取note失败:", error);
