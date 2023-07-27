@@ -12,6 +12,8 @@ public interface ICycleService {
 
     Cycle getCycle(Integer cycleId);
 
+    Integer getNoteId(Integer cycleId);
+
     void setCycleName(String cycleName, Integer cycleId);
 
     void setStartDate(Date newStartDate, Integer cycleId);
