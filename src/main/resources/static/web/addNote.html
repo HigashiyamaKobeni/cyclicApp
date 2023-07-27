@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Note</title>
+</head>
+<body>
+    <h1>Add Note</h1>
+    <form id="addNoteForm">
+        <!-- 接收来自 URL 参数的 cycleId -->
+        <input type="hidden" id="cycleId" name="cycleId" value="">
+        <label for="noteId">Note ID:</label>
+        <input type="text" id="noteId" name="noteId" required>
+        <input id="btn-add-note" type="button" value="addNote" class="addNoteButton"/>
+    </form>
+
+    <script>
+        // 解析 URL 中的参数
+        const urlParams = new URLSearchParams(window.location.search);
+
+        // 获取 cycleId、tagId 和 eventId 参数
+        const cycleId = urlParams.get("cycleId");
+        const tagId = urlParams.get("tagId");
+        const eventId = urlParams.get("eventId");
+
+        
+
+        // 监听表单提交事件
+        $("#btn-add-note").click(function() {
+
+            // 获取表单输入字段的值
+            const noteId = document.getElementById("noteId").value;
+
+            // 检查参数是否为 null，并发送到后端
+            if (cycleId !== null) {
+                const data = {
+                    cycleId: cycleId,
+                    newNoteId: noteId
+                };
+
+                $.ajax({
+                   url: "/cycles/add_note",
+                   type: "POST",
+                   data: data,
+                   dataType: "JSON",
+                   success: function(json) {
+                     if (json.state == 200) {
+                       alert("add note success");
+                       location.reload();
+                     } else {
+                       alert("add note fail");
+                     }
+                   },
+                   error: function(xhr) {
+                     alert("error" + xhr.message);
+                   }
+                 });
+            }
+            if (tagId !== null) {
+                const data = {
+                    tagId: tagId,
+                    noteId: noteId
+                };
+
+                $.ajax({
+                   url: "/tags/add_note_to_tag",
+                   type: "POST",
+                   data: data,
+                   dataType: "JSON",
+                   success: function(json) {
+                     if (json.state == 200) {
+                       alert("add note success");
+                       location.reload();
+                     } else {
+                       alert("add note fail");
+                     }
+                   },
+                   error: function(xhr) {
+                     alert("error" + xhr.message);
+                   }
+                 });
+            }
+            if (eventId !== null) {
+                const data = {
+                    eventId: eventId,
+                    noteId: newNoteId
+                };
+
+                $.ajax({
+                   url: "/tags/add_note",
+                   type: "POST",
+                   data: data,
+                   dataType: "JSON",
+                   success: function(json) {
+                     if (json.state == 200) {
+                       alert("add note success");
+                       location.reload();
+                     } else {
+                       alert("add note fail");
+                     }
+                   },
+                   error: function(xhr) {
+                     alert("error" + xhr.message);
+                   }
+                 });
+            }
+            
+
+            
+        });
+    </script>
+</body>
+</html>
