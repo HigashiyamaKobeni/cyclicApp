@@ -23,12 +23,16 @@ public class NoteServiceImpl implements INoteService {
     }
 
     @Override
-    public void insertNote(Note note) {
+    public Integer insertNote(Note note) {
         Integer rows = noteMapper.insertNote(note);
+
+        Integer noteId = note.getId();
 
         if (rows != 1) {
             throw new InsertException("error at note inserting");
         }
+
+        return noteId;
     }
 
     @Override
