@@ -109,7 +109,7 @@
     
   function getNoteIdByCycleId(cycleId) {
       $.ajax({
-          url: "/get_note_id",
+          url: "cycles/get_note_id",
           type: "GET",
           dataType: "json",
           data: { cycleId: cycleId }, // Pass the cycleId as a parameter in the query string
