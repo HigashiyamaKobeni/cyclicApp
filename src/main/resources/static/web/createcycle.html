@@ -125,7 +125,9 @@
             var noteString = JSON.stringify(noteId);
             console.log("NOTEId: " + noteString);
 
-            displayNoteByNoteId(noteId, cycleId);
+            if (noteId != null) {
+              displayNoteByNoteId(noteId, cycleId);
+            }
           },
           error: function(xhr, status, error) {
             console.error("Error fetching noteId:", error);
