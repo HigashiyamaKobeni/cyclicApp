@@ -428,6 +428,15 @@ function addEvent() {
           }
         });
       }
+  function getValueById(ID) {
+  const element = document.getElementById(`startDateInput_${ID}`);
+  if (element) {
+    const value = element.value;
+    console.log(value);
+  } else {
+    console.log(`Element with ID "startDateInput_${ID}" not found.`);
+  }
+}
   $(document).ready(function() {
     $.ajax({
       url: "https://murdoch-2023-ict302-ft1-cyclicapp.up.railway.app/cycles/get_cycles_by_uid",
@@ -465,10 +474,7 @@ function addEvent() {
           $("#myCycle" + Object.values(cData[i])[0]).append("<input type='date' id='startDateInput_" + Object.values(cData[i])[0] + "' name='startDateInput' value='2022-07-22'></br>");
           $("#myCycle" + Object.values(cData[i])[0]).append("<input type='date' id='endDateInput_" + Object.values(cData[i])[0] + "' name='endDateInput' value='2022-07-22'></br>");
 
-          var startDate = document.getElementById(`startDateInput_${Object.values(cData[i])[0]}`).value;
-          console.log("startdate: " + startDate);
-          var endDate = document.getElementById(`endDateInput_${Object.values(cData[i])[0]}`).value;
-          console.log("enddate: " + endDate);
+          getValueById(Object.values(cData[i])[0]);
           $("#myCycle" + Object.values(cData[i])[0]).append("<button class='updateStartEndDateButton' onclick='updateStartEnd(" + Object.values(cData[i])[0] +"," + startDate + "," + endDate + ")'>Update Start and End Date</button>");
       
           $("#myCycle" + Object.values(cData[i])[0]).append("<div id='cycle_events_" + Object.values(cData[i])[0] + "' class='cycle_events'></div>");
