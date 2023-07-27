@@ -61,8 +61,9 @@ margin-top: 30px;box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 
   position: fixed;
   flex-direction: column;
   margin-left: 285px;
+  bottom: 100px;
   width: 500px;
-  height: 500px;
+  height: 450px;
   background-color: rgba(191, 157, 157, 0.6);
   z-index: 9999;
 }
