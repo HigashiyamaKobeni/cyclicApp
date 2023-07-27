@@ -11,6 +11,9 @@
   <script src="../bootstrap3/jquery-1.9.1.min.js"></script>
   <script src="../bootstrap3/js/bootstrap.js"></script>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+
   <!-- FONTS LINK HERE -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap">
 
@@ -49,7 +52,8 @@
 </form></br>
 
 <div class="boxCycles" id="myCycles">
-
+<div class="popup-container" id="popupContainer"></div>
+  
 <div class="borderLine-Event"> </div>
 
 </div></br></br>
@@ -75,6 +79,35 @@
 <div class="myEventDiv" id="myEventsDiv">
   
 </div></br>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"> $(document).ready(function() {
+  // Hover event handler
+  $(".myCycles").hover(function() {
+    // Show the popup container
+    $("#popupContainer").fadeIn();
+    // Add the content of the hovered myCycles element to the popup container
+    $("#popupContainer").html($(this).html());
+  }, function() {
+    // Hide the popup container when the mouse leaves the myCycles element
+    $("#popupContainer").fadeOut();
+  });
+
+  // Click event handler (optional - Uncomment this if you want the popup to appear on click instead of hover)
+  // $(".myCycles").click(function() {
+  //   // Show the popup container
+  //   $("#popupContainer").fadeIn();
+  //   // Add the content of the clicked myCycles element to the popup container
+  //   $("#popupContainer").html($(this).html());
+  // });
+
+  // Click event handler for closing the popup when clicked outside the popup content
+  $("#popupContainer").click(function(event) {
+    if (!$(event.target).closest(".popup-content").length) {
+      // Hide the popup container when clicking outside the content
+      $(this).fadeOut();
+    }
+  });
+});
+ </script>
 
 <script type="text/javascript">
   
