@@ -7,7 +7,7 @@
 }
 
 .borderLine-Event {
-
+border-bottom: 1px solid;
 }
 
 .cycleDiv {
@@ -49,6 +49,37 @@ border: 2px solid #ccc;
 padding: 50px;
 margin-top: 30px;box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
 }
+
+/* Your existing CSS styles remain the same */
+
+/* Styles for the popup container */
+.popup-container {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent black background */
+  z-index: 9999; /* Ensure it appears above other elements */
+}
+
+.popup-content {
+  /* Add your desired styles for the content inside the popup */
+  position: relative;
+  max-width: 500px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+}
+
+/* Animation for showing the popup */
+@keyframes fadeInAnimation {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
 .addEvent_Button {
 text-align: center;
 padding: 10px;
