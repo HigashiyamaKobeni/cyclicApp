@@ -36,16 +36,17 @@
   </div>
 </div></br>
 </div>
-
+        <div class="createProjectDiv">
         <form id="form-create-project" action="projectmanagement.html" role="form" class="project_Form">
             <div class="projectNameDiv">
-                <label for="projectName" class="projectName_Label">project name </label>
-                <input name="projectName" type="text" id="projectName" class="projectName_Input">
+                <label for="projectName" class="projectName_Label">Project Name </label>
+                <input name="projectName" type="text" id="projectName" class="projectName_Input" placeholder="Enter project name">
             </div>
             <div class="createProjectDiv">
                 <input id="btn-create-project"type="button" value="create" class="createProject_Button"/>
             </div>
         </form>
+        </div>
         <script type="text/javascript">
             $("#btn-create-project").click(function() {
                 $.ajax({
