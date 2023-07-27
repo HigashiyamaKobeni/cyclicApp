@@ -16,6 +16,9 @@
 
   <!-- FONTS LINK HERE -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 
   <!-- CSS LINK HERE -->
   <link href="../bootstrap3/css/header.css" rel="stylesheet" type="text/css"> <!-- Header -->
@@ -389,7 +392,7 @@ function addEvent() {
         let cLength = Object.keys(cData).length;
         console.log(cString);
         for (var i = 0; i < cLength; i++) {
-          let cycleData = "<h2>Cycle Name: " + Object.values(cData[i])[1] + "</h2> | <h3>Start Date: " + Object.values(cData[i])[2] + "</h3> | <h3>End Date: " + Object.values(cData[i])[3] + "</h3>";          cArray[i] = Object.values(cData[i])[0];
+          let cycleData = "<h2>Cycle Name: " + Object.values(cData[i])[1] + "</h2> -- <h3>Start Date: " + Object.values(cData[i])[2] + "</h3> -- <h3>End Date: " + Object.values(cData[i])[3] + "</h3>";          cArray[i] = Object.values(cData[i])[0];
           cNames[i] = Object.values(cData[i])[1];
           getEventID(Object.values(cData[i])[0]);
           $("#myCycles").append("<div class='myCycles' id='myCycle" + Object.values(cData[i])[0] + "'>" + cycleData + " </div></br>");
