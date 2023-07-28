@@ -176,7 +176,7 @@ public class EventController extends BaseController{
 
         eventService.setStartDate(newStartDate, eventId);
 
-        Integer cycleId = eventService.getCycleId();
+        Integer cycleId = eventService.getCycleId(eventId);
         
         cycleService.initialDate(cycleId);
 
@@ -192,7 +192,7 @@ public class EventController extends BaseController{
 
         eventService.setEndDate(newEndDate, eventId);
 
-        Integer cycleId = eventService.getCycleId();
+        Integer cycleId = eventService.getCycleId(eventId);
         
         cycleService.initialDate(cycleId);
 
