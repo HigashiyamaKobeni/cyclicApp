@@ -29,7 +29,7 @@
                 dataType: "json",
                 success: function(response) {
                     var tagList = response.data;
-                    var noteString = JSON.stringify(noteId);
+                    var noteString = JSON.stringify(tagList);
                     var tagListLength = Object.keys(tagtList).length;
 
                     for (var i = 0; i < tagListLength; i++) {
