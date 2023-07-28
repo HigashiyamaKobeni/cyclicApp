@@ -161,7 +161,7 @@
 
           if (tagName) {
           var tagContainerId = "tagContainer_" + cycleId;
-            $("#" + tagContainerId).text(tagName);
+            $("#" + tagContainerId).append(tagName);
           } else {
             console.error("missing 'tagNames' property");
           }
@@ -188,7 +188,7 @@
 
           if (tagName) {
           var tagContainerId = "tagContainerE_" + eventId;
-            $("#" + tagContainerId).text(tagName);
+            $("#" + tagContainerId).append(tagName);
           } else {
             console.error("missing 'tagNames' property");
           }
