@@ -8,8 +8,6 @@ import java.util.Date;
 public interface IEventService {
     void updateCycleDate(Integer eventId);
     
-    Integer getCycleId(Integer eventId);
-    
     void insertEvent(Event newEvent);
 
     void deleteEvent(Integer eventId);
