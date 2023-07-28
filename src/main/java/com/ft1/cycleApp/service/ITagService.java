@@ -10,7 +10,7 @@ public interface ITagService {
 
     void deleteTag(Integer tagId);
 
-    ArrayList<Tag> findTagByUid(Integer uid);
+    ArrayList<Integer> findTagByUid(Integer uid);
 
     void updateTagName(String tagName, Integer tagId, Integer uid);
 
