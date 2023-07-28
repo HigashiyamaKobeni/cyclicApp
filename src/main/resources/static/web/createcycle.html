@@ -107,6 +107,8 @@
               var tagId = tagData[i];
 
               console.log("tagId:       " + tagId);
+
+              getTagNameC(tagId, cycleId);
             }
             
           },
@@ -130,6 +132,8 @@
                   var tagId = tagData[i];
     
                   console.log("tagId:       " + tagId);
+
+                  getTagNameE(tagId, eventId);
               }
             
           },
@@ -143,7 +147,7 @@
   // get tag detail
   // ===============================================================
 
-  function getTagNameC(tagId) {
+  function getTagNameC(tagId, cycleId) {
       $.ajax({
         url: "https://murdoch-2023-ict302-ft1-cyclicapp.up.railway.app/tags/find_tag_by_tagid?tagId=" + tagId,
         type: "POST",
@@ -155,12 +159,15 @@
           var tagName = tagDate[1];
 
           console.log("tagName: " + tagName);
-          
-          if (response.state == 200) {
-            location.reload();
+        
+
+          if (tagName) {
+          var tagContainerId = "tagContainer_" + cycleId;
+            $("#" + tagContainerId).text(tagName);
           } else {
-            alert("create cycle fail");
+            console.error("missing 'tagNames' property");
           }
+
         },
         error: function(xhr, status, error) {
           console.error("delete note fail:", error);
@@ -168,7 +175,7 @@
       });
   }
   
-  function getTagNameE(tagId) {
+  function getTagNameE(tagId, eventId) {
       $.ajax({
         url: "https://murdoch-2023-ict302-ft1-cyclicapp.up.railway.app/tags/find_tag_by_tagid?tagId=" + tagId,
         type: "POST",
@@ -180,12 +187,14 @@
           var tagName = tagDate[1];
 
           console.log("tagName: " + tagName);
-          
-          if (response.state == 200) {
-            location.reload();
+
+          if (tagName) {
+          var tagContainerId = "tagContainerE_" + cycleId;
+            $("#" + tagContainerId).text(tagName);
           } else {
-            alert("create cycle fail");
+            console.error("missing 'tagNames' property");
           }
+          
         },
         error: function(xhr, status, error) {
           console.error("delete note fail:", error);
@@ -706,6 +715,10 @@ function addEvent() {
 
           // ===================== display tag ==========================
 
+          $("#myCycle" + Object.values(cData[i])[0]).append(`
+          <div class='tagContainer myTags' id='tagContainer_${Object.values(cData[i])[0]}'></div>
+          `);
+
           getTagIdC(Object.values(cData[i])[0]);
 
           // ===================== display note ==========================
@@ -788,6 +801,9 @@ function addEvent() {
           $("#eventsDiv_" + Object.values(eData[i])[1]).append("<button class='updateEndDateButton' onclick='updateEnd(" + Object.values(eData[i])[1] + ")'>Update End Date</button></br>");
 
           // ===================== display tag ==========================
+          $("#eventsDiv_" + Object.values(eData[i])[1]).append(`
+          <div class='tagContainer myTags' id='tagContainerE_${Object.values(eData[i])[1]}'></div>
+          `);
 
           getTagIdE(Object.values(eData[i])[1]);
           
