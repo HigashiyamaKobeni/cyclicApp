@@ -157,26 +157,19 @@
   // delete tag button
   // ===============================================================
 
-  $(".deleteTagButtonE").click(function() {
-      var tagId = $(this).data("tagId");
-
-      var eventId = $(this).data("eventId");
+  function deleteTagButtonE(tagId, eventId) {
 
       console.log("tagId in delete button: " + tagId + "eventId in delte button" +  eventId);
       
       location.href = "deleteTag.html?tagId=" + tagId + "&eventId=" + eventId;
-  });
+  }
 
-  $(".deleteTagButtonC").click(function() {
-      var tagId = $(this).data("tagId");
-
-      var cycleId = $(this).data("cycleId");
+  function deleteTagButtonC(tagId, cycleId) {
 
       console.log("tagId in delete button: " + tagId + "cycleId in delte button" + cycleId);
 
       location.href = "deleteTag.html?tagId=" + tagId +"&circleId=" + cycleId;
-      // 进行后续操作
-  });
+  }
   
   // added by zek
   // get tag detail
@@ -198,7 +191,7 @@
 
           if (tagName) {
             var tagContainerId = "tagContainer_" + cycleId;
-            $("#" + tagContainerId).append("<button class='deleteTagButtonC' data-tagId='" + tagId + "' data-cycleId='" + cycleId + "'>" +tagName+"</button>");
+            $("#" + tagContainerId).append("<button class='deleteTagButtonC' "+ "' onclick='deleteTagButtonC(" + tagId + "," + cycleId")'>"  +tagName+"</button>");
           } else {
             console.error("missing 'tagNames' property");
           }
@@ -225,7 +218,7 @@
 
           if (tagName) {
           var tagContainerId = "tagContainerE_" + eventId;
-            $("#" + tagContainerId).append("<button class='deleteTagButtonE' data-tagId='" + tagId + "' data-eventId='" + eventId + "'>" +tagName+"</button>");
+            $("#" + tagContainerId).append("<button class='deleteTagButtonE' "+ "' onclick='deleteTagButtonE(" + tagId + "," + eventId")'>"  +tagName+"</button>");
           } else {
             console.error("missing 'tagNames' property");
           }
