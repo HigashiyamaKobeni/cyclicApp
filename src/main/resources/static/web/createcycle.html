@@ -476,7 +476,7 @@ function addEvent() {
           let cycleData = "<h2>Cycle Name: " + Object.values(cData[i])[1] + "</h2> -- <h3>Start Date: " + Object.values(cData[i])[2] + "</h3> -- <h3>End Date: " + Object.values(cData[i])[3] + "</h3>";          cArray[i] = Object.values(cData[i])[0];
           cNames[i] = Object.values(cData[i])[1];
           getEventID(Object.values(cData[i])[0]);
-          $("#myCycles").append("<div id='myCycle" + Object.values(cData[i])[0] + "'>" + cycleData + " </div></br>");
+          $("#myCycles").append("<div class='myCycles' id='myCycle" + Object.values(cData[i])[0] + "'>" + cycleData + " </div></br>");
           $("#myCycle" + Object.values(cData[i])[0]).append("<div id='addEventDiv_" + Object.values(cData[i])[0] + "'></div>");
 
           // ===================== display note ==========================
