@@ -68,23 +68,20 @@ public class TagServiceImpl implements ITagService {
     }
 
     @Override
-    public ArrayList<Tag> findTagByUid(Integer uid) {
+    public ArrayList<Integer> findTagByUid(Integer uid) {
 
-        ArrayList<Tag> tags = new ArrayList<>();
+        ArrayList<Integer> tagIds = new ArrayList<>();
 
-        for (Tag result : tagMapper.findTagByUid(uid)) {
-            Tag tag = new Tag();
+        for (Integer result : tagMapper.findTagByUid(uid)) {
 
-            duplicateTag(result, tag);
-
-            tags.add(tag);
+            tagIds.add(result);
         }
 
         if (tags.size() == 0) {
             throw new TagNotFoundException("user has no tags");
         }
 
-        return tags;
+        return tagIds;
 
     }
 
