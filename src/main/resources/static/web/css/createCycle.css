@@ -53,6 +53,28 @@ box-shadow: 0 2px 5px rgba(213, 217, 217, 0.5);
 .autoplayVideo {
 text-align: center;
 }
+
+.autoplayVideo {
+    /* Set the maximum width of the container */
+    max-width: 100%;
+    /* Set the maximum height of the container */
+    max-height: 400px; /* Adjust this value as needed */
+    /* To ensure the video overflows horizontally, set overflow property to hidden */
+    overflow: hidden;
+  }
+
+  .autoplayVideo video {
+    /* Set the video width to be larger than the container */
+    width: 120%;
+    /* Set the video height to maintain the correct aspect ratio */
+    height: auto;
+    /* To center the video horizontally, use negative left margin */
+    margin-left: -10%;
+    /* To make sure the video is centered vertically, use a transform */
+    transform: translateY(-50%);
+    /* Center the video vertically using absolute positioning */
+    position: absolute;
+    top: 50%;
 /*----------------------*/
 .boxCycles {
 grid-template-columns: repeat(6, 1fr);
