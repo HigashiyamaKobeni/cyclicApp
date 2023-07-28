@@ -166,11 +166,17 @@ height: 22px;
 .deleteNoteButton img {
 height: 22px;
   }
-  .addTagButton img {
+
+.addTagButton img {
     /* Add your CSS styles for the images here */
     /* For example: width, height, margin, etc. */
 height: 22px;
   }
+
+.deleteCycleButton img {
+height: 22px;
+  }
+
 
 /* Styles for the popup container */
 .popup-container {
