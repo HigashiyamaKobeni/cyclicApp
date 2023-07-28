@@ -86,6 +86,112 @@
 </div></br>
 
 <script type="text/javascript">
+
+  // added by zek
+  // get tagId
+  // ===============================================================
+
+  function getTagIdC(cycleId) {
+      $.ajax({
+          url: "https://murdoch-2023-ict302-ft1-cyclicapp.up.railway.app/cycles/check_tag?cycleId=" + cycleId,
+          type: "POST",
+          dataType: "json",
+          success: function(response) {
+
+            var tagData = response.data;
+
+            var tagLength = Object.value(tagData).length;
+            
+            
+            for (var i = 0; i < tagLenth; i++) {
+              var tagId = tagData[i];
+
+              console.log("tagId:       " + tagId);
+            }
+            
+          },
+          error: function(xhr, status, error) {
+            console.error("delete note fail:", error);
+          }
+      })
+  }
+  
+  function getTagIdE(eventId) {
+      $.ajax({
+        url: "https://murdoch-2023-ict302-ft1-cyclicapp.up.railway.app/events/get_tag?eventId=" + eventId,
+          type: "POST",
+          dataType: "json",
+          success: function(response) {
+              var tagData = response.data;
+
+              var tagLength = Object.value(tagData).length;
+                            
+              for (var i = 0; i < tagLenth; i++) {
+                  var tagId = tagData[i];
+    
+                  console.log("tagId:       " + tagId);
+              }
+            
+          },
+          error: function(xhr, status, error) {
+            console.error("delete note fail:", error);
+          }
+      })
+  }
+  
+  // added by zek
+  // get tag detail
+  // ===============================================================
+
+  function getTagNameC(tagId) {
+      $.ajax({
+        url: "https://murdoch-2023-ict302-ft1-cyclicapp.up.railway.app/tags/find_tag_by_tagid?tagId=" + tagId,
+        type: "POST",
+        dataType: "json",
+        success: function(response) {
+
+          var tagData = response.data;
+
+          var tagName = tagDate[1];
+
+          console.log("tagName: " + tagName);
+          
+          if (response.state == 200) {
+            location.reload();
+          } else {
+            alert("create cycle fail");
+          }
+        },
+        error: function(xhr, status, error) {
+          console.error("delete note fail:", error);
+        }
+      });
+  }
+  
+  function getTagNameE(tagId) {
+      $.ajax({
+        url: "https://murdoch-2023-ict302-ft1-cyclicapp.up.railway.app/tags/find_tag_by_tagid?tagId=" + tagId,
+        type: "POST",
+        dataType: "json",
+        success: function(response) {
+
+          var tagData = response.data;
+
+          var tagName = tagDate[1];
+
+          console.log("tagName: " + tagName);
+          
+          if (response.state == 200) {
+            location.reload();
+          } else {
+            alert("create cycle fail");
+          }
+        },
+        error: function(xhr, status, error) {
+          console.error("delete note fail:", error);
+        }
+      });
+  }
    
   // added by zek
   // delete note function
