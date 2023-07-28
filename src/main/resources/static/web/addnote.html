@@ -7,6 +7,30 @@
     <script src="../bootstrap3/js/bootstrap.js"></script>
 
     <link href="../bootstrap3/css/header.css" rel="stylesheet" type="text/css"> <!-- Header -->
+
+    <style>
+        body, h1, p {
+margin: 0;
+padding: 0;
+text-align: center;
+}
+        .note-Input {
+padding: 8px;
+border: 1px solid #ccc;
+border-radius: 4px;
+
+        .createNoteButton {
+text-align: center;
+padding: 5px;
+background-color: RGB(24, 119, 242);
+border: 1px solid RGB(24, 119, 242);
+color: white;
+margin-top: 10px;
+margin-left: 70px;
+            
+        }
+        
+    </style>
 </head>
 <body>
     <div class="top-div">
@@ -32,7 +56,7 @@
     <h1>Add Note</h1></br>
 
     <label for="noteDetails">Note Name:</label>
-        <input type="text" id="noteDetails" name="noteDetails" required>
+        <input class="note-Input" type="text" id="noteDetails" name="noteDetails" required>
         <input id="btn-create-note" type="button" value="createNote" class="createNoteButton"/>
 
     <script>
