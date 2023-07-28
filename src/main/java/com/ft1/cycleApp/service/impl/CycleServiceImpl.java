@@ -22,7 +22,7 @@ public class CycleServiceImpl implements ICycleService {
 
     @Override
     public ArrayList<Integer> checkTag(Integer cycleId){
-        ArrayList<Integer> tagIds; = new ArrayList<>();
+        ArrayList<Integer> tagIds = new ArrayList<>();
 
        ArrayList<Integer> result = cycleMapper.checkTag(cycleId);
         
