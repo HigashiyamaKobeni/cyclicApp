@@ -151,7 +151,7 @@
       success: function(response) {
         var noteData = response.data
         var noteString = JSON.stringify(noteData);
-        console.log("NOTESTRING: " + noteString);
+        console.log("NOTESTRING in event: " + noteString);
         var noteDetails = Object.values(noteData)[1];
         // Check if the response data is not null or undefined
         if (noteDetails) {
@@ -182,7 +182,7 @@
       success: function(response) {
         var noteData = response.data
         var noteString = JSON.stringify(noteData);
-        console.log("NOTESTRING: " + noteString);
+        console.log("NOTESTRING in circle: " + noteString);
         var noteDetails = Object.values(noteData)[1];
         // Check if the response data is not null or undefined
         if (noteDetails) {
@@ -214,7 +214,7 @@
           success: function(response) {
             var noteId = response.data;
             var noteString = JSON.stringify(noteId);
-            console.log("NOTEId: " + noteString);
+            console.log("NOTEId in eventid: " + noteString);
 
             if (noteId != null) {
               displayNoteByNoteIdE(noteId, eventId);
@@ -235,7 +235,7 @@
           success: function(response) {
             var noteId = response.data;
             var noteString = JSON.stringify(noteId);
-            console.log("NOTEId: " + noteString);
+            console.log("NOTEId in cycleid: " + noteString);
 
             if (noteId != null) {
               displayNoteByNoteIdC(noteId, cycleId);
