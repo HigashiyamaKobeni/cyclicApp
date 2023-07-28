@@ -316,14 +316,17 @@ box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px
 /* Select buttons inside elements with id starting with 'eventsDiv_' */
 [id^="eventsDiv_"] .addNoteButton {
     /* Your CSS styles for the addNoteButton */
+           margin-right: 90px;
   }
 
 [id^="eventsDiv_"] .deleteNoteButton {
     /* Your CSS styles for the deleteNoteButton */
+            margin-right: 90px;
   }
 
 [id^="eventsDiv_"] .addTagButton {
     /* Your CSS styles for the addTagButton */
+            margin-right: 90px;
   }
 
 
