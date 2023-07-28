@@ -57,7 +57,7 @@ margin-left: 200px;
 }
 
 
-[id^="myCycle_"] {
+.myCycles {
 text-align: center;
 border: 2px solid #ccc;
 border-radius: 35px;
