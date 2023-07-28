@@ -41,13 +41,13 @@ public class TagController extends BaseController{
     }
 
     @RequestMapping("find_tag_by_uid")
-    public JsonResult<ArrayList<Tag>> findTagByUid(HttpSession session) {
+    public JsonResult<ArrayList<Integer>> findTagByUid(HttpSession session) {
 
         Integer uid = getuidFromSession(session);
 
-        ArrayList<Tag> tags = new ArrayList<>();
+        ArrayList<Integer> tags = new ArrayList<>();
 
-        for (Tag result : tagService.findTagByUid(uid)) {
+        for (Integer result : tagService.findTagByUid(uid)) {
             tags.add(result);
         }
 
