@@ -20,7 +20,7 @@ public class CycleServiceImpl implements ICycleService {
     @Autowired
     private EventMapper eventMapper;
 
-    void initialDate(Integer cycleId) {
+    public void initialDate(Integer cycleId) {
         ArrayList<Integer> eventIds = cycleMapper.checkEvent(cycleId);
 
         cycleMapper.setStartDate(null,cycleId);
