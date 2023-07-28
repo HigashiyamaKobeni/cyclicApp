@@ -2,6 +2,7 @@ package com.ft1.cycleApp.service.impl;
 
 import com.ft1.cycleApp.entity.Event;
 import com.ft1.cycleApp.mapper.EventMapper;
+import com.ft1.cycleApp.mapper.CycleMapper;
 import com.ft1.cycleApp.service.IEventService;
 import com.ft1.cycleApp.service.exception.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,29 @@ public class EventServiceImpl implements IEventService {
 
     @Autowired
     private EventMapper eventMapper;
+
+    @Autowired
+    private CycleMapper cycleMapper;
+
+    @Override
+    public void updateCycleDate(Integer eventId) {
+        ArrayList<Integer> result = eventMapper.getCycleId(eventId);
+
+        Event event = eventMapper.getEvent(eventId);
+
+        
+        if (result != null) {
+            if (event.getEndDate() != null) {
+                for (Integer cycleId : result) {
+                    cycleMapper.setEndDate(event.getEndDate(), cycleId);
+                }
+            } else if (event.getStartDate() != null) {
+                for (Integer cycleId : result) {
+                    cycleMapper.setStartDate(event.getStartDate(), cycleId);
+                }
+            }
+        }
+    }
 
     @Override
     public Integer getCycleId(Integer eventId) {
