@@ -198,7 +198,7 @@
 
           if (tagName) {
             var tagContainerId = "tagContainer_" + cycleId;
-            $("#" + tagContainerId).append("<button class='deleteTagButtonC' data-tagId='" + tagId + "' data-cycleId='" + cycleId + "'>" +tagName+"<img src='../bootstrap3/css/tag-icon.png' alt='Add Tag' /></button>");
+            $("#" + tagContainerId).append("<button class='deleteTagButtonC' data-tagId='" + tagId + "' data-cycleId='" + cycleId + "'>" +tagName+"</button>");
           } else {
             console.error("missing 'tagNames' property");
           }
@@ -225,7 +225,7 @@
 
           if (tagName) {
           var tagContainerId = "tagContainerE_" + eventId;
-            $("#" + tagContainerId).append("<button class='deleteTagButtonE' data-tagId='" + tagId + "' data-eventId='" + eventId + "'>" +tagName+"<img src='../bootstrap3/css/tag-icon.png' alt='Add Tag' /></button>");
+            $("#" + tagContainerId).append("<button class='deleteTagButtonE' data-tagId='" + tagId + "' data-eventId='" + eventId + "'>" +tagName+"</button>");
           } else {
             console.error("missing 'tagNames' property");
           }
