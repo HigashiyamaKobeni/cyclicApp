@@ -400,6 +400,28 @@ function addEvent() {
           }
         });
       }
+
+  // update cycle date
+
+  fucntion updateCycleDate(eid) {
+    $.ajax({
+            url: "https://murdoch-2023-ict302-ft1-cyclicapp.up.railway.app/events/update_cycle_date?eventId=" + eid,
+            type: "POST",
+            dataType: "JSON",
+            success: function(json) {
+              if (json.state == 200) {
+                location.reload();
+              } else {
+                alert("fail");
+              }
+            },
+            error: function(xhr) {
+              alert("error" + xhr.message);
+            }
+    });
+  }
+
+  
   function updateStart(eid)
       {
         getStartDateById(eid);
@@ -408,11 +430,7 @@ function addEvent() {
           type: "POST",
           dataType: "JSON",
           success: function(json) {
-            if (json.state == 200) {
-              location.reload();
-            } else {
-              alert("fail");
-            }
+            updateCycleDate(eid);
           },
           error: function(xhr) {
             alert("error" + xhr.message);
@@ -420,19 +438,15 @@ function addEvent() {
         });
       }
   
-  function updateEnd(cid)
+  function updateEnd(eid)
       {
-        getEndDateById(cid);
+        getEndDateById(eid);
          $.ajax({
-          url: "https://murdoch-2023-ict302-ft1-cyclicapp.up.railway.app/events/set_end_date?newEndDateString=" + endDate + "&eventId=" + cid,
+          url: "https://murdoch-2023-ict302-ft1-cyclicapp.up.railway.app/events/set_end_date?newEndDateString=" + endDate + "&eventId=" + eid,
           type: "POST",
           dataType: "JSON",
           success: function(json) {
-            if (json.state == 200) {
-              location.reload();
-            } else {
-              alert("fail");
-            }
+            updateCycleDate(eid)
           },
           error: function(xhr) {
             alert("error" + xhr.message);
