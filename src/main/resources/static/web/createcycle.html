@@ -148,18 +148,16 @@
   // ===============================================================
 
   function getTagNameC(tagId, cycleId) {
+    console.log("tagId pass into getTagNameC: " + tagId);
       $.ajax({
         url: "https://murdoch-2023-ict302-ft1-cyclicapp.up.railway.app/tags/find_tag_by_tagid?tagId=" + tagId,
         type: "POST",
         dataType: "json",
         success: function(response) {
 
-          var tagData = response.data;
+          var tagName = response.data['tagName'];
 
-          var tagName = Object.values(tagData)[1];
-
-          console.log("tagDataC: " + tagData);
-        
+          console.log("tagDataC: " + tagName);
 
           if (tagName) {
           var tagContainerId = "tagContainer_" + cycleId;
