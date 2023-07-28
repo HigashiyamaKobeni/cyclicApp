@@ -10,7 +10,7 @@ public interface TagMapper {
 
     Integer deleteTag(Integer tagId);
 
-    ArrayList<Tag> findTagByUid(Integer uid);
+    ArrayList<Integer> findTagByUid(Integer uid);
 
     Integer updateTagName(String tagName, Integer tagId, Integer uid);
 
