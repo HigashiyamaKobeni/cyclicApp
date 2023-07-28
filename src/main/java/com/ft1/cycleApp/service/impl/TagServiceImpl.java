@@ -43,17 +43,14 @@ public class TagServiceImpl implements ITagService {
 
     @Override
     public Integer insertTag(Tag tag) {
-        Tag result = new Tag();
-
-        duplicateTag(tag, result);
 
         Integer rows = tagMapper.insertTag(result);
 
+        Integer tagId = tag.getTagId();
+
         if (rows != 1) {
             throw new InsertException("errors occur at insert");
-        }
-
-        Integer tagId = tag.getTagId();
+        }     
 
         return tagId;
     }
