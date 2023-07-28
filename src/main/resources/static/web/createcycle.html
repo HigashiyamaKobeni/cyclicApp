@@ -106,7 +106,7 @@
             for (var i = 0; i < tagLength; i++) {
               var tagId = tagData[i];
 
-              console.log("tagId:       " + tagId);
+              console.log("tagIdC:       " + tagId);
 
               getTagNameC(tagId, cycleId);
             }
@@ -131,7 +131,7 @@
               for (var i = 0; i < tagLength; i++) {
                   var tagId = tagData[i];
     
-                  console.log("tagId:       " + tagId);
+                  console.log("tagIdE:       " + tagId);
 
                   getTagNameE(tagId, eventId);
               }
@@ -156,7 +156,7 @@
 
           var tagData = response.data;
 
-          var tagName = tagData[1];
+          var tagName = Object.values(tagData)[1];
 
           console.log("tagData: " + tagData);
         
@@ -184,8 +184,8 @@
 
           var tagData = response.data;
 
-          var tagName = tagData[1];
-
+          var tagName = Object.values(tagData)[1];
+          
           console.log("tagData: " + tagData);
 
           if (tagName) {
