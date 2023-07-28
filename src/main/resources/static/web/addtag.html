@@ -5,15 +5,60 @@
     <script src="../bootstrap3/js/holder.js"></script>
     <script src="../bootstrap3/jquery-1.9.1.min.js"></script>
     <script src="../bootstrap3/js/bootstrap.js"></script>
+ <link href="../bootstrap3/css/header.css" rel="stylesheet" type="text/css"> <!-- Header -->
+
+    <style>
+        .tagDiv {
+text-align: center;
+border: 1px solid #ccc;
+padding: 20px;
+        }
+
+        .tagID_input {
+padding: 8px;
+border: 1px solid #ccc;
+border-radius: 4px;
+}
+        .createTag_Button {
+text-align: center;
+padding: 5px;
+background-color: RGB(24, 119, 242);
+border: 1px solid RGB(24, 119, 242);
+color: white;
+margin-top: 10px;
+margin-left: 70px;
+        }
 </head>
 <body>
-    <h1>add tag</h1>
+     <div class="top-div">
+        <div class="top-text">
+            <p>cyclic App</p>
+        </div>
+    </div>
+  
+<div class="tab-div">  
+<div class="header"> 
+  <div class="tab" > 
+  <a class="link" href="userdata.html">User Info</a>
+  </div>
+  <div class="tab">
+  <a class="link" href="projectmanagement.html">Project Management</a>
+  </div>
+  <div class="tab"> 
+    <a class="link" href="createcycle.html">Cycle Management</a>
+  </div>
+</div></br>
+</div>
+
+    <div class="tagDiv">
+    <h1>Add Tag</h1>
     <form id="addtagForm">
-        <label for="tagName">tag Name:</label>
-        <input type="text" id="tagName" name="tagName" required>
-        <input id="btn-add-tag" type="button" value="addTag" class="addTagButton"/>
+        <label for="tagName">Tag Name:</label>
+        <input class="tagID_input" type="text" id="tagName" name="tagName" required>
+        <input class="createTag_Button" id="btn-add-tag" type="button" value="Add Tag" />
     </form>
-    
+    </div>
+        
     <div id="tagList"></div>
     
     <script>
