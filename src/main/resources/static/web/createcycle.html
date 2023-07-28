@@ -132,7 +132,38 @@
   // display note function
   // ===============================================================
 
-  function displayNoteByNoteId(noteId, cycleId) {
+  function displayNoteByNoteIdE(noteId, eventId) {
+    // 创建一个包含发送到AJAX请求中的数据的对象
+    var requestData = {
+      noteId: noteId
+    };
+  
+    // 发送AJAX请求到后端
+    $.ajax({
+      url: "https://murdoch-2023-ict302-ft1-cyclicapp.up.railway.app/notes/get_note?noteId=" + noteId,
+      type: "GET",
+      dataType: "json",
+      success: function(response) {
+        var noteData = response.data
+        var noteString = JSON.stringify(noteData);
+        console.log("NOTESTRING: " + noteString);
+        var noteDetails = Object.values(noteData)[1];
+        // Check if the response data is not null or undefined
+        if (noteDetails) {
+          var noteContainerId = "noteContainerE_" + eventId;
+          $("#" + noteContainerId).text("Note: " + noteDetails);
+        } else {
+          console.error("missing 'noteDetails' property");
+        }
+      },
+      error: function(xhr, status, error) {
+        console.error("获取note失败:", error);
+        //document.getElementById("noteContainer").innerText = "获取note失败: " + error;
+      }
+    });
+  }
+
+  function displayNoteByNoteIdC(noteId, cycleId) {
     // 创建一个包含发送到AJAX请求中的数据的对象
     var requestData = {
       noteId: noteId
@@ -166,6 +197,27 @@
   // added by zek
   // get noteId function
   // ===============================================================
+
+  function getNoteIdByEventId(eventId) {
+      $.ajax({
+          url: "https://murdoch-2023-ict302-ft1-cyclicapp.up.railway.app/cycles/get_note_id",
+          type: "GET",
+          dataType: "json",
+          data: { eventId: eventId }, // Pass the cycleId as a parameter in the query string
+          success: function(response) {
+            var noteId = response.data;
+            var noteString = JSON.stringify(noteId);
+            console.log("NOTEId: " + noteString);
+
+            if (noteId != null) {
+              displayNoteByNoteIdE(noteId, eventId);
+            }
+          },
+          error: function(xhr, status, error) {
+            console.error("Error fetching noteId:", error);
+          }
+      });
+    }
     
   function getNoteIdByCycleId(cycleId) {
       $.ajax({
@@ -179,7 +231,7 @@
             console.log("NOTEId: " + noteString);
 
             if (noteId != null) {
-              displayNoteByNoteId(noteId, cycleId);
+              displayNoteByNoteIdC(noteId, cycleId);
             }
           },
           error: function(xhr, status, error) {
@@ -617,8 +669,15 @@ function addEvent() {
 
           $("#eventsDiv_" + Object.values(eData[i])[1]).append("<input type='date' id='endDateInput_" + Object.values(eData[i])[1] + "' name='endDateInput' value='2022-07-22'>");
           $("#eventsDiv_" + Object.values(eData[i])[1]).append("<button class='updateEndDateButton' onclick='updateEnd(" + Object.values(eData[i])[1] + ")'>Update End Date</button></br>");
+
+          // ===================== display note ==========================
+
+          // Inside your for loop where you create the noteContainer div
+          $("#eventsDiv_" + Object.values(eData[i])[1]).append(`
+          <div class='noteContainer myNotes' id='noteContainerE_${Object.values(cData[i])[0]}'></div>
+          `);
           
-          // ================================================================
+          getNoteIdByEventId(Object.values(eData[i])[1]);
           
           // ===================== add note button ==========================
            // Add Note Button with Image
