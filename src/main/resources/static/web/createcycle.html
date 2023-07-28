@@ -481,9 +481,11 @@ function addEvent() {
 
           // ===================== display note ==========================
 
+          // Inside your for loop where you create the noteContainer div
           $("#myCycle" + Object.values(cData[i])[0]).append(`
-            <div class='myNotes' id='noteContainer_${Object.values(cData[i])[0]}'></div>
+          <div class='noteContainer myNotes' id='noteContainer_${Object.values(cData[i])[0]}'></div>
           `);
+
           
           getNoteIdByCycleId(Object.values(cData[i])[0]);
           
