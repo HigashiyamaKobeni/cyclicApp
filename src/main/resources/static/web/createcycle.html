@@ -731,7 +731,7 @@ function addEvent() {
         let cLength = Object.keys(cData).length;
         console.log(cString);
         for (var i = 0; i < cLength; i++) {
-          let cycleData = "<h2>Cycle Name: " + Object.values(cData[i])[1] + "</h2> -- <h3>Start Date: " + Object.values(cData[i])[2].substring(0, 10); + "</h3> -- <h3>End Date: " + Object.values(cData[i])[3].substring(0, 10); + "</h3>";          
+          let cycleData = "<h2>Cycle Name: " + Object.values(cData[i])[1] + "</h2> -- <h3>Start Date: " + Object.values(cData[i])[2].substring(0, 10); + "</h3> -- <h3>End Date: " + Object.values(cData[i])[3].substring(0, 10) + "</h3>";          
           cArray[i] = Object.values(cData[i])[0];
           cNames[i] = Object.values(cData[i])[1];
           getEventID(Object.values(cData[i])[0]);
