@@ -704,6 +704,10 @@ function addEvent() {
           $("#myCycles").append("<div class='myCycles' id='myCycle" + Object.values(cData[i])[0] + "'>" + cycleData + " </div></br>");
           $("#myCycle" + Object.values(cData[i])[0]).append("<div id='addEventDiv_" + Object.values(cData[i])[0] + "'></div>");
 
+          // ===================== display tag ==========================
+
+          getTagIdC(Object.values(cData[i])[0]);
+
           // ===================== display note ==========================
 
           // Inside your for loop where you create the noteContainer div
@@ -783,6 +787,10 @@ function addEvent() {
           $("#eventsDiv_" + Object.values(eData[i])[1]).append("<input type='date' id='endDateInput_" + Object.values(eData[i])[1] + "' name='endDateInput' value='2022-07-22'>");
           $("#eventsDiv_" + Object.values(eData[i])[1]).append("<button class='updateEndDateButton' onclick='updateEnd(" + Object.values(eData[i])[1] + ")'>Update End Date</button></br>");
 
+          // ===================== display tag ==========================
+
+          getTagIdE(Object.values(eData[i])[1]);
+          
           // ===================== display note ==========================
 
           // Inside your for loop where you create the noteContainer div
