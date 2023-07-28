@@ -21,6 +21,19 @@ public class CycleServiceImpl implements ICycleService {
     private EventMapper eventMapper;
 
     @Override
+    public ArrayList<Integer> checkTag(Integer cycleId){
+        ArrayList<Integer> tagIds; = new ArrayList<>();
+
+       ArrayList<Integer> result = cycleMapper.checkTag(cycleId);
+        
+        for (Integer tagId: result) {
+            tagIds.add(tagId);
+        }
+
+        return tagIds;
+    }
+
+    @Override
     public void initialDate(Integer cycleId) {
         ArrayList<Integer> eventIds = cycleMapper.checkEvent(cycleId);
 
