@@ -77,7 +77,7 @@ public class TagServiceImpl implements ITagService {
             tagIds.add(result);
         }
 
-        if (tags.size() == 0) {
+        if (tagIds.size() == 0) {
             throw new TagNotFoundException("user has no tags");
         }
 
