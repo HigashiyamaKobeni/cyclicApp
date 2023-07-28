@@ -504,15 +504,10 @@ function addEvent() {
           $("#myCycle" + Object.values(cData[i])[0]).append(`
          <div class='noteContainer myNotes' id='noteContainer_${Object.values(cData[i])[0]}'>
             <div class='button-container'>
-            
-               // ===================== add note button ==========================
               <button class='addNoteButton' onclick='addNote(${Object.values(cData[i])[0]})'>
                 <img src='../bootstrap3/css/note-icon.png' alt='Add Note' />
               Add Note
-              </button>
-
-                // ===================== add tag button ==========================
-                
+              </button>    
               <button class='addTagButton' onclick='addTag(${Object.values(cData[i])[0]})'>
                 <img src='../bootstrap3/css/tag-icon.png' alt='Add Tag' />
               Add Tag
