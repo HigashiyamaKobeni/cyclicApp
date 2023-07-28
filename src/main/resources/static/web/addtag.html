@@ -1,26 +1,50 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Add Note</title>
+    <title>add tag</title>
     <script src="../bootstrap3/js/holder.js"></script>
     <script src="../bootstrap3/jquery-1.9.1.min.js"></script>
     <script src="../bootstrap3/js/bootstrap.js"></script>
 </head>
 <body>
-    <h1>Add Note</h1>
+    <h1>add tag</h1>
     <form id="addtagForm">
         <label for="tagId">tag ID:</label>
         <input type="text" id="tagId" name="tagId" required>
         <input id="btn-add-tag" type="button" value="addTag" class="addTagButton"/>
     </form>
-
+    
+    <div id="tagList"></div>
+    
     <script>
         const urlParams = new URLSearchParams(window.location.search);
 
         const cycleId = urlParams.get("cycleId");
         const eventId = urlParams.get("eventId");
         
+        $(document).ready(function() {
+            $.ajax({
+                url: "https://murdoch-2023-ict302-ft1-cyclicapp.up.railway.app/tags/find_tag_by_uid",
+                type: "GET",
+                dataType: "json",
+                success: function(response) {
+                    let tagList = response.data;
+                    let tagString = JSON.stringify(tagList);
+                    let tagParse = JSON.parse(tagString);
+                    let tagLength = Object.keys(tagList).length;
 
+                    //Append tag
+                    for (var i = 0; i < tagLength; i++) {
+                        pKeys[i] = Object.values(tagParse[i])[0];
+                        pNames[i] = Object.values(tagParse[i])[1];
+                        $("#tagList").append("<div class='myProjects' id='project" + pKeys[i] + "'>Project: " + pNames[i] + "</div></br>");
+                    }
+                },
+                error:
+                    
+            })
+        });
+        
         $("#btn-add-tag").click(function() {
 
             const tagId = document.getElementById("tagId").value;
