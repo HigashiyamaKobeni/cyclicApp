@@ -30,7 +30,7 @@
                 success: function(response) {
                     var tagList = response.data;
                     var noteString = JSON.stringify(tagList);
-                    var tagListLength = Object.keys(tagtList).length;
+                    var tagListLength = Object.keys(tagList).length;
 
                     for (var i = 0; i < tagListLength; i++) {
                         var tagId = tagList[i];
