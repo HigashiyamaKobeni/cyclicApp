@@ -9,6 +9,26 @@
     <link href="../bootstrap3/css/header.css" rel="stylesheet" type="text/css"> <!-- Header -->
 
     <style>
+        .tagDiv {
+text-align: center;
+border: 1px solid #ccc;
+padding: 20px;
+        }
+
+        .tagID_input {
+padding: 8px;
+border: 1px solid #ccc;
+border-radius: 4px;
+}
+        .createTag_Button {
+text-align: center;
+padding: 5px;
+background-color: RGB(24, 119, 242);
+border: 1px solid RGB(24, 119, 242);
+color: white;
+margin-top: 10px;
+margin-left: 70px;
+        }
         
     </style>
 </head>
@@ -33,14 +53,15 @@
   </div>
 </div></br>
 </div>
-    
+
+    <div class="tagDiv">
     <h1>Create Tag</h1>
     <form id="insertTagForm">
         <label for="noteDetails">Tag Name:</label>
-        <input type="text" id="tagName" name="tagName" required>
-        <input id="btn-create-tag"type="button" value="Submit" class="createTag_Button"/>
+        <input class="tagID_input" type="text" id="tagName" name="tagName" required>
+        <input class="createTag_Button" id="btn-create-tag"type="button" value="Submit" />
     </form>
-
+    </div>
     <script>
         $("#btn-create-tag").click(function() {
                 $.ajax({
