@@ -21,15 +21,15 @@ public class TagController extends BaseController{
     private INoteService noteService;
 
     @RequestMapping("insert_tag")
-    public JsonResult<Void> insertTag(HttpSession session, Tag tag) {
+    public JsonResult<Integer> insertTag(HttpSession session, Tag tag) {
 
         Integer uid = getuidFromSession(session);
 
         tag.setUid(uid);
 
-        tagService.insertTag(tag);
+        Integer tagId = tagService.insertTag(tag);
 
-        return new JsonResult<>(OK);
+        return new JsonResult<>(OK, tagId);
     }
 
     @RequestMapping("delete_tag")
