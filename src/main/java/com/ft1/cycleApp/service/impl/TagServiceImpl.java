@@ -53,7 +53,7 @@ public class TagServiceImpl implements ITagService {
             throw new InsertException("errors occur at insert");
         }
 
-        Integer tagId = tag.getTagId()
+        Integer tagId = tag.getTagId();
 
         return tagId;
     }
