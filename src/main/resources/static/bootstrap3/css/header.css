@@ -25,6 +25,8 @@ margin-block-start: 1em;
 margin-block-end: 1em;
 margin-inline-start: 0px;
 margin-inline-end: 0px;
+font-family: 'Poppins', sans-serif;
+font-weight: bold;
 }
 
 .header{
@@ -53,6 +55,8 @@ margin-inline-end: 0px;
     display: flex;
     align-items: center;
     justify-content: center;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
 }
 
 .tab:hover {
