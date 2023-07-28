@@ -69,18 +69,35 @@ box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px
 .noteContainer {
     /* Add your CSS styles for the note container here */
     /* For example: background-color, padding, border, etc. */
-margin-bottom: 50px;
+margin-bottom: 20px;
 }
 
 .myNotes {
     /* Add your CSS styles for the myNotes class here */
     /* For example: font-size, color, etc. */
 font-family: 'Roboto', sans-serif;
-font-size: 13px;
+font-size: 20px;
 color: yellowgreeen;
 }
 
-/* Your existing CSS styles remain the same */
+.addNoteButton {
+
+           
+}
+
+.addTagButton {
+
+}
+
+/* Styling the img tag inside the buttons */
+  .addNoteButton img {
+
+             
+  }
+  .addTagButton img {
+    /* Add your CSS styles for the images here */
+    /* For example: width, height, margin, etc. */
+  }
 
 /* Styles for the popup container */
 .popup-container {
