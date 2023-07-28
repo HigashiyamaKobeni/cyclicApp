@@ -16,6 +16,12 @@ public class EventServiceImpl implements IEventService {
     @Autowired
     private EventMapper eventMapper;
 
+    private Integer getCycleId(Integer eventId) {
+        Integer cid =  eventMapper.getCycleId(eventId);
+    
+        return cid;
+    }
+
     private void duplicateEvent(Event originEvent, Event targetEvent) {
         targetEvent.setEventId(originEvent.getEventId());
         targetEvent.setEventName(originEvent.getEventName());
