@@ -2,6 +2,7 @@ package com.ft1.cycleApp.controller;
 
 import com.ft1.cycleApp.entity.Event;
 import com.ft1.cycleApp.service.IEventService;
+import com.ft1.cycleApp.service.ICycleService;
 import com.ft1.cycleApp.util.JsonResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,6 +20,9 @@ public class EventController extends BaseController{
 
     @Autowired
     private IEventService eventService;
+
+    @Autowired
+    private ICycleService cycleService;
 
     @RequestMapping("insert_event")
     public JsonResult<Void> insertEvent(String eventName, Integer actionable, HttpSession session) {
@@ -172,6 +176,10 @@ public class EventController extends BaseController{
 
         eventService.setStartDate(newStartDate, eventId);
 
+        Integer cycleId = eventService.getCycleId();
+        
+        cycleService.initialDate(cycleId);
+
         return new JsonResult<>(OK);
     }
 
@@ -183,6 +191,10 @@ public class EventController extends BaseController{
         Date newEndDate = dateFormat.parse(newEndDateString);
 
         eventService.setEndDate(newEndDate, eventId);
+
+        Integer cycleId = eventService.getCycleId();
+        
+        cycleService.initialDate(cycleId);
 
         return new JsonResult<>(OK);
     }
