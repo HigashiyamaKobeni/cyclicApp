@@ -549,7 +549,6 @@ function addEvent() {
           // ===================== edit date button ==========================
           
           $("#eventsDiv_" + Object.values(eData[i])[1]).append("<input type='date' id='startDateInput_" + Object.values(eData[i])[1] + "' name='startDateInput' value='2022-07-22'>");
-          anotherFunction();
           $("#eventsDiv_" + Object.values(eData[i])[1]).append("<button class='updateStartDateButton' onclick='updateStart(" + Object.values(eData[i])[1] + ")'>Update Start Date</button></br>");
 
           $("#eventsDiv_" + Object.values(eData[i])[1]).append("<input type='date' id='endDateInput_" + Object.values(eData[i])[1] + "' name='endDateInput' value='2022-07-22'>");
