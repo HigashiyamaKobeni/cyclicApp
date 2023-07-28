@@ -220,7 +220,7 @@ padding: 10px;
 border-radius: 30px;
 background-color: RGB(24, 119, 242);
 border: 1px solid RGB(24, 119, 242);
-color: white;
+color: rgb(43, 81, 184);
 
 --c: #229091;
 box-shadow: 0 0 0 .1em inset var(--c);
