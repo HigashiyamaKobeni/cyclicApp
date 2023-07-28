@@ -16,7 +16,8 @@ public class EventServiceImpl implements IEventService {
     @Autowired
     private EventMapper eventMapper;
 
-    private Integer getCycleId(Integer eventId) {
+    @Override
+    public Integer getCycleId(Integer eventId) {
         Integer cid =  eventMapper.getCycleId(eventId);
     
         return cid;
