@@ -160,6 +160,8 @@
       var tagId = $(this).data("tagId");
 
       var eventId = $(this).data("eventId");
+
+      console.log("tagId in delete button: " + tagId + "eventId in delte button" +  eventId);
       
       location.href = "deleteTag.html?tagId=" + tagId + "&eventId=" + eventId;
   });
@@ -168,6 +170,8 @@
       var tagId = $(this).data("tagId");
 
       var cycleId = $(this).data("cycleId");
+
+      console.log("tagId in delete button: " + tagId + "cycleId in delte button" + cycleId);
 
       location.href = "deleteTag.html?tagId=" + tagId +"&circleId=" + cycleId;
       // 进行后续操作
