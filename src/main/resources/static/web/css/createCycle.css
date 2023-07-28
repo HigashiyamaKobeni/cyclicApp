@@ -83,26 +83,49 @@ color: yellowgreeen;
 .button-container {
     /* Add your CSS styles for the container div here */
     /* For example: display: flex; justify-content: space-between; */
+width: 200px;
+display: flex;
+/* align-items: center; */
+justify-content: space-between;
+margin-right: 10px;
+flex-shrink: 0;
 }
 
 
 .addNoteButton {
-
-           
+height: 45px;
+margin-bottom: 1px;
+display: flex;
+justify-content: center;
+align-items: center;
+flex-direction: column;
+cursor: pointer;
+color: lightgreen;
+background-color: white;
+font-weight:bold;
 }
 
 .addTagButton {
-
+height: 45px;
+margin-bottom: 1px;
+display: flex;
+justify-content: center;
+align-items: center;
+flex-direction: column;
+cursor: pointer;
+color: rgb(229, 229, 34);
+background-color: white;
+font-weight:bold;
 }
 
 /* Styling the img tag inside the buttons */
   .addNoteButton img {
-
-             
+height: 22px;
   }
   .addTagButton img {
     /* Add your CSS styles for the images here */
     /* For example: width, height, margin, etc. */
+height: 22px;
   }
 
 /* Styles for the popup container */
