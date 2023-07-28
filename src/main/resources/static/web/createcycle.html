@@ -97,7 +97,7 @@
         type: "POST",
         dataType: "json",
         success: function(response) {
-          if (json.state == 200) {
+          if (response.state == 200) {
           location.reload();
         } else {
           alert("create cycle fail");
@@ -115,7 +115,7 @@
         type: "POST",
         dataType: "json",
         success: function(response) {
-          if (json.state == 200) {
+          if (response.state == 200) {
           location.reload();
         } else {
           alert("create cycle fail");
