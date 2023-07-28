@@ -32,7 +32,9 @@ public class EventServiceImpl implements IEventService {
                 for (Integer cycleId : result) {
                     cycleMapper.setEndDate(event.getEndDate(), cycleId);
                 }
-            } else if (event.getStartDate() != null) {
+            }
+            
+            if (event.getStartDate() != null) {
                 for (Integer cycleId : result) {
                     cycleMapper.setStartDate(event.getStartDate(), cycleId);
                 }
