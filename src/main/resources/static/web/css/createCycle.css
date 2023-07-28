@@ -95,6 +95,8 @@ flex-shrink: 0;
 .addNoteButton {
 height: 45px;
 margin-bottom: 1px;
+margin-top: -15px;
+margin-left: 70px;
 display: flex;
 justify-content: center;
 align-items: center;
@@ -103,19 +105,26 @@ cursor: pointer;
 color: lightgreen;
 background-color: white;
 font-weight:bold;
+border: 3px solid rgba(27, 31, 35, .15);
+border-radius: 10px;
+border-color: rgb(222, 201, 201);
 }
 
 .addTagButton {
 height: 45px;
 margin-bottom: 1px;
+margin-top: 15px;
+margin-left: 75px;
 display: flex;
 justify-content: center;
 align-items: center;
 flex-direction: column;
 cursor: pointer;
 color: rgb(229, 229, 34);
-background-color: white;
 font-weight:bold;
+border: 3px solid rgba(27, 31, 35, .15);
+border-radius: 10px;
+border-color: rgb(222, 201, 201);
 }
 
 /* Styling the img tag inside the buttons */
