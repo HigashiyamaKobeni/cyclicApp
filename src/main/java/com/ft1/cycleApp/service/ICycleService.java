@@ -18,6 +18,8 @@ public interface ICycleService {
 
     void setCycleName(String cycleName, Integer cycleId);
 
+    ArrayList<Integer> checkTag(Integer cycleId);
+
     void setStartDate(Date newStartDate, Integer cycleId);
 
     void setEndDate(Date newEndDate, Integer cycleId);
