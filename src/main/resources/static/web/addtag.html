@@ -10,7 +10,7 @@
     <h1>add tag</h1>
     <form id="addtagForm">
         <label for="tagId">tag ID:</label>
-        <input type="text" id="tagId" name="tagId" required>
+        <input type="text" id="tagName" name="tagName" required>
         <input id="btn-add-tag" type="button" value="addTag" class="addTagButton"/>
     </form>
     
@@ -19,57 +19,10 @@
     <script>
         const urlParams = new URLSearchParams(window.location.search);
 
-        const cycleId = urlParams.get("cycleId");
-        const eventId = urlParams.get("eventId");
-
-        function getTagName(tagId) {
-            $.ajax({
-                url: "https://murdoch-2023-ict302-ft1-cyclicapp.up.railway.app/tags/find_tag_by_tagid?tagId=" + tagId,
-                type: "GET",
-                dataType: "json",
-                success: function(response){
-                    var tagData = response.data;
-
-                    var tagId = tagData[0];
-
-                    var tagName = tagData[1];
-
-                    console.log("tagid: " + tagId + "tagName: " + tagName);
-                    
-                },
-                error: function(xhr, status, error) {
-                    console.log(error);
-                }    
-            })
-        }
-        
-        $(document).ready(function() {
-            $.ajax({
-                url: "https://murdoch-2023-ict302-ft1-cyclicapp.up.railway.app/tags/find_tag_by_uid",
-                type: "GET",
-                dataType: "json",
-                success: function(response) {
-                    var tagList = response.data;
-                    var noteString = JSON.stringify(tagList);
-                    var tagListLength = Object.keys(tagList).length;
-
-                    for (var i = 0; i < tagListLength; i++) {
-                        var tagId = tagList[i];
-
-                        console.log("tagid: " + tagId);
-                        
-                    }
-                    
-                },
-                error: function(xhr) {
-                    alert("error" + xhr.message);
-                }
-            })
-        });
-        
-        $("#btn-add-tag").click(function() {
-
-            const tagId = document.getElementById("tagId").value;
+        function addTag() {
+            const cycleId = urlParams.get("cycleId");
+            const eventId = urlParams.get("eventId");
+            const tagId = document.getElementById("tagName").value;
 
             if (cycleId !== null) {
                 const data = {
@@ -78,7 +31,7 @@
                 };
 
                 $.ajax({
-                   url: "/cycles/add_tag",
+                   url: "https://murdoch-2023-ict302-ft1-cyclicapp.up.railway.app/cycles/add_tag",
                    type: "POST",
                    data: data,
                    dataType: "JSON",
@@ -103,7 +56,7 @@
                 };
 
                 $.ajax({
-                   url: "/events/add_tag",
+                   url: "https://murdoch-2023-ict302-ft1-cyclicapp.up.railway.app/events/add_tag",
                    type: "POST",
                    data: data,
                    dataType: "JSON",
@@ -122,6 +75,34 @@
             }
             
             window.location.href = "projectmanagement.html";
+        }
+        
+        
+        $("#btn-add-tag").click(function() {
+
+            var tagName = document.getElementById("tagName").value;
+            
+            $.ajax({
+                url: "https://murdoch-2023-ict302-ft1-cyclicapp.up.railway.app/tags/insert_tag?tagName=" + tagName,
+                type: "POST",
+                dataType: "JSON",
+                success: function(json) {
+
+                    var tagId = json.data;
+                    var tagString = JSON.stringify(tagId);
+                    console.log("TAGId: " + tagString);
+                    if (tagId != null) {
+                        addTag(tagId);
+                    }
+                },
+                error: function(xhr) {
+                     alert("error" + xhr.message);
+                }
+
+
+                
+            });
+            
             
         });
     </script>
