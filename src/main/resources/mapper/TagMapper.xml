@@ -7,6 +7,7 @@
     <resultMap id="TagEntityMap" type="com.ft1.cycleApp.entity.Tag">
         <!--match schema resouce differ from class atribute-->
         <id column="tag_id" property="tagId"></id>
+        <result column="tag_id" property="tagId" />
         <result column="tag_name" property="tagName" />
         <result column="user_id" property="uid" />
     </resultMap>
