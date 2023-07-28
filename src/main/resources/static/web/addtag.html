@@ -40,8 +40,9 @@
                     }
                     
                 },
-                error:
-                    
+                error: function(xhr) {
+                    alert("error" + xhr.message);
+                }
             })
         });
         
