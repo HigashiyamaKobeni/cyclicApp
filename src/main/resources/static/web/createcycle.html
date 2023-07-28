@@ -158,7 +158,7 @@
 
           var tagName = Object.values(tagData)[1];
 
-          console.log("tagData: " + tagData);
+          console.log("tagDataC: " + tagData);
         
 
           if (tagName) {
@@ -186,10 +186,10 @@
 
           var tagName = Object.values(tagData)[1];
           
-          console.log("tagData: " + tagData);
+          console.log("tagDataE: " + tagData);
 
           if (tagName) {
-          var tagContainerId = "tagContainerE_" + cycleId;
+          var tagContainerId = "tagContainerE_" + eventId;
             $("#" + tagContainerId).text(tagName);
           } else {
             console.error("missing 'tagNames' property");
