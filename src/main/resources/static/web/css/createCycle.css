@@ -49,6 +49,10 @@ background-color: RGB(24, 119, 242);
 border: 1px solid RGB(24, 119, 242);
 box-shadow: 0 2px 5px rgba(213, 217, 217, 0.5);
 }
+
+.autoplayVideo {
+
+}
 /*----------------------*/
 .boxCycles {
 grid-template-columns: repeat(6, 1fr);
