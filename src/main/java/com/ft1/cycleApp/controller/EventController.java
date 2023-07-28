@@ -190,4 +190,11 @@ public class EventController extends BaseController{
 
         return new JsonResult<>(OK);
     }
+
+    @RequestMapping("update_cycle_date")
+    public JsonResult<Void> updateCycleDate(Integer eventId) {
+        eventService.updateCycleDate(eventId);
+
+        return new JsonResult<>(OK);
+    }
 }
