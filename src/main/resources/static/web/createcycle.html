@@ -511,20 +511,13 @@ function addEvent() {
           // ================================================================
           
            // ===================== add note button ==========================
-          $("#eventsDiv_" + Object.values(eData[i])[1]).append(`
-              <button class='addNoteButton' onclick='addNote2(${Object.values(eData[i])[1]})'>
-                <img src='../bootstrap3/css/note-icon.png' alt='Add Note' />
-              Add Note
-              </button>
-          `);
+
+          $("#myCycle" + Object.values(cData[i])[0]).append("<button class='addNoteButton' onclick='addNote(" + Object.values(cData[i])[0] + ")'><img src='../bootstrap3/css/note-icon.png' alt='Add Note' />Add Note</button>");
           
           // ===================== add tag button ==========================
-           $("#eventsDiv_" + Object.values(eData[i])[1]).append(`
-              <button class='addTagButton' onclick='addTag2(${Object.values(eData[i])[1]})'>
-                <img src='../bootstrap3/css/tag-icon.png' alt='Add Tag' />
-              Add Tag
-              </button>
-          `);
+          
+          $("#myCycle" + Object.values(cData[i])[0]).append("<button class='addTagButton' onclick='addTag(" + Object.values(cData[i])[0] + ")'><img src='../bootstrap3/css/tag-icon.png' alt='Add Tag' />Add Tag</button>");
+          
           // ================================================================
           
           $("#myCycle" + Object.values(cData[i])[0]).append("<button class='deleteCycleButton' onclick='deleteCycle(" + Object.values(cData[i])[0] + ")'>Delete Cycle</button>");
