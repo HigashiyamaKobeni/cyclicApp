@@ -9,7 +9,7 @@
 <body>
     <h1>add tag</h1>
     <form id="addtagForm">
-        <label for="tagId">tag ID:</label>
+        <label for="tagName">tag Name:</label>
         <input type="text" id="tagName" name="tagName" required>
         <input id="btn-add-tag" type="button" value="addTag" class="addTagButton"/>
     </form>
@@ -19,7 +19,7 @@
     <script>
         const urlParams = new URLSearchParams(window.location.search);
 
-        function addTag() {
+        function addTag(tagId) {
             const cycleId = urlParams.get("cycleId");
             const eventId = urlParams.get("eventId");
             const tagId = document.getElementById("tagName").value;
