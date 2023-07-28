@@ -151,13 +151,15 @@
     console.log("tagId pass into getTagNameC: " + tagId);
       $.ajax({
         url: "https://murdoch-2023-ict302-ft1-cyclicapp.up.railway.app/tags/find_tag_by_tagid?tagId=" + tagId,
-        type: "POST",
+        type: "GET",
         dataType: "json",
         success: function(response) {
 
           var tagName = response.data['tagName'];
 
-          console.log("tagDataC: " + tagName);
+          var tagId = response.data['tagId'];
+          
+          console.log("tagNameC: " + tagName + "tagIdC: " + tagId);
 
           if (tagName) {
           var tagContainerId = "tagContainer_" + cycleId;
@@ -176,15 +178,15 @@
   function getTagNameE(tagId, eventId) {
       $.ajax({
         url: "https://murdoch-2023-ict302-ft1-cyclicapp.up.railway.app/tags/find_tag_by_tagid?tagId=" + tagId,
-        type: "POST",
+        type: "GET",
         dataType: "json",
         success: function(response) {
 
-          var tagData = response.data;
+          var tagName = response.data['tagName'];
 
-          var tagName = Object.values(tagData)[1];
+          var tagId = response.data['tagId'];
           
-          console.log("tagDataE: " + tagData);
+          console.log("tagNameE: " + tagName + "tagIdE: " + tagId);
 
           if (tagName) {
           var tagContainerId = "tagContainerE_" + eventId;
