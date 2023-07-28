@@ -502,22 +502,19 @@ function addEvent() {
 
           // Inside your for loop where you create the noteContainer div
           $("#myCycle" + Object.values(cData[i])[0]).append(`
-         <div class='noteContainer myNotes' id='noteContainer_${Object.values(cData[i])[0]}'>
-            <div class='button-container'>
-              <button class='addNoteButton' onclick='addNote(${Object.values(cData[i])[0]})'>
-                <img src='../bootstrap3/css/note-icon.png' alt='Add Note' />
-              Add Note
-              </button>    
-              <button class='addTagButton' onclick='addTag(${Object.values(cData[i])[0]})'>
-                <img src='../bootstrap3/css/tag-icon.png' alt='Add Tag' />
-              Add Tag
-              </button>
-            </div>
-          </div>
+          <div class='noteContainer myNotes' id='noteContainer_${Object.values(cData[i])[0]}'></div>
           `);
 
           
           getNoteIdByCycleId(Object.values(cData[i])[0]);
+
+           // ===================== add note button ==========================
+          $("#myCycle" + Object.values(cData[i])[0]).append("<button class='addNoteButton' onclick='addNote(" + Object.values(cData[i])[0] + ")'><img src='../bootstrap3/css/note-icon.png' alt='Add Note' />Add Note</button>");
+          // ================================================================
+
+          // ===================== add tag button ==========================
+          $("#myCycle" + Object.values(cData[i])[0]).append("<button class='addTagButton' onclick='addTag(" + Object.values(cData[i])[0] + ")'><img src='../bootstrap3/css/tag-icon.png' alt='Add Tag' />Add Tag</button>");
+          // ================================================================
           
           // ================================================================
       
