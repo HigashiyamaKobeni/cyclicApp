@@ -23,7 +23,7 @@ public class CycleController extends BaseController {
     public JsonResult<ArrayList<Integer>> checkTag(Integer cycleId) {
         ArrayList<Integer> result = cycleService.checkTag(cycleId);
 
-        return result;
+        return new JsonResult<>(OK, result);
     }
 
     @RequestMapping("insert_cycle")
