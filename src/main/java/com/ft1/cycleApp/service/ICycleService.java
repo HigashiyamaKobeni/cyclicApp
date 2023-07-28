@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public interface ICycleService {
+    void initialDate(Integer cycleId);
+    
     void insertCycle(Cycle newCycle);
 
     void deleteCycle(Integer cycleId);
