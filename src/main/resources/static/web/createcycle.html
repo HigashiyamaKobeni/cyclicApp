@@ -95,7 +95,7 @@
 
       
       $.ajax({
-        url: "https://murdoch-2023-ict302-ft1-cyclicapp.up.railway.app/events/remove_note?" + eventId,
+        url: "https://murdoch-2023-ict302-ft1-cyclicapp.up.railway.app/events/remove_note?eventId=" + eventId,
         type: "POST",
         dataType: "json",
         success: function(response) {
@@ -116,7 +116,7 @@
     console.log(cycleId);
       
       $.ajax({
-        url: "https://murdoch-2023-ict302-ft1-cyclicapp.up.railway.app/cycles/remove_note?" + cycleId,
+        url: "https://murdoch-2023-ict302-ft1-cyclicapp.up.railway.app/cycles/remove_note?cycleId=" + cycleId,
         type: "POST",
         dataType: "json",
         success: function(response) {
