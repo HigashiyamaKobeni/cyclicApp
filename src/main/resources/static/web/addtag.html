@@ -28,17 +28,17 @@
                 type: "GET",
                 dataType: "json",
                 success: function(response) {
-                    let tagList = response.data;
-                    let tagString = JSON.stringify(tagList);
-                    let tagParse = JSON.parse(tagString);
-                    let tagLength = Object.keys(tagList).length;
+                    var tagList = response.data;
+                    var noteString = JSON.stringify(noteId);
+                    var tagListLength = Object.keys(tagtList).length;
 
-                    //Append tag
-                    for (var i = 0; i < tagLength; i++) {
-                        pKeys[i] = Object.values(tagParse[i])[0];
-                        pNames[i] = Object.values(tagParse[i])[1];
-                        $("#tagList").append("<div class='myProjects' id='project" + pKeys[i] + "'>Project: " + pNames[i] + "</div></br>");
+                    for (var i = 0; i < tagListLength; i++) {
+                        var tagId = tagList[i];
+
+                        console("tagid: " + tagId);
+                        
                     }
+                    
                 },
                 error:
                     
