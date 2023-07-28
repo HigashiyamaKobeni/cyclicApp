@@ -32,9 +32,12 @@
         })
 
         $("#btn-delete-note").click(function() {
+            console.log("tagId: " + tagId);
 
+             console.log("cycleId: " + cycleId);
 
-            // 检查参数是否为 null，并发送到后端
+             console.log("eventId: " + eventId);
+            
             if (cycleId !== null) {
                 const data = {
                     cycleId: cycleId,
