@@ -66,6 +66,20 @@ margin-top: 30px;
 box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
 }
 
+.noteContainer {
+    /* Add your CSS styles for the note container here */
+    /* For example: background-color, padding, border, etc. */
+margin-bottom: 50px;
+}
+
+.myNotes {
+    /* Add your CSS styles for the myNotes class here */
+    /* For example: font-size, color, etc. */
+font-family: 'Roboto', sans-serif;
+font-size: 13px;
+color: yellowgreeen;
+}
+
 /* Your existing CSS styles remain the same */
 
 /* Styles for the popup container */
