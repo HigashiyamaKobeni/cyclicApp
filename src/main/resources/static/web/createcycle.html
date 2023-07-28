@@ -92,6 +92,8 @@
   // ===============================================================
 
   function deleteEventNote(eventId) {
+
+      
       $.ajax({
         url: "https://murdoch-2023-ict302-ft1-cyclicapp.up.railway.app/events/remove_note?" + eventId,
         type: "POST",
@@ -110,16 +112,19 @@
   }
   
   function deleteCycleNote(cycleId) {
+
+    console.log(cycleId);
+      
       $.ajax({
         url: "https://murdoch-2023-ict302-ft1-cyclicapp.up.railway.app/cycles/remove_note?" + cycleId,
         type: "POST",
         dataType: "json",
         success: function(response) {
-          if (response.state == 200) {
-          location.reload();
-        } else {
-          alert("delete note fail");
-        }
+            if (response.state == 200) {
+            location.reload();
+          } else {
+            alert("delete note fail");
+          }
         },
         error: function(xhr, status, error) {
           console.error("delete note fail:", error);
@@ -604,7 +609,7 @@ function addEvent() {
            // ===================== add note button ==========================
           $("#myCycle" + Object.values(cData[i])[0]).append("<button class='addNoteButton' onclick='addNote(" + Object.values(cData[i])[0] + ")'><img src='../bootstrap3/css/note-icon.png' alt='Add Note' />Add Note</button>");
           // ================================================================
-
+          
           // ===================== delete note button ==========================
           $("#myCycle" + Object.values(cData[i])[0]).append("<button class='deleteNoteButton' onclick='deleteCycleNote(" + Object.values(cData[i])[0] + ")'><img src='../bootstrap3/css/delete-icon.png' alt='Delete Note' />Delete Note</button>");
           // ================================================================  
