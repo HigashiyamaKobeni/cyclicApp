@@ -187,7 +187,7 @@ s<!DOCTYPE html>
     let cycle_Name = document.getElementById("cycleName").value;
     $.ajax({
       ///AJAX WILL PROCESS
-      url: "/cycles/insert_cycle",
+      url: "https://murdoch-2023-ict302-ft1-cyclicapp.up.railway.app/cycles/insert_cycle",
       type: "POST",
       data: $("#form-create-cycle").serialize(),
       dataType: "JSON",
@@ -207,7 +207,7 @@ s<!DOCTYPE html>
 
   let pArray = [];
   $.ajax({
-    url: "/projects/get_projectids",
+    url: "https://murdoch-2023-ict302-ft1-cyclicapp.up.railway.app/projects/get_projectids",
     type: "GET",
     dataType: "json",
     success: function(response) {
@@ -292,7 +292,7 @@ s<!DOCTYPE html>
   function addToProject(pid, cid) {
         ///ADD CYCLE TO PROJECT FUNCTION
         $.ajax({
-          url: "/projects/add_cycle?projectId=" + pid + "&cycleId=" + cid,
+          url: "https://murdoch-2023-ict302-ft1-cyclicapp.up.railway.app/projects/add_cycle?projectId=" + pid + "&cycleId=" + cid,
           type: "POST",
           dataType: "JSON",
           success: function(json) {
@@ -312,7 +312,7 @@ function addEvent() {
     let displayDiv = document.getElementById("createEventDiv");
     displayDiv.style.display = "flex";
     $.ajax({
-      url: "https://murdoch-2023-ict302-ft1-cyclicapp.up.railway.app/cycles/",
+      url: "https://murdoch-2023-ict302-ft1-cyclicapp.up.railway.app/cycles/add_event",
       type: "GET",
       dataType: "json",
       success: function(response) {
@@ -345,7 +345,7 @@ function addEvent() {
       const integerValue = actionable.checked ? 1 : 0;
       console.log(cycleName + " " + eventName + "Checkbox Value (integer):", integerValue);
       $.ajax({
-        url: "/events/insert_event?eventName=" + eventName + "&actionable=" + integerValue,
+        url: "https://murdoch-2023-ict302-ft1-cyclicapp.up.railway.app/events/insert_event?eventName=" + eventName + "&actionable=" + integerValue,
         type: "POST",
         dataType: "JSON",
         success: function(json) {
