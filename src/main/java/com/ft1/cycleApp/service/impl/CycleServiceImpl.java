@@ -20,6 +20,7 @@ public class CycleServiceImpl implements ICycleService {
     @Autowired
     private EventMapper eventMapper;
 
+    @Override
     public void initialDate(Integer cycleId) {
         ArrayList<Integer> eventIds = cycleMapper.checkEvent(cycleId);
 
