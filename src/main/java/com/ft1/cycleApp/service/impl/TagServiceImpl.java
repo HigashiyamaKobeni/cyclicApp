@@ -44,7 +44,7 @@ public class TagServiceImpl implements ITagService {
     @Override
     public Integer insertTag(Tag tag) {
 
-        Integer rows = tagMapper.insertTag(result);
+        Integer rows = tagMapper.insertTag(tag);
 
         Integer tagId = tag.getTagId();
 
