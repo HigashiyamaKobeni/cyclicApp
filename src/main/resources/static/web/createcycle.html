@@ -496,11 +496,6 @@ function addEvent() {
           // ================================================================
           
           $("#myCycle" + Object.values(cData[i])[0]).append("<button class='deleteCycleButton' onclick='deleteCycle(" + Object.values(cData[i])[0] + ")'>Delete Cycle</button>");
-          $("#myCycle" + Object.values(cData[i])[0]).append("<input type='date' id='startDateInput_" + Object.values(cData[i])[0] + "' name='startDateInput' value='2022-07-22'>");
-          $("#myCycle" + Object.values(cData[i])[0]).append("<button class='updateStartDateButton' onclick='updateStart(" + Object.values(cData[i])[0] + ")'>Update Start Date</button></br>");
-
-          $("#myCycle" + Object.values(cData[i])[0]).append("<input type='date' id='endDateInput_" + Object.values(cData[i])[0] + "' name='endDateInput' value='2022-07-22'>");
-          $("#myCycle" + Object.values(cData[i])[0]).append("<button class='updateEndDateButton' onclick='updateEnd(" + Object.values(cData[i])[0] + ")'>Update End Date</button></br>");
           
           $("#myCycle" + Object.values(cData[i])[0]).append("<div id='cycle_events_" + Object.values(cData[i])[0] + "' class='cycle_events'></div>");
           for (var j = 0; j < pArray.length; j++) {
@@ -541,7 +536,17 @@ function addEvent() {
            
           }
            $("#eventsDiv_" + Object.values(eData[i])[1]).append("</br><br><button class='deleteThisEvent_" + Object.values(eData[i])[1] + "' onclick='deleteEvent(" + Object.values(eData[i])[1] + ")'>Delete Event</button>");
-        
+
+          // ===================== edit date button ==========================
+          
+          $("#eventsDiv_" + Object.values(eData[i])[1]).append("<input type='date' id='startDateInput_" + Object.values(cData[i])[0] + "' name='startDateInput' value='2022-07-22'>");
+          $("#eventsDiv_" + Object.values(eData[i])[1]).append("<button class='updateStartDateButton' onclick='updateStart(" + Object.values(cData[i])[0] + ")'>Update Start Date</button></br>");
+
+          $("#eventsDiv_" + Object.values(eData[i])[1]).append("<input type='date' id='endDateInput_" + Object.values(cData[i])[0] + "' name='endDateInput' value='2022-07-22'>");
+          $("#eventsDiv_" + Object.values(eData[i])[1]).append("<button class='updateEndDateButton' onclick='updateEnd(" + Object.values(cData[i])[0] + ")'>Update End Date</button></br>");
+          
+          // ================================================================
+          
           // ===================== add note button ==========================
            $("#eventsDiv_" + Object.values(eData[i])[1]).append("<button class='addNoteButton' onclick='addNote2(" + Object.values(eData[i])[1] + ")'>Add Note</button>");
           // ================================================================
