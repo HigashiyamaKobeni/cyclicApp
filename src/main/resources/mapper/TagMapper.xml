@@ -17,13 +17,6 @@
         <result column="note_id" property="noteId" />
     </resultMap>
 
-    <resultMap id="FindTagByUidMap" type="com.ft1.cycleApp.entity.Tag">
-        <!--match schema resouce differ from class atribute-->
-        <id column="user_id" property="uid"></id>
-        <result column="tag_name" property="tagName" />
-        <result column="tag_id" property="tagId" />
-    </resultMap>
-
     <insert id="insertTag" useGeneratedKeys="true" keyProperty="tagId">
         INSERT INTO tag (
             user_id,
@@ -39,8 +32,8 @@
         WHERE tag_id=${tagId}
     </delete>
 
-    <select id="findTagByUid" resultMap="FindTagByUidMap">
-        SELECT * FROM tag
+    <select id="findTagByUid" resultType="java.lang.Integer">
+        SELECT tag_id FROM tag
         WHERE user_id=${uid}
     </select>
 
