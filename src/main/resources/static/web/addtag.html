@@ -21,6 +21,27 @@
 
         const cycleId = urlParams.get("cycleId");
         const eventId = urlParams.get("eventId");
+
+        function getTagName(tagId) {
+            $.ajax({
+                url: "https://murdoch-2023-ict302-ft1-cyclicapp.up.railway.app/tags/find_tag_by_tagid?tagId=" + tagId,
+                type: "GET",
+                dataType: "json",
+                success: function(response){
+                    var tagData = response.data;
+
+                    var tagId = tagData[0];
+
+                    var tagName = tagData[1];
+
+                    console.log("tagid: " + tagId + "tagName: " + tagName);
+                    
+                },
+                error: function(xhr, status, error) {
+                    console.log(error);
+                }    
+            })
+        }
         
         $(document).ready(function() {
             $.ajax({
