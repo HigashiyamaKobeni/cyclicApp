@@ -118,7 +118,7 @@
           if (response.state == 200) {
           location.reload();
         } else {
-          alert("create cycle fail");
+          alert("delete note fail");
         }
         },
         error: function(xhr, status, error) {
@@ -674,7 +674,7 @@ function addEvent() {
 
           // Inside your for loop where you create the noteContainer div
           $("#eventsDiv_" + Object.values(eData[i])[1]).append(`
-          <div class='noteContainer myNotes' id='noteContainerE_${Object.values(cData[i])[0]}'></div>
+          <div class='noteContainer myNotes' id='noteContainerE_${Object.values(eData[i])[1]}'></div>
           `);
           
           getNoteIdByEventId(Object.values(eData[i])[1]);
