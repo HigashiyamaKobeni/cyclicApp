@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Delete Tag</title>
+    <script src="../bootstrap3/js/holder.js"></script>
+    <script src="../bootstrap3/jquery-1.9.1.min.js"></script>
+    <script src="../bootstrap3/js/bootstrap.js"></script>
+
+    <link href="../bootstrap3/css/header.css" rel="stylesheet" type="text/css"> <!-- Header -->
+
+    
+</head>
+<body>
+    
+    
+    <h1>delete tag</h1></br>
+
+        <input class="deleteTagButton" id="btn-delete-note" type="button" value="delete Tag" />
+
+        <input class="goBack" id="btn-go-back" type="button" value="back" />
+
+    <script>
+
+        const urlParams = new URLSearchParams(window.location.search);
+
+        const tagId = urlParams.get("tagId");
+        const cycleId = urlParams.get("cycleId");
+        const eventId = urlParams.get("eventId");
+
+        $("#btn-go-back").clieck(function(){
+            location.href = "projectmanagement.html";
+        })
+
+        $("#btn-delete-note").click(function() {
+
+
+            // 检查参数是否为 null，并发送到后端
+            if (cycleId !== null) {
+                const data = {
+                    cycleId: cycleId,
+                    tagId: tagId
+                };
+
+                $.ajax({
+                   url: "https://murdoch-2023-ict302-ft1-cyclicapp.up.railway.app/cycles/remove_tag",
+                   type: "POST",
+                   data: data,
+                   dataType: "JSON",
+                   success: function(json) {
+                     if (json.state == 200) {
+                       alert("delete success");
+                       location.reload();
+                     } else {
+                       alert("err");
+                     }
+                   },
+                   error: function(xhr) {
+                     alert("error" + xhr.message);
+                   }
+                 });
+            }
+            
+            if (eventId !== null) {
+                const data = {
+                    eventId: eventId,
+                    tagId: tagId
+                };
+
+                $.ajax({
+                   url: "https://murdoch-2023-ict302-ft1-cyclicapp.up.railway.app/events/remove_tag",
+                   type: "POST",
+                   data: data,
+                   dataType: "JSON",
+                   success: function(json) {
+                     if (json.state == 200) {
+                       alert("delete success");
+                       location.reload();
+                     } else {
+                       alert("err");
+                     }
+                   },
+                   error: function(xhr) {
+                     alert("error" + xhr.message);
+                   }
+                 });
+            }  
+        
+            
+        })
+        
+
+        
+    </script>
+</body>
+</html>
