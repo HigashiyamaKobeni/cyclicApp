@@ -364,7 +364,7 @@ function addEvent() {
 
   function deleteEvent(eid) {
     $.ajax({
-      url: "/events/delete_event?eventId=" + eid,
+      url: "https://murdoch-2023-ict302-ft1-cyclicapp.up.railway.app/events/delete_event?eventId=" + eid,
       type: "POST",
       dataType: "json",
       success: function(json) {
@@ -382,7 +382,7 @@ function addEvent() {
   function deleteCycle(cid)
       {
          $.ajax({
-          url: "/cycles/delete_cycle?cycleId=" + cid,
+          url: "https://murdoch-2023-ict302-ft1-cyclicapp.up.railway.app/cycles/delete_cycle?cycleId=" + cid,
           type: "POST",
           dataType: "JSON",
           success: function(json) {
@@ -397,11 +397,11 @@ function addEvent() {
           }
         });
       }
-  function updateStart(cid)
+  function updateStart(eid)
       {
-        getStartDateById(cid);
+        getStartDateById(eid);
          $.ajax({
-          url: "/cycles/set_start_date?newStartDate=" + startDate + "&cycleId=" + cid,
+          url: "https://murdoch-2023-ict302-ft1-cyclicapp.up.railway.app/events/set_start_date?newStartDateString=" + startDate + "&eventId=" + eid,
           type: "POST",
           dataType: "JSON",
           success: function(json) {
@@ -421,7 +421,7 @@ function addEvent() {
       {
         getEndDateById(cid);
          $.ajax({
-          url: "/cycles/set_end_date?newEndDate=" + endDate + "&cycleId=" + cid,
+          url: "https://murdoch-2023-ict302-ft1-cyclicapp.up.railway.app/events/set_end_date?newEndDateString=" + endDate + "&eventId=" + cid,
           type: "POST",
           dataType: "JSON",
           success: function(json) {
@@ -436,28 +436,30 @@ function addEvent() {
           }
         });
       }
+  
   var startDate;
   var endDate;
+  
   function getStartDateById(ID) {
-  const element = document.getElementById(`startDateInput_${ID}`);
-  if (element) {
-    const value = element.value;
-    console.log(value);
-    startDate = value;
-  } else {
-    console.log(`Element with ID "startDateInput_${ID}" not found.`);
+    const element = document.getElementById(`startDateInput_${ID}`);
+    if (element) {
+      const value = element.value;
+      console.log(value);
+      startDate = value;
+    } else {
+      console.log(`Element with ID "startDateInput_${ID}" not found.`);
+    }
   }
-}
   function getEndDateById(ID) {
-  const element = document.getElementById(`endDateInput_${ID}`);
-  if (element) {
-    const value = element.value;
-    console.log(value);
-    endDate = value;
-  } else {
-    console.log(`Element with ID "endDateInput_${ID}" not found.`);
+    const element = document.getElementById(`endDateInput_${ID}`);
+    if (element) {
+      const value = element.value;
+      console.log(value);
+      endDate = value;
+    } else {
+      console.log(`Element with ID "endDateInput_${ID}" not found.`);
+    }
   }
-}
   $(document).ready(function() {
     $.ajax({
       url: "https://murdoch-2023-ict302-ft1-cyclicapp.up.railway.app/cycles/get_cycles_by_uid",
