@@ -19,6 +19,13 @@ public class CycleController extends BaseController {
     @Autowired
     private ICycleService cycleService;
 
+    @RequestMapping("check_tag")
+    public JsonResult<ArrayList<integer>> checkTag(Integer cycleId) {
+        ArrayList<Integer> result = cycleService.checkTag(cycleId);
+
+        return result;
+    }
+
     @RequestMapping("insert_cycle")
     public JsonResult<Void> insertCycle(Cycle newCycle, HttpSession session) {
         Integer uid = getuidFromSession(session);
