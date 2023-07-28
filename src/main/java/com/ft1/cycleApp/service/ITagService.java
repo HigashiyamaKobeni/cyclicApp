@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public interface ITagService {
 
-    void insertTag(Tag tag);
+    Integer insertTag(Tag tag);
 
     void deleteTag(Integer tagId);
 
