@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public interface EventMapper {
+    Integer getCycleId(Integer eventId);
+    
     Integer insertEvent(Event event);
 
     Integer deleteEvent(Integer eventId);
