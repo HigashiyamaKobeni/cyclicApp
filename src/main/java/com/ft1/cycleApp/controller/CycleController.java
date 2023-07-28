@@ -20,7 +20,7 @@ public class CycleController extends BaseController {
     private ICycleService cycleService;
 
     @RequestMapping("check_tag")
-    public JsonResult<ArrayList<integer>> checkTag(Integer cycleId) {
+    public JsonResult<ArrayList<Integer>> checkTag(Integer cycleId) {
         ArrayList<Integer> result = cycleService.checkTag(cycleId);
 
         return result;
