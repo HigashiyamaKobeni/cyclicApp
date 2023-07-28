@@ -176,12 +176,6 @@ public class EventController extends BaseController{
 
         eventService.setStartDate(newStartDate, eventId);
 
-        Integer cycleId = eventService.getCycleId(eventId);
-
-        if (cycleId != null) {
-            cycleService.initialDate(cycleId);
-        }
-
         return new JsonResult<>(OK);
     }
 
@@ -193,12 +187,6 @@ public class EventController extends BaseController{
         Date newEndDate = dateFormat.parse(newEndDateString);
 
         eventService.setEndDate(newEndDate, eventId);
-
-        Integer cycleId = eventService.getCycleId(eventId);
-        
-        if (cycleId != null) {
-            cycleService.initialDate(cycleId);
-        }
 
         return new JsonResult<>(OK);
     }
