@@ -110,6 +110,10 @@ border-radius: 10px;
 border-color: rgb(222, 201, 201);
 }
 
+.deleteNoteButton {
+
+}
+
 .addTagButton {
 height: 45px;
 margin-bottom: 1px;
@@ -129,6 +133,10 @@ border-color: rgb(222, 201, 201);
 
 /* Styling the img tag inside the buttons */
   .addNoteButton img {
+height: 22px;
+  }
+
+.deleteNoteButton img {
 height: 22px;
   }
   .addTagButton img {
