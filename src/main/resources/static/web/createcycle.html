@@ -100,7 +100,7 @@
 
             var tagData = response.data;
 
-            var tagLength = Object.value(tagData).length;
+            var tagLength = Object.keys(tagData).length;
             
             
             for (var i = 0; i < tagLenth; i++) {
@@ -124,7 +124,7 @@
           success: function(response) {
               var tagData = response.data;
 
-              var tagLength = Object.value(tagData).length;
+              var tagLength = Object.keys(tagData).length;
                             
               for (var i = 0; i < tagLenth; i++) {
                   var tagId = tagData[i];
